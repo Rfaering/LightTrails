@@ -1,0 +1,57 @@
+﻿<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center menuShadow" style="z-index:3;width:100%;font-weight:bold;background-image: url('/images/sample_3.jpg'); background-position: bottom; background-size: cover;" id="mySidebar">
+    <br>
+    <div id="nav-anchor"></div>
+    <h3 class="w3-padding-64 w3-center w3-text-light-grey"><b>Examples</b></h3>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
+    <a href="javascript:void(0)" onClick="scrollToElemnt('#embedded')" class="w3-bar-item w3-button menuButton">Embedded</a>
+    <a href="javascript:void(0)" onClick="scrollToElemnt('#hover')" class="w3-bar-item w3-button menuButton">Mouse Hover</a>
+    <a href="javascript:void(0)" onClick="scrollToElemnt('#visible')" class="w3-bar-item w3-button menuButton">Visible</a>
+</nav>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main content">
+    <!-- About section -->
+    <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="embedded">
+        <section id="embedded" class="center2" style="text-align: left">
+            <h3><b>Embedded</b></h3>
+            <p>This site will demonstrate different ways to integrate the generated video into content online</p>
+            <p>First step is to get the movie file online so that it can be referred by other sites. Most websites can host the video directly, as an alternative it can be copied storage services such as dropbox</p>
+            <p>To learn more about the different video tags and browser support go to <a href="https://www.w3schools.com/tags/tag_video.asp">this site</a>
+            <p>To show the video directly into your own site, copy the following code snippet</p>
+
+            <video class="video" src="~/video/@ViewBag.Video" type="video/mp4" autoplay loop></video>
+            <pre class="prettyprint lang-html">
+&lt;video src=&quot;{path to video}&quot; type=&quot;video/mp4&quot; autoplay loop&gt;&lt;/video&gt;</pre>
+        </section>
+
+        <section id="hover" class="center2" style="text-align: left">
+            <h3><b>Mouse hover</b></h3>
+            <p>To run a version that only plays when the mouse hovers the video put in the following code snippet</p>
+            <p>The javascript will pick up all div elements with the id called playOnMouseHover and play video inside them on mouse hover and pause on mouse leave</p>
+            <div class="playOnMouseHover" style="display: inline-block">
+                <video class="video" src="~/video/@ViewBag.Video" type="video/mp4" loop></video>
+            </div>
+            <pre class="prettyprint lang-html">
+&lt;div class="playOnMouseHover center" style="display: inline-block"&gt;
+   &lt;video src="path to video" type="video/mp4" loop&gt;&lt;/video&gt;	
+&lt;/div&gt;
+...
+&lt;script src="path to video"&gt;&lt;/script&gt;</pre>
+        </section>
+
+        <section id="visible" class="center2" style="text-align: left">
+            <h3><b>Play in view</b></h3>
+            <p>To run a version that will start playing when the video is fully visible in the browser add the following code snippet</p>
+            <p>The javascript will pick up all video elements with the id called playOnEnterView and play the video when it is fully visible in the browser</p>
+            <video class="video playOnEnterView" src="~/video/@ViewBag.Video" type="video/mp4" loop></video>
+            <pre class="prettyprint lang-html">
+   &lt;video src="path to video" type="video/mp4" loop&gt;&lt;/video&gt;	
+...
+&lt;script src="js/videoUtils.js"&gt;&lt;/script&gt;</pre>
+</section>
+
+@section scripts {
+    <script src="js/videoUtils.js"></script>
+    <script src="https://rawgit.com/google/code-prettify/master/loader/run_prettify.js?autoload=true&amp;skin=sunburst&amp;lang=css" defer=""></script>
+}

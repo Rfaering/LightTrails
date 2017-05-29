@@ -22,7 +22,9 @@ public class Record : MonoBehaviour
 
     void Start()
     {
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR
         Recorder.Close();
+#endif
     }
 
     private void OnPreRender()
@@ -76,7 +78,10 @@ public class Record : MonoBehaviour
 
         Frame++;
         var bytes = lOut.GetRawTextureData();
+
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR
         Recorder.SetFrameThroughBitMap(bytes, width, height);
+#endif
         Destroy(lOut);
     }
 
@@ -113,6 +118,7 @@ public class Record : MonoBehaviour
 
         var videoFileName = recorderMenuItem.VideoFileName();
 
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR
         Recorder.Start(new Settings()
         {
             Fps = Fps.fps24,
@@ -120,6 +126,8 @@ public class Record : MonoBehaviour
             OutputFormat = format,
             OutputFile = videoFileName
         });
+#endif
+
         AttributeMenuItem.RefreshButtonEnabledState();
     }
 
@@ -127,15 +135,18 @@ public class Record : MonoBehaviour
     {
         ElapsedVideoTime = 0;
         Recording = false;
-
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR
         Recorder.Close();
+#endif
         AttributeMenuItem.RefreshButtonEnabledState();
     }
 
     IEnumerator WaitAndClose()
     {
         yield return new WaitForSeconds(2);
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR
         Recorder.Close();
+#endif
         AttributeMenuItem.RefreshButtonEnabledState();
     }
 

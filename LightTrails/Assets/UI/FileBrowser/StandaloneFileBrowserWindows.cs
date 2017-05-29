@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Ookii.Dialogs;
+using System.Linq;
 
 
 // For fullscreen support
@@ -20,6 +21,20 @@ public class WindowWrapper : IWin32Window
 
 public class StandaloneFileBrowserWindows : IStandaloneFileBrowser
 {
+    public void OpenFilePanel(Action<string> callBack)
+    {
+        var extensions = new[] {
+            new ExtensionFilter("Image Files", "png", "jpg", "jpeg" ),
+        };
+
+        var paths = OpenFilePanel("Open File", System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyPictures), extensions, true);
+
+        if (paths != null && paths.Length > 0)
+        {
+            callBack(paths.First());
+        }
+    }
+
     [DllImport("user32.dll")]
     private static extern IntPtr GetActiveWindow();
 

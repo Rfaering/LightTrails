@@ -1,6 +1,10 @@
 ﻿using System;
 using System.IO;
+#if UNITY_STANDALONE_WIN
 using System.Runtime.Serialization.Formatters.Binary;
+#elif UNITY_METRO
+using System.Xml.Serialization;
+#endif
 using UnityEngine;
 
 namespace Assets.Projects.Scripts
@@ -104,8 +108,13 @@ namespace Assets.Projects.Scripts
 
             using (Stream stream = File.OpenWrite(GetDataFilePath()))
             {
+#if UNITY_STANDALONE_WIN
                 BinaryFormatter formatter = new BinaryFormatter();
                 formatter.Serialize(stream, this);
+#elif UNITY_METRO
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(Project));
+                xmlSerializer.Serialize(stream, this);
+#endif
             }
         }
 
@@ -129,8 +138,13 @@ namespace Assets.Projects.Scripts
             {
                 using (Stream stream = File.OpenRead(dataPath))
                 {
+#if UNITY_STANDALONE_WIN
                     BinaryFormatter formatter = new BinaryFormatter();
                     return formatter.Deserialize(stream) as Project;
+#elif UNITY_METRO
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(Project));
+                    return xmlSerializer.Deserialize(stream) as Project;
+#endif
                 }
             }
             catch (Exception e)

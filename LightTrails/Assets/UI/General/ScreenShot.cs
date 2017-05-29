@@ -32,6 +32,8 @@ public class ScreenShot : MonoBehaviour
 
             File.WriteAllBytes(Application.dataPath + @"\Resources\Preview\" + name + ".png", lOut.EncodeToPNG());
             TakeScreenShot = false;
+
+            Debug.Log("Screenshot taken! " + name);
         }
     }
 
@@ -44,7 +46,7 @@ public class ScreenShot : MonoBehaviour
 
     private void EnabledSpace()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             TakeScreenShot = true;
         }

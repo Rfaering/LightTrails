@@ -7,7 +7,7 @@ public class WispMenuItem : EffectMenuItem
 {
     public override List<Assets.UI.Models.Attribute> GetAttributes()
     {
-        var value = assosicatedEffect.GetComponentInChildren<IntensityManipulation>().Intensity;
+        var value = assosicatedEffect.GetComponentInChildren<ParticleSystemManipulation>().IntensityValue;
         List<Assets.UI.Models.Attribute> attribtues = new List<Assets.UI.Models.Attribute>()
         {
             new SliderAttribute()
@@ -40,7 +40,7 @@ public class WispMenuItem : EffectMenuItem
 
     public void SetIntensity(float value)
     {
-        var focusEffect = assosicatedEffect.GetComponentInChildren<IntensityManipulation>();
-        focusEffect.Intensity = value;
+        var focusEffect = assosicatedEffect.GetComponentInChildren<ParticleSystemManipulation>();
+        focusEffect.IntensityValue = value;
     }
 }

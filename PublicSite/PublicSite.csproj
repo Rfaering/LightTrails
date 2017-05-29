@@ -67,7 +67,7 @@
     <Content Include="wwwroot\lib\jquery\dist\jquery.min.js" />
     <Content Include="wwwroot\lib\jquery\dist\jquery.min.map" />
     <Content Include="wwwroot\lib\jquery\LICENSE.txt" />
-    <Content Include="wwwroot\software\Beta-0.1.zip" />
+    <Content Include="wwwroot\software\Beta-0.1.0.zip" />
     <Content Include="wwwroot\video\Dragon-Tile.mp4" />
     <Content Include="wwwroot\video\Fire-Tile.mp4" />
     <Content Include="wwwroot\video\Fireworks-Tile.mp4" />

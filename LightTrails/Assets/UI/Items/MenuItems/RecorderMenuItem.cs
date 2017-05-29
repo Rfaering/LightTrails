@@ -1,8 +1,10 @@
 ﻿using Assets.Projects.Scripts;
 using Assets.UI.Models;
-using Boo.Lang;
 using System;
+using System.Collections.Generic;
+#if UNITY_STANDALONE_WIN
 using System.Diagnostics;
+#endif
 using System.IO;
 using System.Linq;
 
@@ -103,7 +105,9 @@ public class RecorderMenuItem : MenuItem
     public void OpenFile(string filePath)
     {
         var fullPath = Path.GetFullPath(filePath);
+#if UNITY_STANDALONE_WIN
         Process.Start(fullPath);
+#endif
     }
 
     public string VideoFileDirectory()
@@ -117,7 +121,7 @@ public class RecorderMenuItem : MenuItem
         return Path.GetFullPath(Directory.GetCurrentDirectory() + "\\..\\");
 #else
         return Path.GetFullPath(Directory.GetCurrentDirectory() + "\\");
-#endif  
+#endif
     }
 
     public string VideoFileName()
@@ -132,7 +136,7 @@ public class RecorderMenuItem : MenuItem
         return Path.GetFullPath(Directory.GetCurrentDirectory() + "\\..\\test." + extension);
 #else
         return Path.GetFullPath(Directory.GetCurrentDirectory() + "\\test." + Enum.GetName(typeof(FfmpegWrapper.OutputFormat), SelectedOutput));
-#endif  
+#endif
     }
 
     private string HtmlFileName()

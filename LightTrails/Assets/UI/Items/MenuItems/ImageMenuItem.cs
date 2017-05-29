@@ -1,6 +1,5 @@
 ﻿using Assets.Projects.Scripts;
 using Assets.UI.Models;
-using System.Linq;
 
 public class ImageMenuItem : MenuItem
 {
@@ -31,13 +30,11 @@ public class ImageMenuItem : MenuItem
                 SelectedValue = ImageProperties.Scale,
                 Min = 10
             },
-            /*new SliderAttribute()
+            new ToggleAttribute()
             {
-                Name = "Transparency",
-                Changed = UpdateTransparency,
-                DefaultValue = (int)ImageProperties.Transparency,
-                Min = 10
-            }*/
+                Name = "Light",
+                CallBack = value => FindObjectOfType<LightPlane>().SetEnabled(value)
+            }
         };
 
         if (Project.CurrentModel != null)
@@ -63,15 +60,9 @@ public class ImageMenuItem : MenuItem
 
     public void FindImage()
     {
-        // Open file with filter
-        var extensions = new[] {
-            new ExtensionFilter("Image Files", "png", "jpg", "jpeg" ),
-        };
-        var paths = StandaloneFileBrowser.OpenFilePanel("Open File", System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyPictures), extensions, true);
-
-        if (paths != null && paths.Length > 0)
-        {
-            FindObjectOfType<ImageProperties>().SetImage(paths.First());
-        }
+        StandaloneFileBrowser.OpenFilePanel(callBack =>
+       {
+           FindObjectOfType<ImageProperties>().SetImage(callBack);
+       });
     }
 }

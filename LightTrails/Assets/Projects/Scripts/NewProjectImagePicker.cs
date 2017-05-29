@@ -19,42 +19,29 @@ public class NewProjectImagePicker : MonoBehaviour
 
     private void OpenDialog()
     {
+        StandaloneFileBrowser.OpenFilePanel(SetBasedOnPath);
+    }
+
+    internal void SetBasedOnPath(string path)
+    {
         var dialog = GetComponentInParent<NewProjectDialog>();
 
-        // Open file with filter
-        var extensions = new[] {
-            new ExtensionFilter("Image Files", "png", "jpg", "jpeg" ),
-        };
-        var paths = StandaloneFileBrowser.OpenFilePanel("Open File", System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyPictures), extensions, true);
+        Texture2D tex = new Texture2D(0, 0);
+        var bytes = File.ReadAllBytes(path);
+        tex.LoadImage(bytes);
 
-        if (paths != null && paths.Length > 0)
+        GetComponent<RawImage>().texture = tex;
+        GetComponent<RawImage>().SizeToParent();
+
+        var projectName = dialog.GetProjectName();
+
+        if (string.IsNullOrEmpty(projectName))
         {
-            var path = paths.First();
-
-            try
-            {
-                Texture2D tex = new Texture2D(0, 0);
-                var bytes = File.ReadAllBytes(path);
-                tex.LoadImage(bytes);
-
-                GetComponent<RawImage>().texture = tex;
-                GetComponent<RawImage>().SizeToParent();
-
-                var projectName = dialog.GetProjectName();
-
-                if (string.IsNullOrEmpty(projectName))
-                {
-                    var name = Path.GetFileNameWithoutExtension(path);
-                    dialog.SetProjectName(name);
-                }
-
-                selectedPath = path;
-            }
-            catch (Exception e)
-            {
-                Debug.LogException(e);
-            }
+            var name = Path.GetFileNameWithoutExtension(path);
+            dialog.SetProjectName(name);
         }
+
+        selectedPath = path;
     }
 
     internal void SetDefaultImage()

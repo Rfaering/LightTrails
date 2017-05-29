@@ -3,6 +3,7 @@ public class EffectOptions
 {
     public static Effect[] Options =
     {
+          Effect.Create("Trails", typeof(TrailsMenuItem), loop: true),
           Effect.Create("Fireworks", typeof(FireworksMenuItem)),
           Effect.Create("Rain"),
           Effect.Create("SmallFire", typeof(SmallFireMenuItem), loop: true),

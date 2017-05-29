@@ -3,23 +3,6 @@ using UnityEngine.EventSystems;
 
 public class EffectOptionsOverlay : MonoBehaviour, IPointerClickHandler
 {
-    public GameObject Prefab;
-
-    void Start()
-    {
-        foreach (var menuItem in GetComponentsInChildren<EffectOption>())
-        {
-            DestroyObject(menuItem.gameObject);
-        }
-
-        foreach (var effect in EffectOptions.Options)
-        {
-            var newGameObject = Instantiate(Prefab, transform);
-            newGameObject.name = effect.Name;
-            newGameObject.GetComponent<EffectOption>().Initialize(effect);
-        }
-    }
-
     internal void Close()
     {
         gameObject.SetActive(false);

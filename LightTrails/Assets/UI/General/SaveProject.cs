@@ -39,6 +39,6 @@ public class SaveProject : MonoBehaviour
 
         _project.Save();
 
-        Debug.Log("Save clicked");
+        GetComponent<Animation>().Play();
     }
 }

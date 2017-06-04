@@ -1,9 +1,41 @@
 ﻿using Assets.Projects.Scripts;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Assets.UI.Models
 {
+    public class OptionsAttribute<T> : OptionsAttribute
+    {
+        public Action<T> SpecificCallBack;
+
+        public T SpecificSelectedValue
+        {
+            get
+            {
+                return (T)Enum.Parse(typeof(T), SelectedValue);
+            }
+            set
+            {
+                SelectedValue = Enum.GetName(typeof(T), value);
+                if (CallBack != null)
+                {
+                    CallBack(SelectedValue);
+                }
+            }
+        }
+
+        public OptionsAttribute()
+        {
+            Options = Enum.GetNames(typeof(T)).ToList();
+            CallBack = selectedValue =>
+            {
+                var value = (T)Enum.Parse(typeof(T), selectedValue);
+                SpecificCallBack(value);
+            };
+        }
+    }
+
     public class OptionsAttribute : Attribute
     {
         public Action<string> CallBack;

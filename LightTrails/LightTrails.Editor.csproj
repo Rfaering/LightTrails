@@ -138,6 +138,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Golden Demo\Editor\GoldenMaterialEditor.cs" />
+    <Compile Include="Assets\Golden Demo\Editor\HelperExtensions.cs" />
     <Compile Include="Assets\Mirza Beig\Editor Extensions\Effects\Particle Twister\Editor\ParticleTwisterEditorWindow.cs" />
     <Compile Include="Assets\Mirza Beig\Editor Extensions\Effects\Particle Twister\Editor\ParticleTwisterExtensions.cs" />
     <Compile Include="Assets\Mirza Beig\Editor Extensions\Utilities\Multi-Asset Renamer\Editor\MultiAssetRenamer.cs" />
@@ -149,6 +151,7 @@
     <Compile Include="Assets\Mirza Beig\Editor Extensions\_Common\Editor\ParticleEditorUtility.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Golden Demo\Golden.shader" />
     <None Include="Assets\Mirza Beig\Editor Extensions\Utilities\Multi-Asset Renamer\README.txt" />
     <None Include="Assets\Mirza Beig\README - Action VFX.txt" />
     <None Include="Assets\Mirza Beig\README - Advanced Particle Scaler.txt" />
@@ -170,6 +173,9 @@
     <None Include="Assets\Mirza Beig\Shaders\Particles\No Fog\NoFog-Add.shader" />
     <None Include="Assets\Mirza Beig\Shaders\Particles\No Fog\NoFog-Alpha.shader" />
     <None Include="Assets\Mirza Beig\Shaders\Particles\Unmultiply\Unmultiply-AlphaFromLuminance.shader" />
+    <None Include="Assets\Shaders\Bars.shader" />
+    <None Include="Assets\Shaders\Distortion.shader" />
+    <None Include="Assets\Shaders\Paint.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

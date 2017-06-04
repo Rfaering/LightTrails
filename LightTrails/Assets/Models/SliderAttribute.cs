@@ -7,21 +7,26 @@ namespace Assets.UI.Models
     {
         public float Min = 0;
         public float Max = 100;
-        public float SelectedValue = 100;
+
+        private float _selectedValue;
+        public float SelectedValue
+        {
+            get { return _selectedValue; }
+            set
+            {
+                _selectedValue = value;
+                if (CallBack != null)
+                {
+                    CallBack(SelectedValue);
+                }
+            }
+        }
 
         public Action<float> Changed
         {
             get
             {
-                return newSelection =>
-                {
-                    SelectedValue = newSelection;
-
-                    if (CallBack != null)
-                    {
-                        CallBack(newSelection);
-                    }
-                };
+                return newSelection => SelectedValue = newSelection;
             }
         }
 

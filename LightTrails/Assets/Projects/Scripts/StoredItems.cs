@@ -28,7 +28,7 @@ namespace Assets.Projects.Scripts
     [Serializable]
     public class StoredEffectItem : StoredItem
     {
-        // Position
+        // Position is optional
         public float[] Position;
         public string Name;
     }

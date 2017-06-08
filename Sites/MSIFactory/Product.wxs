@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="Light Trails" Language="1033" Version="1.0.0.0" Manufacturer="Light Trails" UpgradeCode="db8e5c34-6979-455b-81b1-48c1e248bf48">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate />
+
+    <Feature Id="ProductFeature" Title="MSIFactory" Level="1">      
+      <ComponentGroupRef Id="DataHarvest"/>
+    </Feature>  
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="LightTrails" />
+      </Directory>
+    </Directory>
+  </Fragment>
+</Wix>

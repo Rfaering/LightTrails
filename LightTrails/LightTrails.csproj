@@ -95,14 +95,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ParticleSystems\Items\LightningMenuItem.cs" />
+    <Compile Include="Assets\UI\General\DebugInput.cs" />
     <Compile Include="Assets\EffectOptions.cs" />
-    <Compile Include="Assets\Effects\ExplosionEffects.cs" />
-    <Compile Include="Assets\Effects\FireEffects.cs" />
-    <Compile Include="Assets\Effects\FireworksEffects.cs" />
-    <Compile Include="Assets\Effects\FocusEffect.cs" />
-    <Compile Include="Assets\Effects\HeartEffects.cs" />
-    <Compile Include="Assets\Effects\SmallFireEffects.cs" />
-    <Compile Include="Assets\Effects\WispsEffects.cs" />
+    <Compile Include="Assets\ParticleSystems\Effects\ExplosionEffects.cs" />
+    <Compile Include="Assets\ParticleSystems\Effects\FireEffects.cs" />
+    <Compile Include="Assets\ParticleSystems\Effects\FireworksEffects.cs" />
+    <Compile Include="Assets\ParticleSystems\Effects\FocusEffect.cs" />
+    <Compile Include="Assets\ParticleSystems\Effects\HeartEffects.cs" />
+    <Compile Include="Assets\ParticleSystems\Effects\SmallFireEffects.cs" />
+    <Compile Include="Assets\ParticleSystems\Effects\WispsEffects.cs" />
     <Compile Include="Assets\Items\ItemsMenu.cs" />
     <Compile Include="Assets\Items\MenuItems\AddEffectMenuItem.cs" />
     <Compile Include="Assets\Items\MenuItems\EffectMenuItem.cs" />
@@ -146,12 +148,6 @@
     <Compile Include="Assets\Models\OptionsAttribute.cs" />
     <Compile Include="Assets\Models\SliderAttribute.cs" />
     <Compile Include="Assets\Models\ToggleAttribute.cs" />
-    <Compile Include="Assets\Recording\IRecordedEffect.cs" />
-    <Compile Include="Assets\Recording\RecordedShader.cs" />
-    <Compile Include="Assets\Recording\RecordedParticleSystem.cs" />
-    <Compile Include="Assets\Shaders\Items\BarsMenuItem.cs" />
-    <Compile Include="Assets\Shaders\Misc\PaintScript.cs" />
-    <Compile Include="Assets\ParticleSystems\Manipulations\ColorManipulation.cs" />
     <Compile Include="Assets\ParticleSystems\Items\ExplosionMenuItem.cs" />
     <Compile Include="Assets\ParticleSystems\Items\FireMenuItem.cs" />
     <Compile Include="Assets\ParticleSystems\Items\FireworksMenuItem.cs" />
@@ -160,13 +156,15 @@
     <Compile Include="Assets\ParticleSystems\Items\SmallFireMenuItem.cs" />
     <Compile Include="Assets\ParticleSystems\Items\SnowMenuItem.cs" />
     <Compile Include="Assets\ParticleSystems\Items\TrailsMenuItem.cs" />
-    <Compile Include="Assets\ParticleSystems\Items\TwinklesMenuItem.cs" />
+    <Compile Include="Assets\ParticleSystems\Items\StarDustMenuItem.cs" />
     <Compile Include="Assets\ParticleSystems\Items\WaveMenuItem.cs" />
     <Compile Include="Assets\ParticleSystems\Items\WispMenuItem.cs" />
+    <Compile Include="Assets\ParticleSystems\Manipulations\ColorManipulation.cs" />
     <Compile Include="Assets\ParticleSystems\Manipulations\RenderManipulation.cs" />
     <Compile Include="Assets\ParticleSystems\Manipulations\SizeManipulation.cs" />
     <Compile Include="Assets\ParticleSystems\Manipulations\SpawnManipulation.cs" />
     <Compile Include="Assets\ParticleSystems\Manipulations\SystemManipulation.cs" />
+    <Compile Include="Assets\UI\General\ParticlesUI.cs" />
     <Compile Include="Assets\Projects\Scripts\AttributesValues.cs" />
     <Compile Include="Assets\Projects\Scripts\CanvasExtensions.cs" />
     <Compile Include="Assets\Projects\Scripts\ClickHandlerCatcher.cs" />
@@ -181,8 +179,19 @@
     <Compile Include="Assets\Projects\Scripts\ProjectList.cs" />
     <Compile Include="Assets\Projects\Scripts\ProjectListItem.cs" />
     <Compile Include="Assets\Projects\Scripts\StoredItems.cs" />
+    <Compile Include="Assets\Recording\IRecordedEffect.cs" />
+    <Compile Include="Assets\Recording\ImageAreaPicker.cs" />
+    <Compile Include="Assets\Recording\ProgressBarBehaviour.cs" />
+    <Compile Include="Assets\Recording\Record.cs" />
+    <Compile Include="Assets\Recording\RecordedParticleSystem.cs" />
+    <Compile Include="Assets\Recording\RecordedShader.cs" />
+    <Compile Include="Assets\Recording\Utils.cs" />
+    <Compile Include="Assets\Recording\VideoProgressBar.cs" />
+    <Compile Include="Assets\Shaders\Items\BarsMenuItem.cs" />
     <Compile Include="Assets\Shaders\Items\DistortionMenuItem.cs" />
+    <Compile Include="Assets\Shaders\Misc\PaintScript.cs" />
     <Compile Include="Assets\Shaders\Misc\ShaderEffect.cs" />
+    <Compile Include="Assets\ParticleSystems\Effects\StarDustEffect.cs" />
     <Compile Include="Assets\UI\Attribute\AttributesMenu.cs" />
     <Compile Include="Assets\UI\Attribute\DraggableParticleSystem.cs" />
     <Compile Include="Assets\UI\Attribute\ImageProperties.cs" />
@@ -210,11 +219,6 @@
     <Compile Include="Assets\UI\General\ScreenShot.cs" />
     <Compile Include="Assets\UI\General\ShowCaseScript.cs" />
     <Compile Include="Assets\UI\General\UnityMainThreadDispatcher.cs" />
-    <Compile Include="Assets\Recording\ImageAreaPicker.cs" />
-    <Compile Include="Assets\Recording\ProgressBarBehaviour.cs" />
-    <Compile Include="Assets\Recording\Record.cs" />
-    <Compile Include="Assets\Recording\Utils.cs" />
-    <Compile Include="Assets\Recording\VideoProgressBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Golden Demo\Golden.shader" />
@@ -243,7 +247,6 @@
     <None Include="Assets\Shaders\Distortion.shader" />
     <None Include="Assets\Shaders\Paint.shader" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
 </Project>

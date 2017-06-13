@@ -1,0 +1,94 @@
+.img-with-text {
+    text-align: justify; 
+    width: 128px;    
+}
+
+.img-with-text img {
+    display: block;
+    margin: 0 auto;
+}
+
+.img-with-text p {
+    text-align: center;
+    margin-top: 0px;
+}
+
+.exampleTileImage {
+    width: 512px;
+    margin: 15px;
+    box-shadow: 0px 0px 10px #222222;
+}
+
+.downloadLink {
+    box-shadow: 0px 0px 5px #222222;
+    padding: 5px 5px;
+    width: 150px;
+    background-color: darkgreen
+}
+
+.video {
+  max-width: 800px; 
+  margin-left: 50px;
+  margin-top: 25px;
+}
+
+.menuButton{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.menuShadow{
+  box-shadow: 4px 0 2px 0px #222222;
+}
+
+.shadow .video {
+  box-shadow: 5px 5px 5px #222222;
+}
+
+.center2 {
+    margin: auto;
+    width: 50%;    
+    padding: 10px;
+}
+
+.center2 {
+    margin: auto;
+    width: 60%;    
+    padding: 10px;
+}
+
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+header, footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+}
+
+nav {
+    float: left;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+   
+nav ul a {
+    text-decoration: none;
+}
+
+article {
+    margin-left: 170px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}

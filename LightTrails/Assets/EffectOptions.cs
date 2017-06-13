@@ -14,11 +14,15 @@ public class EffectOptions
           Effect.Create("LargeFire", Effect.EffectKind.Particle),
           Effect.Create("Focus", Effect.EffectKind.Particle, typeof(FocusMenuItem)),
           Effect.Create("Dream",Effect.EffectKind.Particle),
-          Effect.Create("Twinkles",Effect.EffectKind.Particle, typeof(TwinklesMenuItem)),
+          Effect.Create("StarDust",Effect.EffectKind.Particle, typeof(StartDustMenuItem)),
           Effect.Create("Smoke", Effect.EffectKind.Particle),
           Effect.Create("Hearts",Effect.EffectKind.Particle, typeof(HeartsMenuItem), loop: true),
           Effect.Create("Bars", Effect.EffectKind.Shader, typeof(BarsMenuItem)),
           Effect.Create("Explosions", Effect.EffectKind.Particle,typeof(ExplosionMenuItem)),
-          Effect.Create("Wave", Effect.EffectKind.Particle, typeof(WaveMenuItem), loop: true)
+          Effect.Create("Wave", Effect.EffectKind.Particle, typeof(WaveMenuItem), loop: true),
+          Effect.Create("FadingStars", Effect.EffectKind.Particle),
+          Effect.Create("Lightning", Effect.EffectKind.Particle, typeof(LightningMenuItem)),
+          Effect.Create("FlameThrower", Effect.EffectKind.Particle),
+          Effect.Create("Flare", Effect.EffectKind.Particle)
 };
 }

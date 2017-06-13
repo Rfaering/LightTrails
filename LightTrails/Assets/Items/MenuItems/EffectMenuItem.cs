@@ -59,6 +59,11 @@ public class EffectMenuItem : MenuItem
         assosicatedEffect.transform.localRotation = Quaternion.Euler(0, 0, value);
     }
 
+    internal void SetScale(float value)
+    {
+        assosicatedEffect.transform.localScale = new Vector3(value, value, value);
+    }
+
     internal StoredEffectItem GetEffectSaveState()
     {
         return new StoredEffectItem()

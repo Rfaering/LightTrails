@@ -3,15 +3,17 @@ using System.Collections.Generic;
 
 public class FireMenuItem : ParticleEffectMenuItem
 {
+    public enum Color { Red = 0, Green = 1, Blue = 2 }
+
     public override List<Attribute> GetAttributes()
     {
         List<Attribute> fireAttributes = new List<Attribute>()
         {
-            new OptionsAttribute<FireEffects.Color>()
+            new OptionsAttribute<Color>()
             {
                 Name = "Color",
                 SpecificCallBack = ChangeColor,
-                SpecificSelectedValue = FireEffects.Color.Red
+                SpecificSelectedValue = Color.Red
             },
             new SliderAttribute()
             {
@@ -28,9 +30,9 @@ public class FireMenuItem : ParticleEffectMenuItem
         return fireAttributes;
     }
 
-    public void ChangeColor(FireEffects.Color color)
+    public void ChangeColor(Color color)
     {
-        var fireEffect = assosicatedEffect.GetComponent<FireEffects>();
-        fireEffect.SelectedColor = color;
+        var fireEffect = assosicatedEffect.GetComponentInChildren<ColorManipulation>();
+        fireEffect.colorOverLifeTimeIndex = (int)color;
     }
 }

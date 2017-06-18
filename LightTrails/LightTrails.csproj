@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>5.6.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -95,6 +93,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CameraScaling.cs" />
     <Compile Include="Assets\EffectOptions.cs" />
     <Compile Include="Assets\Items\ItemsMenu.cs" />
     <Compile Include="Assets\Items\MenuItems\AddEffectMenuItem.cs" />
@@ -140,10 +139,10 @@
     <Compile Include="Assets\Models\SliderAttribute.cs" />
     <Compile Include="Assets\Models\ToggleAttribute.cs" />
     <Compile Include="Assets\ParticleSystems\Effects\ExplosionEffects.cs" />
-    <Compile Include="Assets\ParticleSystems\Effects\FireEffects.cs" />
     <Compile Include="Assets\ParticleSystems\Effects\FireworksEffects.cs" />
     <Compile Include="Assets\ParticleSystems\Effects\FocusEffect.cs" />
     <Compile Include="Assets\ParticleSystems\Effects\HeartEffects.cs" />
+    <Compile Include="Assets\ParticleSystems\Effects\ParticlePlex.cs" />
     <Compile Include="Assets\ParticleSystems\Effects\SmallFireEffects.cs" />
     <Compile Include="Assets\ParticleSystems\Effects\StarDustEffect.cs" />
     <Compile Include="Assets\ParticleSystems\Effects\WispsEffects.cs" />
@@ -153,6 +152,7 @@
     <Compile Include="Assets\ParticleSystems\Items\FocusMenuItem.cs" />
     <Compile Include="Assets\ParticleSystems\Items\HeartsMenuItem.cs" />
     <Compile Include="Assets\ParticleSystems\Items\LightningMenuItem.cs" />
+    <Compile Include="Assets\ParticleSystems\Items\PlexMenuItem.cs" />
     <Compile Include="Assets\ParticleSystems\Items\SmallFireMenuItem.cs" />
     <Compile Include="Assets\ParticleSystems\Items\SnowMenuItem.cs" />
     <Compile Include="Assets\ParticleSystems\Items\StarDustMenuItem.cs" />
@@ -164,7 +164,6 @@
     <Compile Include="Assets\ParticleSystems\Manipulations\SizeManipulation.cs" />
     <Compile Include="Assets\ParticleSystems\Manipulations\SpawnManipulation.cs" />
     <Compile Include="Assets\ParticleSystems\Manipulations\SystemManipulation.cs" />
-    <Compile Include="Assets\Projects\Scripts\ProjectBackgroundImage.cs" />
     <Compile Include="Assets\Projects\Scripts\AttributesValues.cs" />
     <Compile Include="Assets\Projects\Scripts\CanvasExtensions.cs" />
     <Compile Include="Assets\Projects\Scripts\ClickHandlerCatcher.cs" />
@@ -176,6 +175,7 @@
     <Compile Include="Assets\Projects\Scripts\OpenNewProjectDialogButton.cs" />
     <Compile Include="Assets\Projects\Scripts\PersistenceConsts.cs" />
     <Compile Include="Assets\Projects\Scripts\Project.cs" />
+    <Compile Include="Assets\Projects\Scripts\ProjectBackgroundImage.cs" />
     <Compile Include="Assets\Projects\Scripts\ProjectGarbageIcon.cs" />
     <Compile Include="Assets\Projects\Scripts\ProjectList.cs" />
     <Compile Include="Assets\Projects\Scripts\ProjectListItem.cs" />

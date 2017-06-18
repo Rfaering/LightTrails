@@ -48,6 +48,8 @@ public class ImageProperties : MonoBehaviour
                 var rawImage = GetComponent<RawImage>();
                 rawImage.texture = tex;
                 rawImage.rectTransform.sizeDelta = new Vector2(tex.width, tex.height);
+
+                GetComponent<ImageAreaPicker>().Recalculate();
             }
             catch (Exception e)
             {

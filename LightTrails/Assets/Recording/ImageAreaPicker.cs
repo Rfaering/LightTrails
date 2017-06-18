@@ -6,6 +6,10 @@ public class ImageAreaPicker : MonoBehaviour
     private Texture2D backgroundTexture;
     private GUIStyle textureStyle;
 
+    public int PixelHeight;
+    public int PixelWidth;
+    public int PixelPerUnit;
+
     public void DrawCenteredRedRect(float width, float height)
     {
         DrawRect(new Rect((Camera.main.pixelWidth / 2) - width / 2, (Camera.main.pixelHeight / 2) - height / 2, width, height), new Color(1.0f, 0.0f, 0.0f, 0.5f));
@@ -21,7 +25,7 @@ public class ImageAreaPicker : MonoBehaviour
         var rawImage = GetComponent<RawImage>();
         var width = rawImage.texture.width;
         var height = rawImage.texture.height;
-        return new Rect((Camera.main.pixelWidth / 2) - width/2, (Camera.main.pixelHeight / 2) - height / 2, width, height);
+        return new Rect((Camera.main.pixelWidth / 2) - width / 2, (Camera.main.pixelHeight / 2) - height / 2, width, height);
     }
 
     internal Rect Center(int size)
@@ -43,8 +47,16 @@ public class ImageAreaPicker : MonoBehaviour
     void Start()
     {
         backgroundTexture = Texture2D.whiteTexture;
-
         textureStyle = new GUIStyle { normal = new GUIStyleState { background = backgroundTexture } };
+        Recalculate();
+    }
+
+    public void Recalculate()
+    {
+        var image = GetComponent<RawImage>();
+
+        PixelWidth = image.texture.width;
+        PixelHeight = image.texture.height;
     }
 }
 

@@ -5,6 +5,8 @@ LightTrails/Temp/
 LightTrails/Library/
 LightTrails/Bin/
 LightTrails/Scene_Data/
+LightTrails/LightTrails.exe
+LightTrails/LightTrails_Data
 LightTrails/EffectsRecorder_Data/
 PublicSite/bin/
 
@@ -27,6 +29,7 @@ obj/
 *.user
 *.unityproj
 *.booproj
+/*.msi
 
 ============
 OS generated

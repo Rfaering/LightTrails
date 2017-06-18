@@ -11,11 +11,13 @@ public class ImageMenuItem : MenuItem
 
         Attributes = new Attribute[]
         {
+#if DEBUG
             new ActionAttribute()
             {
                 Name = "Open Image",
                 Action = () => FindImage()
             },
+#endif
             new SliderAttribute()
             {
                 Name = "Brightness",

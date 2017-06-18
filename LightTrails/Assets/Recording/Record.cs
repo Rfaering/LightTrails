@@ -125,11 +125,27 @@ public partial class Record : MonoBehaviour
         RecordedEffects.AddRange(shaderEffects);
 
         var videoFileName = recorderMenuItem.VideoFileName();
+        var fps = recorderMenuItem.SelectedFrameRate;
+
+        switch (fps)
+        {
+            case Fps.fps24:
+                TimeBetweenFrames = 1.0f / 25.0f;
+                break;
+            case Fps.fps48:
+                TimeBetweenFrames = 1.0f / 48.0f;
+                break;
+            case Fps.fps60:
+                TimeBetweenFrames = 1.0f / 60.0f;
+                break;
+            default:
+                break;
+        }
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR
         Recorder.Start(new Settings()
         {
-            Fps = Fps.fps24,
+            Fps = fps,
             InputImageFormat = InputImageFormat.Bmp,
             OutputFormat = format,
             OutputFile = videoFileName

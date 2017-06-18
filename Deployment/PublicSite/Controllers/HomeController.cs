@@ -15,6 +15,7 @@ namespace PublicSite.Controllers
 
         public IActionResult Index()
         {
+            ViewData["Version"] = "0.3.1";
             return View();
         }
 

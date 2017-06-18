@@ -18,6 +18,7 @@ public class RecorderMenuItem : MenuItem
 
     public string SelectedSeconds = Time5Secs;
     public FfmpegWrapper.OutputFormat SelectedOutput = FfmpegWrapper.OutputFormat.AVI;
+    public FfmpegWrapper.Fps SelectedFrameRate = FfmpegWrapper.Fps.fps24;
 
     public Record _record;
 
@@ -33,26 +34,38 @@ public class RecorderMenuItem : MenuItem
                Action = () => { StartRecording(); },
                IsEnabled = () => !_record.Recording
            },
-           new OptionsAttribute()
+           new OptionsAttribute<FfmpegWrapper.OutputFormat>()
            {
                Name = "Output Type",
-               Options = Enum.GetNames(typeof(FfmpegWrapper.OutputFormat)).ToList(),
-               SelectedValue = Enum.GetName(typeof(FfmpegWrapper.OutputFormat), SelectedOutput),
-               CallBack = newSelection => {
-                   SelectedOutput = (FfmpegWrapper.OutputFormat)Enum.Parse(typeof(FfmpegWrapper.OutputFormat), newSelection);
+               SpecificCallBack = newSelection =>
+               {
+                   SelectedOutput = newSelection;
                    AttributeMenuItem.RefreshButtonEnabledState();
                },
+               SpecificSelectedValue = SelectedOutput,
+               IsEnabled = () => !_record.Recording
+           },
+           new OptionsAttribute<FfmpegWrapper.Fps>()
+           {
+               Name = "Frame Rate",
+               SpecificCallBack = newSelection =>
+               {
+                   SelectedFrameRate = newSelection;
+                   AttributeMenuItem.RefreshButtonEnabledState();
+               },
+               SpecificSelectedValue = SelectedFrameRate,
                IsEnabled = () => !_record.Recording
            },
            new OptionsAttribute()
            {
                Name = "Time",
-               Options = new System.Collections.Generic.List<string>
+               Options = new List<string>
                { Time5Secs, Time10Secs, Time20Secs, Time30Secs, Time60Secs },
                SelectedValue = SelectedSeconds,
                CallBack = newSelection => { SelectedSeconds = newSelection; },
                IsEnabled = () => !_record.Recording
            },
+
            new ActionAttribute()
            {
                Name = "Open Video",

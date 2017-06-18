@@ -3,6 +3,7 @@ public class EffectOptions
 {
     public static Effect[] Options =
     {
+          Effect.Create("Plex",Effect.EffectKind.Particle, typeof(PlexMenuItem), loop: true),
           Effect.Create("Fireworks",Effect.EffectKind.Particle, typeof(FireworksMenuItem)),
           Effect.Create("Snow", Effect.EffectKind.Particle, typeof(SnowMenuItem)),
           Effect.Create("Distortion", Effect.EffectKind.Shader, typeof(DistortionMenuItem)),

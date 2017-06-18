@@ -58,11 +58,13 @@ public class ProjectListItem : MonoBehaviour
 
         if (_deleteMode)
         {
-            GetComponentsInChildren<Image>().Last().color = DeleteModeColor;
+            GetComponentInChildren<ProjectBackgroundImage>().GetComponent<Image>().color = DeleteModeColor;
+            GetComponentInChildren<ProjectGarbageIcon>(true).gameObject.SetActive(true);
         }
         else
         {
-            GetComponentsInChildren<Image>().Last().color = NormalModeColor;
+            GetComponentInChildren<ProjectBackgroundImage>().GetComponent<Image>().color = NormalModeColor;
+            GetComponentInChildren<ProjectGarbageIcon>(true).gameObject.SetActive(false);
         }
     }
 }

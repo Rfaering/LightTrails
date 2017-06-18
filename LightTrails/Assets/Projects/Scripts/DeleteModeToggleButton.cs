@@ -22,11 +22,11 @@ public class DeleteModeToggleButton : MonoBehaviour
     {
         if (DeleteMode)
         {
-            GetComponentInChildren<Text>().text = "Stop";
+            GetComponentInChildren<RawImage>().color = Color.red;
         }
         else
         {
-            GetComponentInChildren<Text>().text = "Delete";
+            GetComponentInChildren<RawImage>().color = Color.white;
         }
 
         FindObjectOfType<OpenNewProjectDialogButton>().SetEnabled(DeleteMode);

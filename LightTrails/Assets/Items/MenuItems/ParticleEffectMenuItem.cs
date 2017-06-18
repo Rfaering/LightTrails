@@ -11,7 +11,13 @@ public class ParticleEffectMenuItem : EffectMenuItem
     {
         EffectName = effect.Name;
         GetComponentInChildren<Text>().text = effect.Name;
-        var child = Resources.FindObjectsOfTypeAll<ParticleList>().First().gameObject.transform.Find(effect.Name);
+        var child = Resources.Load<GameObject>("Prefabs/" + effect.Name);
+        if(child == null)
+        {
+            Debug.Log("Could not find prefab for particle system");
+            return;
+        }
+
         var createdEffect = Instantiate(child, FindObjectOfType<ActiveParticleList>().gameObject.transform);
         createdEffect.gameObject.SetActive(true);
 

@@ -10,7 +10,7 @@ public class EffectOptionsOverlay : MonoBehaviour, IPointerClickHandler
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             FindObjectOfType<EffectOptionsOverlay>().Close();
         }

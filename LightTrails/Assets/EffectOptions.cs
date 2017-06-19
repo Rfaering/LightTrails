@@ -10,7 +10,7 @@ public class EffectOptions
           Effect.Create("Wisps",Effect.EffectKind.Particle, typeof(WispMenuItem), loop: true),
           Effect.Create("Rain",Effect.EffectKind.Particle),
           Effect.Create("SmallFire", Effect.EffectKind.Particle, typeof(SmallFireMenuItem), loop: true),
-          Effect.Create("Trails", Effect.EffectKind.Particle, typeof(TrailsMenuItem), loop: true),
+          Effect.Create("Trails", Effect.EffectKind.Particle, typeof(TrailsMenuItem)),
           Effect.Create("Fire", Effect.EffectKind.Particle,typeof(FireMenuItem)),
           Effect.Create("LargeFire", Effect.EffectKind.Particle),
           Effect.Create("Focus", Effect.EffectKind.Particle, typeof(FocusMenuItem)),
@@ -21,7 +21,7 @@ public class EffectOptions
           Effect.Create("Bars", Effect.EffectKind.Shader, typeof(BarsMenuItem)),
           Effect.Create("Explosions", Effect.EffectKind.Particle,typeof(ExplosionMenuItem)),
           Effect.Create("Wave", Effect.EffectKind.Particle, typeof(WaveMenuItem), loop: true),
-          Effect.Create("FadingStars", Effect.EffectKind.Particle),
+          Effect.Create("FadingStars", Effect.EffectKind.Particle, loop: true),
           Effect.Create("Lightning", Effect.EffectKind.Particle, typeof(LightningMenuItem)),
           Effect.Create("FlameThrower", Effect.EffectKind.Particle),
           Effect.Create("Flare", Effect.EffectKind.Particle)

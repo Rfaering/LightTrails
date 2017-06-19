@@ -31,10 +31,6 @@ public partial class Record : MonoBehaviour
             {
                 Origin.gameObject.SetActive(false);
 
-                var newMain = Origin.main;
-                newMain.loop = false;
-                newMain.duration = length;
-
                 FirstHalf = Instantiate(system);
                 SecondHalf = Instantiate(system);
 
@@ -44,14 +40,14 @@ public partial class Record : MonoBehaviour
                 FirstHalf.gameObject.SetActive(true);
                 SecondHalf.gameObject.SetActive(true);
 
-                FirstHalf.Simulate(0.0f, true, true);
-                FirstHalf.Simulate(Length / 2.0f, true, false);
-
                 SecondHalf.Simulate(0.0f, true, true);
+
+                FirstHasStarted = false;
+                SecondHasStarted = false;
             }
         }
 
-        private void SetDefaultValues(GameObject gameObject, float length)
+        private void SetDefaultValues(GameObject gameObject, float length, bool prewarm = true)
         {
             foreach (var ps in gameObject.GetComponentsInChildren<ParticleSystem>(true))
             {
@@ -60,7 +56,8 @@ public partial class Record : MonoBehaviour
                 ps.randomSeed = 42;
 
                 var main = ps.main;
-                main.loop = false;
+                main.loop = true;
+                main.prewarm = false;
                 main.duration = length;
                 main.playOnAwake = false;
             }
@@ -70,16 +67,55 @@ public partial class Record : MonoBehaviour
         {
             if (Looping)
             {
-                FirstHalf.Simulate(deltaTime, true, false);
-                ElapsedTime += deltaTime;
                 if (ElapsedTime > (Length / 2.0f))
                 {
+                    if (!SecondHasStarted)
+                    {
+                        EnsureCorrectActiveState(FirstHalf, true);
+                        EnsureCorrectActiveState(SecondHalf, true);
+
+                        SecondHalf.Simulate(0.0f, true, true);
+                        SecondHasStarted = true;
+                    }
+
+                    FirstHalf.Simulate(deltaTime, true, false);
                     SecondHalf.Simulate(deltaTime, true, false);
                 }
+                else
+                {
+                    if (!FirstHasStarted)
+                    {
+                        EnsureCorrectActiveState(FirstHalf, true);
+                        EnsureCorrectActiveState(SecondHalf, false);
+
+                        FirstHalf.Simulate(0.0f, true, true);
+                        FirstHalf.Simulate(Length / 2.0f, true, false);
+
+                        FirstHasStarted = true;
+
+                        foreach (var ps in FirstHalf.GetComponentsInChildren<ParticleSystem>(true))
+                        {
+                            var main = ps.main;
+                            main.loop = false;
+                        }
+                    }
+
+                    FirstHalf.Simulate(deltaTime, true, false);
+                }
+
+                ElapsedTime += deltaTime;
             }
             else
             {
                 Origin.Simulate(deltaTime, true, false);
+            }
+        }
+
+        private void EnsureCorrectActiveState(ParticleSystem ps, bool enabled)
+        {
+            if (ps.gameObject.activeSelf != enabled)
+            {
+                ps.gameObject.SetActive(enabled);
             }
         }
 

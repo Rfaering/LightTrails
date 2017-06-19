@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7801df88b6a98cd4893ec52b829b02bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsLooping: 0
+  IsLooping: 1
 --- !u!114 &114816982506473312
 MonoBehaviour:
   m_ObjectHideFlags: 1

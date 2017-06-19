@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7801df88b6a98cd4893ec52b829b02bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsLooping: 0
+  IsLooping: 1
 --- !u!114 &114302502253941250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -274,7 +274,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 0.1
   simulationSpeed: 1
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   autoRandomSeed: 1
@@ -3279,7 +3279,7 @@ ParticleSystem:
   lengthInSec: 0.5
   simulationSpeed: 1
   looping: 1
-  prewarm: 1
+  prewarm: 0
   playOnAwake: 1
   autoRandomSeed: 1
   startDelay:

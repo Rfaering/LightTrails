@@ -16,7 +16,7 @@ public class RecorderMenuItem : MenuItem
     public const string Time30Secs = "30 seconds";
     public const string Time60Secs = "60 seconds";
 
-    public string SelectedSeconds = Time5Secs;
+    public string SelectedSeconds = Time10Secs;
     public FfmpegWrapper.OutputFormat SelectedOutput = FfmpegWrapper.OutputFormat.AVI;
     public FfmpegWrapper.Fps SelectedFrameRate = FfmpegWrapper.Fps.fps24;
 
@@ -60,7 +60,7 @@ public class RecorderMenuItem : MenuItem
            {
                Name = "Time",
                Options = new List<string>
-               { Time5Secs, Time10Secs, Time20Secs, Time30Secs, Time60Secs },
+               { Time10Secs, Time20Secs, Time30Secs, Time60Secs },
                SelectedValue = SelectedSeconds,
                CallBack = newSelection => { SelectedSeconds = newSelection; },
                IsEnabled = () => !_record.Recording

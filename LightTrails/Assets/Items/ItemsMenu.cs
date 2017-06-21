@@ -59,6 +59,13 @@ public class ItemsMenu : MonoBehaviour
         }
         else if (effect.Type == Effect.EffectKind.Shader)
         {
+            var otherShader = GetComponentsInChildren<ShaderEffectMenuItem>().FirstOrDefault();
+            if (otherShader != null)
+            {
+                otherShader.Remove();
+            }
+
+
             newGameObject = Instantiate(ShaderEffectPrefab, transform);
 
             if (effect.MenuItemType != null)

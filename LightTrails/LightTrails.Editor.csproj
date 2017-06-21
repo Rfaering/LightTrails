@@ -175,6 +175,7 @@
     <None Include="Assets\Mirza Beig\Shaders\Particles\Unmultiply\Unmultiply-AlphaFromLuminance.shader" />
     <None Include="Assets\Shaders\Bars.shader" />
     <None Include="Assets\Shaders\Distortion.shader" />
+    <None Include="Assets\Shaders\Movement.shader" />
     <None Include="Assets\Shaders\Paint.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

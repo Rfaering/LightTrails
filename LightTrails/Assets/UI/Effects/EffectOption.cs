@@ -20,6 +20,8 @@ public class EffectOption : MonoBehaviour, IPointerClickHandler
         {
             GetComponentInChildren<LoopIcon>().Hide();
         }
+
+        GetComponentInChildren<EffectOptionImageLoader>().SetImage(effect);
     }
 
     public void OnPointerClick(PointerEventData eventData)

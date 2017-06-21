@@ -6,8 +6,6 @@ public class DistortionMenuItem : ShaderEffectMenuItem
 {
     public override List<Attribute> GetAttributes()
     {
-        var material = assosicatedEffect.GetComponent<RawImage>().material;
-
         List<Attribute> attributes = new List<Attribute>()
         {
             /*new ToggleAttribute()
@@ -19,7 +17,7 @@ public class DistortionMenuItem : ShaderEffectMenuItem
             new SliderAttribute()
             {
                 Name = "Intensity",
-                CallBack = value => material.SetFloat("_Intensity", value),
+                CallBack = value => Material.SetFloat("_Intensity", value),
                 SelectedValue = 50,
                 Min = 10,
                 Max = 100
@@ -27,7 +25,7 @@ public class DistortionMenuItem : ShaderEffectMenuItem
             new SliderAttribute()
             {
                 Name = "Speed",
-                CallBack = value => material.SetFloat("_Speed", value),
+                CallBack = value => Material.SetFloat("_Speed", value),
                 SelectedValue = 3,
                 Min = 0,
                 Max = 5

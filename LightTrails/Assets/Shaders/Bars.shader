@@ -1,4 +1,4 @@
-﻿Shader "Test/Bars"
+﻿Shader "Custom/Bars"
 {
 	Properties{
 		_Color("Main Color", Color) = (1,1,1,1)
@@ -16,8 +16,8 @@
 		ZWrite Off
 		LOD 200
 		GrabPass{ "_GrabTexture" }
-			PASS {
-				CGPROGRAM
+		PASS {
+			CGPROGRAM
 
 				#pragma vertex vert
 				#pragma fragment frag

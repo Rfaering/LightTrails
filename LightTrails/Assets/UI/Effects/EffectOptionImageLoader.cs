@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.UI.Models;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class EffectOptionImageLoader : MonoBehaviour
@@ -6,6 +7,11 @@ public class EffectOptionImageLoader : MonoBehaviour
 
     // Use this for initialization
     void Start()
+    {
+
+    }
+
+    public void SetImage(Effect effect)
     {
         var parentName = gameObject.transform.parent.gameObject.name;
         var loadedImage = Resources.Load<Texture2D>("Preview/" + parentName);

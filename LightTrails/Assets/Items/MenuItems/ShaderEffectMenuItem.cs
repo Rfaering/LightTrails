@@ -5,6 +5,8 @@ using System.Linq;
 
 public class ShaderEffectMenuItem : EffectMenuItem
 {
+    public Material Material;
+
     public override void Initialize(Effect effect)
     {
         EffectName = effect.Name;
@@ -12,6 +14,8 @@ public class ShaderEffectMenuItem : EffectMenuItem
         var gameObject = GetShaderEffect();
         gameObject.SetActive(true);
         assosicatedEffect = gameObject;
+
+        Material = assosicatedEffect.GetComponent<RawImage>().material;
     }
 
     private GameObject GetShaderEffect()

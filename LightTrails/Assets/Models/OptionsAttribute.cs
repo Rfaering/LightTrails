@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Assets.UI.Models
+namespace Assets.Models
 {
     public class OptionsAttribute<T> : OptionsAttribute
     {

@@ -1,7 +1,7 @@
 ﻿using Assets.Projects.Scripts;
 using System;
 
-namespace Assets.UI.Models
+namespace Assets.Models
 {
     public class SliderAttribute : Attribute
     {

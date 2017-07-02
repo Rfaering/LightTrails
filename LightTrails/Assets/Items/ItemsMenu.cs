@@ -1,5 +1,5 @@
-﻿using Assets.Projects.Scripts;
-using Assets.UI.Models;
+﻿using Assets.Models;
+using Assets.Projects.Scripts;
 using System.Linq;
 using UnityEngine;
 
@@ -12,6 +12,8 @@ public class ItemsMenu : MonoBehaviour
     {
         ItemSelected(FindObjectOfType<RecorderMenuItem>());
         LoadEffects();
+
+        MaskPanel.EnsureLoaded();
     }
 
     internal void SelectFirstItem()
@@ -45,7 +47,8 @@ public class ItemsMenu : MonoBehaviour
 
         if (effect.Type == Effect.EffectKind.Particle)
         {
-            newGameObject = Instantiate(ParticleEffectPrefab, transform);
+            newGameObject = Instantiate(ParticleEffectPrefab);
+            newGameObject.transform.SetParent(transform);
 
             if (effect.MenuItemType != null)
             {
@@ -66,7 +69,8 @@ public class ItemsMenu : MonoBehaviour
             }
 
 
-            newGameObject = Instantiate(ShaderEffectPrefab, transform);
+            newGameObject = Instantiate(ShaderEffectPrefab);
+            newGameObject.transform.SetParent(transform);
 
             if (effect.MenuItemType != null)
             {
@@ -79,13 +83,8 @@ public class ItemsMenu : MonoBehaviour
         }
 
         newGameObject.name = effect.Name;
-
-
-
         newGameObject.GetComponent<EffectMenuItem>().Initialize(effect);
-
         addEffectItem.SetParent(transform);
-
         newGameObject.GetComponent<EffectMenuItem>().SelectEffect();
 
         return effectMenuItem;
@@ -93,6 +92,8 @@ public class ItemsMenu : MonoBehaviour
 
     public void ItemSelected(MenuItem element)
     {
+        MaskPanel.Close();
+
         foreach (var item in GetComponentsInChildren<MenuItem>())
         {
             item.Selected = false;
@@ -104,5 +105,10 @@ public class ItemsMenu : MonoBehaviour
 
         var draggableSystem = Resources.FindObjectsOfTypeAll<DraggableParticleSystem>().First();
         draggableSystem.gameObject.SetActive(false);
+    }
+
+    public EffectMenuItem GetSelectedItem()
+    {
+        return FindObjectsOfType<EffectMenuItem>().FirstOrDefault(x => x.Selected);
     }
 }

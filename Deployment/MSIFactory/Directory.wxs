@@ -2,188 +2,188 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <Fragment>
         <DirectoryRef Id="INSTALLFOLDER">
-            <Component Id="cmp5097CAF52967A6CF76C81E53F4DD535C" Guid="{F5193391-1235-465C-B65E-ADF0F1AC2CC1}">
+            <Component Id="cmp5097CAF52967A6CF76C81E53F4DD535C" Guid="{0A873FAF-E11D-4390-8DFB-DF15C1FD1E3E}">
                 <File Id="fil288D72DC7A0E11135BBE918AEA1D3A82" KeyPath="yes" Source="$(var.SourceFiles)\ffmpeg.exe" />
             </Component>
-            <Component Id="cmpC041356E7733116B447E000B286690A5" Guid="{5E3577D7-3762-41AF-B67E-898EC55651F0}">
+            <Component Id="cmpC041356E7733116B447E000B286690A5" Guid="{AAAB4FED-E57A-44B6-843E-8B63A44DAA09}">
                 <File Id="fil789C73202AE7A3687016EDC2A0DF2CFA" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails.exe" />
             </Component>
             <Directory Id="dir7E5337B0B0646D4E1CD359E8B4D21AB7" Name="LightTrails_Data">
-                <Component Id="cmpE07762687ECC63326635C065B075C987" Guid="{D480F5CB-48C9-464B-9CFE-FB369C3AFFB2}">
+                <Component Id="cmpE07762687ECC63326635C065B075C987" Guid="{A31201A5-8BEC-45A7-94A4-66573EC00ADE}">
                     <File Id="fil2C6A5D15EC0C49CC132D27A15B1B5EB5" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\app.info" />
                 </Component>
-                <Component Id="cmp24E82EC0B9AB914BCCEE0434872FB06D" Guid="{BD204AB6-82D0-4DF5-894C-7F132FC20451}">
+                <Component Id="cmp24E82EC0B9AB914BCCEE0434872FB06D" Guid="{0D7C259F-4CA6-4F37-8A77-76DF61342282}">
                     <File Id="fil3D6DC0D568D69F5AD87F2326BEC75797" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\globalgamemanagers" />
                 </Component>
-                <Component Id="cmp193065B2C32E5374A02A86F4E51FDBC7" Guid="{D3CC75B7-4F26-458E-9BB7-90E40D8F3243}">
+                <Component Id="cmp193065B2C32E5374A02A86F4E51FDBC7" Guid="{6469DB4F-D29A-4736-8B56-0EAC6C3EE59C}">
                     <File Id="filE2177208029B1806930BCFE0ABF55241" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\globalgamemanagers.assets" />
                 </Component>
-                <Component Id="cmp0F1D4278A3CCA4AEEC2938175F9F4DAF" Guid="{857C2671-BDE8-49A8-A909-B418261FE62B}">
+                <Component Id="cmp0F1D4278A3CCA4AEEC2938175F9F4DAF" Guid="{6E35F0DC-14AD-4D0A-8207-1415209FAC92}">
                     <File Id="fil3F3052CB097565D63336993244ABCB11" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\globalgamemanagers.assets.resS" />
                 </Component>
-                <Component Id="cmp917EABC5CB2220DA0113A85C552F43DB" Guid="{244015F3-376B-4E17-BC83-59370DCB2DDD}">
+                <Component Id="cmp917EABC5CB2220DA0113A85C552F43DB" Guid="{C4FF3BE4-C226-4631-A849-6EB8E0AD80A5}">
                     <File Id="fil5D59830436050DCE1C0805FD373D105E" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\level0" />
                 </Component>
-                <Component Id="cmp35C7165FC85BA58C3E6E925F9A573DBE" Guid="{BA7637A0-9FC7-477B-A782-E9C35858EB40}">
+                <Component Id="cmp35C7165FC85BA58C3E6E925F9A573DBE" Guid="{44E86516-0C4E-4993-9984-439EC96D5906}">
                     <File Id="filAC8FB945927F95F7D30037CB0A0FFFBA" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\level1" />
                 </Component>
-                <Component Id="cmp00381AC235447F5F934BA158B6892552" Guid="{501B57DA-F498-4711-A4B1-DDF0CD377888}">
+                <Component Id="cmp00381AC235447F5F934BA158B6892552" Guid="{4D760B84-2B56-4471-81EB-D1FEA5C2B355}">
                     <File Id="fil8CAEAFEAD07D140A6756D96D3BB08C74" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\output_log.txt" />
                 </Component>
-                <Component Id="cmpAE5C8C51A26CDF4BF525B8CC807376F7" Guid="{CA5D8852-F676-488C-BAAE-2A954731B213}">
+                <Component Id="cmpAE5C8C51A26CDF4BF525B8CC807376F7" Guid="{1060CDC7-7D67-4C7D-BC03-D7003CB7EEA6}">
                     <File Id="fil201D2B1F96AEB260EE7146ADDB02854A" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\resources.assets" />
                 </Component>
-                <Component Id="cmpCC922C606C7A68501AFDCDF9F26A87C6" Guid="{F2E60E5A-7B4A-4F62-BBBB-50373D3D3990}">
+                <Component Id="cmpCC922C606C7A68501AFDCDF9F26A87C6" Guid="{C9BC0A8D-6B13-4BDC-9300-3E6E42C0FC8E}">
                     <File Id="fil84A8B077B83946197E94F37933D18049" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\resources.assets.resS" />
                 </Component>
-                <Component Id="cmp8682CA24EA707536525DC312E7C96083" Guid="{C12E40DE-13F6-4D80-AC5C-257628958A95}">
+                <Component Id="cmp8682CA24EA707536525DC312E7C96083" Guid="{5E07C1DA-894D-497A-8689-76DC1FD78ECA}">
                     <File Id="fil284E15E17C5D0FB096BCB89B361F8AED" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\sharedassets0.assets" />
                 </Component>
-                <Component Id="cmp0001F92388F57ACA66203F7837E3D25F" Guid="{3885870D-79D4-4B46-A4CE-6FDF16FE5F95}">
+                <Component Id="cmp0001F92388F57ACA66203F7837E3D25F" Guid="{521D7337-5B94-4761-85F0-DF04CB711087}">
                     <File Id="fil12BF3932ED5CE110D713AB06EF858F28" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\sharedassets0.assets.resS" />
                 </Component>
-                <Component Id="cmp34853A7DC70F404D5E39F67E63E80D8C" Guid="{4A84C0DF-5E90-4AF1-BE2F-48C1E7020076}">
+                <Component Id="cmp34853A7DC70F404D5E39F67E63E80D8C" Guid="{7D45ED7B-0CB2-4C48-A77A-3973475EB0F0}">
                     <File Id="fil5E298073E65F0BE3F8B52AE0871698A6" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\sharedassets1.assets" />
                 </Component>
-                <Component Id="cmpAD6566B0D35F66096EAC2FDC0A47BE35" Guid="{EF35BB93-54F7-422E-8B17-1AB0E9C9B909}">
+                <Component Id="cmpAD6566B0D35F66096EAC2FDC0A47BE35" Guid="{BC64396F-E0F7-4586-882A-14C5080B9C87}">
                     <File Id="fil427EDD705007F04334C0F4E1ACD4175F" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\sharedassets1.assets.resS" />
                 </Component>
                 <Directory Id="dirED1CC0B39437BEB3CC679B4E38BA794D" Name="Managed">
-                    <Component Id="cmp97102BCE17ECC868E9526CA297E0C96C" Guid="{B367301A-6505-44A1-9417-7053D003B925}">
+                    <Component Id="cmp97102BCE17ECC868E9526CA297E0C96C" Guid="{1891DEAF-787A-47C0-AEBE-F7C2B9BC3065}">
                         <File Id="filB4F4961384323A7D7A4D5C0193BD494C" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\Accessibility.dll" />
                     </Component>
-                    <Component Id="cmp710B9F80567B9D2C3502281F2DAE9A43" Guid="{F433D496-7541-4C90-9625-C0082FA5C1C3}">
+                    <Component Id="cmp710B9F80567B9D2C3502281F2DAE9A43" Guid="{62DBCE6C-476D-4AFB-AC0A-995E16BC2BD3}">
                         <File Id="filD6AD991E6E698FFA6654AB93E63DCAA3" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\Assembly-CSharp.dll" />
                     </Component>
-                    <Component Id="cmpDF6AE2130F67277ACF2467887A5696FB" Guid="{37042618-570D-4C60-9570-F4638EA4D996}">
+                    <Component Id="cmpDF6AE2130F67277ACF2467887A5696FB" Guid="{B4998DDF-EC5D-4E7E-B7A4-E959844475AD}">
                         <File Id="filE23645C6FDD7064D0810C6C357EBE89D" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\FfmpegWrapper.dll" />
                     </Component>
-                    <Component Id="cmpE41CC336A750A0F6EF24CD36A117953E" Guid="{0FC407C0-6488-4958-8729-C50654FA3170}">
+                    <Component Id="cmpE41CC336A750A0F6EF24CD36A117953E" Guid="{8C5C40B6-416A-41AD-BF21-C46C696162A5}">
                         <File Id="fil6A174E837128CD09939FF18A2F6CD499" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\Mono.Data.Sqlite.dll" />
                     </Component>
-                    <Component Id="cmpFD19516FF3D89EE1C205B095E9055D57" Guid="{B4A604D0-B13E-4759-8C61-3C368F3B17DA}">
+                    <Component Id="cmpFD19516FF3D89EE1C205B095E9055D57" Guid="{9F958B0D-24AA-4760-8215-331C92E2F7A5}">
                         <File Id="filE9E64A303790EFCADB09ABCCF461A8A6" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\Mono.Data.Tds.dll" />
                     </Component>
-                    <Component Id="cmpC801B80953969427D183BD6E6AEA793B" Guid="{57172103-8CA1-48ED-8BED-E5E3E8B88BEE}">
+                    <Component Id="cmpC801B80953969427D183BD6E6AEA793B" Guid="{11B27C57-E251-4AE0-BBF2-4B029DAA3CCB}">
                         <File Id="filAC095FC8AD6343A6A484A03A52994F49" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\Mono.Posix.dll" />
                     </Component>
-                    <Component Id="cmpAB41BED110AC26CA0665783672E70397" Guid="{922F7B72-5BE0-4051-9611-6760935A1BE9}">
+                    <Component Id="cmpAB41BED110AC26CA0665783672E70397" Guid="{8D4DF67F-0B84-402E-9143-26536F9789BD}">
                         <File Id="fil77425A0700C9C23F26250AB847BEBF5B" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\Mono.Security.dll" />
                     </Component>
-                    <Component Id="cmp698645B8FA56C4184DF67679CA453D50" Guid="{1E2CB061-4390-4540-A1A0-AF76D3E3B689}">
+                    <Component Id="cmp698645B8FA56C4184DF67679CA453D50" Guid="{C2C2C5D9-FD9D-4FC8-9629-1B3FC5D02F0D}">
                         <File Id="filDA5F2F4ADB69BB898D4C48FC6C639892" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\Mono.Web.dll" />
                     </Component>
-                    <Component Id="cmp9B8F1727F061ADCD8BD0393E5AC7B7EA" Guid="{11F78346-ACFC-4E85-993F-3F22DB47C4A2}">
+                    <Component Id="cmp9B8F1727F061ADCD8BD0393E5AC7B7EA" Guid="{9ADB6B3A-F2F6-4E01-B6DD-0975DDF382CA}">
                         <File Id="filBDF35DE8BABDE3F58CEDF79C5C8CC8C4" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\Mono.WebBrowser.dll" />
                     </Component>
-                    <Component Id="cmpF8F9EFFA2CC012D0EBCE2EB680677FFB" Guid="{AA54D9A0-B5C0-4520-A6F4-ABE0D30B8E82}">
+                    <Component Id="cmpF8F9EFFA2CC012D0EBCE2EB680677FFB" Guid="{C8BFCC1B-1E12-4FB2-8A06-FFD199D9819A}">
                         <File Id="fil3E3C5BDDA12A27AAEAE177BEDD1DFC28" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\mscorlib.dll" />
                     </Component>
-                    <Component Id="cmp41821C42C299E1E79F49780816EE2C26" Guid="{CB7C1850-FF76-47AC-AFE3-5B76DEB5D846}">
+                    <Component Id="cmp41821C42C299E1E79F49780816EE2C26" Guid="{0E7196E1-F5AB-4F46-AA2B-FBFEA4BD2A03}">
                         <File Id="fil86693AA7243572EE16DD3FC0E97CB798" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\Ookii.Dialogs.dll" />
                     </Component>
-                    <Component Id="cmpE1B4756F4F6E67EBDA5B13EFE445F321" Guid="{102207DC-9EB6-4FDD-A81F-9274C2A398B0}">
+                    <Component Id="cmpE1B4756F4F6E67EBDA5B13EFE445F321" Guid="{7CF6CF23-F296-4EFA-A052-2487F6AE3A69}">
                         <File Id="fil4BD2344AF5A46C45F33D671CAB523566" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\System.Configuration.dll" />
                     </Component>
-                    <Component Id="cmp3CFF931D5AB4D7EC6FAEACE5067D74F6" Guid="{50AE72AD-9337-4595-90D4-0049BB5895F0}">
+                    <Component Id="cmp3CFF931D5AB4D7EC6FAEACE5067D74F6" Guid="{B20C960E-0118-435B-BDCB-5EB687F35F8B}">
                         <File Id="filC4AA73532194C84D5529F8F890D33290" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\System.Core.dll" />
                     </Component>
-                    <Component Id="cmpEEC9466FCF12E121A23332A4AF43DA3E" Guid="{03526C4F-579B-453F-9E87-578F8531951E}">
+                    <Component Id="cmpEEC9466FCF12E121A23332A4AF43DA3E" Guid="{FFAD39E2-7127-4170-89EB-6A87C40BC61F}">
                         <File Id="filD49AE36C3EBF11FB6A40799C8B9A1B9E" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\System.Data.dll" />
                     </Component>
-                    <Component Id="cmpF1F65B42E68EDF2B81175A9BD62124BA" Guid="{DC237261-88F8-4CF3-9639-7EDD0EADFDB2}">
+                    <Component Id="cmpF1F65B42E68EDF2B81175A9BD62124BA" Guid="{7A93DD42-A65C-4941-B2B6-0FF2E0FFDFCD}">
                         <File Id="fil2AFC0342ADC12679D8DCD781788E1C37" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\System.Design.dll" />
                     </Component>
-                    <Component Id="cmpD17EBCF30291FE6CC71691F1C3D046B6" Guid="{D61A1987-C0A1-4318-8AAD-6615D8E03DD3}">
+                    <Component Id="cmpD17EBCF30291FE6CC71691F1C3D046B6" Guid="{654506CC-4709-4BCD-9A23-3C31CDE2D9E4}">
                         <File Id="filEF895E4446D3346B22D01825B8C32C4C" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\System.dll" />
                     </Component>
-                    <Component Id="cmpD22D068F3D809E451E7A6F7FDAED424C" Guid="{BAA703A6-E9D6-4CC7-AC1D-08517E2D4C5B}">
+                    <Component Id="cmpD22D068F3D809E451E7A6F7FDAED424C" Guid="{8C64A7F2-A9B3-471C-8A68-4A7827D83E7F}">
                         <File Id="fil5A303681728FB3C602E63686BF0176A1" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\System.Drawing.Design.dll" />
                     </Component>
-                    <Component Id="cmp79E0992CDCFAB11778FDFB9279039861" Guid="{B517CCAE-3248-4AD1-8ADB-13D790411019}">
+                    <Component Id="cmp79E0992CDCFAB11778FDFB9279039861" Guid="{29617195-B059-48E9-92D3-C68DB702C25F}">
                         <File Id="fil2681380CA25AB4084E10A6EEF52CE8A3" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\System.Drawing.dll" />
                     </Component>
-                    <Component Id="cmpEDE34D79F4E33B75BEAAA87555A34C31" Guid="{F18ADD40-4E12-4935-9D98-5E135D4960E4}">
+                    <Component Id="cmpEDE34D79F4E33B75BEAAA87555A34C31" Guid="{61FF89DD-B01E-49F7-AC9C-8A905EF61DA8}">
                         <File Id="fil5418FB97D1BFCCA54E782A7B8F2B11C0" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\System.EnterpriseServices.dll" />
                     </Component>
-                    <Component Id="cmp74DA07A4449F4619430F8F93D3AE402C" Guid="{2220954F-A2C6-4568-B0EA-BC257550291D}">
+                    <Component Id="cmp74DA07A4449F4619430F8F93D3AE402C" Guid="{76D1DA98-2D96-47E2-9182-5AE64B7A3443}">
                         <File Id="fil0C0889492BA0E1CD1A01D5EE8606D6FC" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\System.Security.dll" />
                     </Component>
-                    <Component Id="cmpB950329F08D769C26275D6D5D6DBA1ED" Guid="{97BF1F89-6E84-4DB2-B47B-BA37EE51B070}">
+                    <Component Id="cmpB950329F08D769C26275D6D5D6DBA1ED" Guid="{84714D0A-754B-4BA8-9590-73FC571D901B}">
                         <File Id="filE1C1AB6B8F68115AA103BEC30E59B347" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\System.Transactions.dll" />
                     </Component>
-                    <Component Id="cmp2143AD3BE88D3FBEB4BD5CFF89D5B479" Guid="{117585DF-1BAE-4F50-8DCE-F00BCB8F0956}">
+                    <Component Id="cmp2143AD3BE88D3FBEB4BD5CFF89D5B479" Guid="{AE855732-4012-4B45-8AB8-2970955DE1EA}">
                         <File Id="fil8DC2A733533EC24BE84BF395D8B8572C" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\System.Web.dll" />
                     </Component>
-                    <Component Id="cmp82486F086ED7F917910CAACA5DB07432" Guid="{CEFC5EFC-DBC5-4556-B558-678F2E99576D}">
+                    <Component Id="cmp82486F086ED7F917910CAACA5DB07432" Guid="{26766C71-4426-4FD6-A42C-DC052C262CE6}">
                         <File Id="filD216AECC932832AA6B4DCF8D8D9F4E1A" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\System.Web.Services.dll" />
                     </Component>
-                    <Component Id="cmpFBEB058E66F852A457EAEB44C810F06F" Guid="{5291458F-385D-42A2-8A2D-14D1C927600D}">
+                    <Component Id="cmpFBEB058E66F852A457EAEB44C810F06F" Guid="{65A3086D-5342-41F9-A417-7491A0D1CD24}">
                         <File Id="filC06F5CDC6DC86CA4163D7825F3694DC3" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\System.Windows.Forms.dll" />
                     </Component>
-                    <Component Id="cmpA555724FA3858021C378811CB37AF725" Guid="{60536395-5F38-49A3-B2AF-75D5F4A30FA8}">
+                    <Component Id="cmpA555724FA3858021C378811CB37AF725" Guid="{03D0582F-3891-4D98-A7DC-820B57D36A4B}">
                         <File Id="fil2094EA24F144A98F5F5AA2B5E088809E" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\System.Xml.dll" />
                     </Component>
-                    <Component Id="cmpECE759487241177F0D67711C484B07EA" Guid="{A674F362-A53B-4759-B054-99F0FEE0029D}">
+                    <Component Id="cmpECE759487241177F0D67711C484B07EA" Guid="{B4EEBEB5-D950-428E-B353-780B888DBB7D}">
                         <File Id="fil4FC4D86F40BCF0E4A3C75A508DE8F136" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\UnityEngine.CloudBuild.dll" />
                     </Component>
-                    <Component Id="cmp1AB1FB6493ED0F535177AED1283CE3E2" Guid="{F85D3E3D-A8C7-48CE-AE60-981A286ACDB4}">
+                    <Component Id="cmp1AB1FB6493ED0F535177AED1283CE3E2" Guid="{9CE2BB10-B400-4960-940C-B4540EF1ACE5}">
                         <File Id="filC037463E572C9950BE4C3F2E8646893C" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\UnityEngine.dll" />
                     </Component>
-                    <Component Id="cmpC57EBDD4A08C35DBDE0C78EE318A3A72" Guid="{4593B595-77A9-4D1A-9C67-4CBA24459C73}">
+                    <Component Id="cmpC57EBDD4A08C35DBDE0C78EE318A3A72" Guid="{2EA49DA7-AC16-41C7-835A-8769B001C3C3}">
                         <File Id="filBB5FB5B79BB2C3E222B1417084AB704E" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\UnityEngine.dll.mdb" />
                     </Component>
-                    <Component Id="cmp79445CA877A4686CF521E6C9A7ADE282" Guid="{BD102DF3-F274-4D5B-81F8-EF2462BD67F7}">
+                    <Component Id="cmp79445CA877A4686CF521E6C9A7ADE282" Guid="{0938A51E-2007-4AA9-8F34-D2A66914FACD}">
                         <File Id="fil7FBB7BFD015693E21C39AC857B4921D2" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\UnityEngine.Networking.dll" />
                     </Component>
-                    <Component Id="cmp508E2CA69F231AB646DDCCFF034F9708" Guid="{609A35A9-C050-40BE-B31C-DC93620AA3B4}">
+                    <Component Id="cmp508E2CA69F231AB646DDCCFF034F9708" Guid="{2EC4BBFE-8670-43BE-87AE-4095FF4C27FE}">
                         <File Id="filE81F44402F96D9A569FA1562FF22ADA4" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Managed\UnityEngine.UI.dll" />
                     </Component>
                 </Directory>
                 <Directory Id="dir3D52A76F74875CA2D92E31C4E2755DC0" Name="Mono">
-                    <Component Id="cmp01C3C016286A8B8B84162263454FA753" Guid="{1D333541-01A2-4500-BF0F-7552A4897A4B}">
+                    <Component Id="cmp01C3C016286A8B8B84162263454FA753" Guid="{AE0E19E1-E984-44F3-940D-9902471F7FDA}">
                         <File Id="filB7FB60D3F3A7849ED1EFA819F2AB533D" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Mono\mono.dll" />
                     </Component>
-                    <Component Id="cmpFED6A510FC0360510958149C10F81E7C" Guid="{D87E7A48-516D-4973-8922-D820B450FD61}">
+                    <Component Id="cmpFED6A510FC0360510958149C10F81E7C" Guid="{A66B21E8-F1C6-41AB-9E8B-4924F3AD468F}">
                         <File Id="fil9BB5F07E060633B600BB74D0911FFE58" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Mono\MonoPosixHelper.dll" />
                     </Component>
                     <Directory Id="dirA223DCCFC7B855DF344699B4922B29C2" Name="etc">
                         <Directory Id="dir076129B291D4DA088F0630709B85C255" Name="mono">
-                            <Component Id="cmp1E875CE54AEE4B1C5E173CCFDB407BBF" Guid="{C55A9132-28C9-4CA8-AB17-EF6E7A06E279}">
+                            <Component Id="cmp1E875CE54AEE4B1C5E173CCFDB407BBF" Guid="{9408D7D8-CE8D-4C99-A258-20361D3F2A36}">
                                 <File Id="fil79970A800BA272919DEBC5AC70553A45" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Mono\etc\mono\browscap.ini" />
                             </Component>
-                            <Component Id="cmp2E23F26A0E8850884813006EB18D2564" Guid="{F22A663E-18CE-4E12-BC9B-5F9FDE2365BB}">
+                            <Component Id="cmp2E23F26A0E8850884813006EB18D2564" Guid="{E86997FD-2094-4B47-8E72-8E9A3503CF2E}">
                                 <File Id="fil7BB26A07E26D4B48DA76A47FDA671641" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Mono\etc\mono\config" />
                             </Component>
                             <Directory Id="dirB298DB8A305E74BFCBE18017D60B9236" Name="1.0">
-                                <Component Id="cmpC119403997588B92D67E85BB67282C1B" Guid="{59DE8F1A-C249-40AE-9C06-209A2079A162}">
+                                <Component Id="cmpC119403997588B92D67E85BB67282C1B" Guid="{8E1829AA-2B8E-4A42-8D10-ABED99452EC1}">
                                     <File Id="fil0EA59A84A0201156CADA80B58245A9B5" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Mono\etc\mono\1.0\DefaultWsdlHelpGenerator.aspx" />
                                 </Component>
-                                <Component Id="cmpBB476F5F4A02F33CD21F756D50C24150" Guid="{07080940-82B0-4A8B-9924-D0C7778060B5}">
+                                <Component Id="cmpBB476F5F4A02F33CD21F756D50C24150" Guid="{27C75E7A-7694-47BC-AD4D-FE81678275CC}">
                                     <File Id="filA319767DC1008E75273B829A4F3DB753" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Mono\etc\mono\1.0\machine.config" />
                                 </Component>
                             </Directory>
                             <Directory Id="dirB4BB6D72B821F5B13F68FC3B35B265F7" Name="2.0">
-                                <Component Id="cmpCC2DD97A4DCAE05BEB56AC615CB4575D" Guid="{2A7B8E22-EC80-4CDE-A6BA-E5E7A68D55EF}">
+                                <Component Id="cmpCC2DD97A4DCAE05BEB56AC615CB4575D" Guid="{C50143C6-C56C-4BFB-85D8-D594265AC2E7}">
                                     <File Id="filE202054627E9E448CA0B768ADE5C7956" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Mono\etc\mono\2.0\DefaultWsdlHelpGenerator.aspx" />
                                 </Component>
-                                <Component Id="cmpFA59A4E9775B417688E5451F8E3F96D4" Guid="{66498204-22AC-40F5-B318-B45921B905A4}">
+                                <Component Id="cmpFA59A4E9775B417688E5451F8E3F96D4" Guid="{3F894676-26B3-42A1-B191-309F6111B8E7}">
                                     <File Id="filACF1327930EE47660B507EA9D62BD8E8" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Mono\etc\mono\2.0\machine.config" />
                                 </Component>
-                                <Component Id="cmpF0ADBE4E39E934D55D2BEB202976B21C" Guid="{E3341C11-2CCB-4704-A745-C5174B9EA7C8}">
+                                <Component Id="cmpF0ADBE4E39E934D55D2BEB202976B21C" Guid="{959F9940-992B-4504-B0A5-DE50CA870434}">
                                     <File Id="fil648303452D0F7EE4320C193C25087DD5" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Mono\etc\mono\2.0\settings.map" />
                                 </Component>
-                                <Component Id="cmp919303CA16E0C6EEB05E6A56B75561D0" Guid="{A22C287E-9F12-4FC5-9F4C-3C0550410478}">
+                                <Component Id="cmp919303CA16E0C6EEB05E6A56B75561D0" Guid="{DE2CFC11-CA44-4F8B-AEEC-36B681408136}">
                                     <File Id="fil06CF94446EA83DDCBBA7DF4E3BA7E294" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Mono\etc\mono\2.0\web.config" />
                                 </Component>
                                 <Directory Id="dir0AA8DD464CC96ACD2A544BFD08EA6F23" Name="Browsers">
-                                    <Component Id="cmpFE71AEE4FC2836CCC78EBA24826AA81E" Guid="{A33BA4F1-5BAD-48E5-B590-7ECA0F0F4288}">
+                                    <Component Id="cmpFE71AEE4FC2836CCC78EBA24826AA81E" Guid="{D7FB0058-2192-4A81-AC26-E4042F003CA1}">
                                         <File Id="fil1B8D8EFF3F4AAD91FBCA304E95BD50B9" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Mono\etc\mono\2.0\Browsers\Compat.browser" />
                                     </Component>
                                 </Directory>
                             </Directory>
                             <Directory Id="dirE42DDA93E645ABFAE665EDE525FDBD12" Name="mconfig">
-                                <Component Id="cmpABE939B1D6BC21F21740233EA17E727A" Guid="{B88EDBE5-0FA3-4140-9058-8BD28380CA73}">
+                                <Component Id="cmpABE939B1D6BC21F21740233EA17E727A" Guid="{67B576D1-DB08-4382-871C-06BC0B74A3AF}">
                                     <File Id="filBD65BC20AC2B63FF093E49642B4FE30B" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Mono\etc\mono\mconfig\config.xml" />
                                 </Component>
                             </Directory>
@@ -191,10 +191,10 @@
                     </Directory>
                 </Directory>
                 <Directory Id="dir7AFE00B46274F3EA6DA21C852D83505E" Name="Resources">
-                    <Component Id="cmp108A85D67AFA183B7381037FE62E1530" Guid="{EB583F0E-E5E4-42BE-A313-4A120AFCE34E}">
+                    <Component Id="cmp108A85D67AFA183B7381037FE62E1530" Guid="{84962ECA-98A1-4FA7-80A2-91CAB5B1A47D}">
                         <File Id="fil2494A76CC101656CB43D58F3AF6165EA" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Resources\unity default resources" />
                     </Component>
-                    <Component Id="cmpA44931B3E505A79D771E2C5A7DD4512A" Guid="{29868958-25AA-4509-8171-1F04FA5229F6}">
+                    <Component Id="cmpA44931B3E505A79D771E2C5A7DD4512A" Guid="{C9722B54-09B1-44EA-8DD6-E31BD1435629}">
                         <File Id="fil25E8876B1C6C3B2AA69CB12FEFC67F1F" KeyPath="yes" Source="$(var.SourceFiles)\LightTrails_Data\Resources\unity_builtin_extra" />
                     </Component>
                 </Directory>

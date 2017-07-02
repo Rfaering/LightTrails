@@ -18,6 +18,7 @@ public class EffectOptionsOverlay : MonoBehaviour, IPointerClickHandler
 
     internal void Open()
     {
+        MaskPanel.Close();
         gameObject.SetActive(true);
     }
 

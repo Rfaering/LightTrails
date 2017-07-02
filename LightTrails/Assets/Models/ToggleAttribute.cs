@@ -1,7 +1,7 @@
 ﻿using System;
 using Assets.Projects.Scripts;
 
-namespace Assets.UI.Models
+namespace Assets.Models
 {
     public class ToggleAttribute : Attribute
     {

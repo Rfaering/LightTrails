@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Assets.UI.Models;
+using Assets.Models;
 
 public class AttributesMenu : MonoBehaviour
 {
@@ -8,6 +8,7 @@ public class AttributesMenu : MonoBehaviour
     public GameObject OptionsPrefab;
     public GameObject ActionPrefab;
     public GameObject TogglePrefab;
+    public GameObject MaskPrefab;
 
     // Use this for initialization
     void Start()
@@ -36,22 +37,25 @@ public class AttributesMenu : MonoBehaviour
                 newSlider.GetComponent<SliderMenuItem>().Initialize(attribute as SliderAttribute);
                 newSlider.transform.SetParent(transform);
             }
-
-            if (attribute is OptionsAttribute)
+            else if (attribute is MaskAttribute)
+            {
+                var newMask = Instantiate(MaskPrefab);
+                newMask.GetComponent<MaskMenuItem>().Initialize(attribute as MaskAttribute);
+                newMask.transform.SetParent(transform);
+            }
+            else if (attribute is OptionsAttribute)
             {
                 var newOptions = Instantiate(OptionsPrefab);
                 newOptions.GetComponent<OptionsMenuItem>().Initialize(attribute as OptionsAttribute);
                 newOptions.transform.SetParent(transform);
             }
-
-            if (attribute is ActionAttribute)
+            else if (attribute is ActionAttribute)
             {
                 var newAction = Instantiate(ActionPrefab);
                 newAction.GetComponent<ActionMenuItem>().Initialize(attribute as ActionAttribute);
                 newAction.transform.SetParent(transform);
             }
-
-            if (attribute is ToggleAttribute)
+            else if (attribute is ToggleAttribute)
             {
                 var newAction = Instantiate(TogglePrefab);
                 newAction.GetComponent<ToggleMenuItem>().Initialize(attribute as ToggleAttribute);

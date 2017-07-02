@@ -1,4 +1,4 @@
-﻿using Assets.UI.Models;
+﻿using Assets.Models;
 using UnityEngine.UI;
 
 public class ToggleMenuItem : AttributeMenuItem

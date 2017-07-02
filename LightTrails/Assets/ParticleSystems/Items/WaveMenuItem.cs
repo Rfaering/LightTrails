@@ -1,4 +1,4 @@
-﻿using Assets.UI.Models;
+﻿using Assets.Models;
 using System.Collections.Generic;
 using UnityEngine;
 

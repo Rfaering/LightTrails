@@ -1,5 +1,5 @@
-﻿using Assets.Projects.Scripts;
-using Assets.UI.Models;
+﻿using Assets.Models;
+using Assets.Projects.Scripts;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;

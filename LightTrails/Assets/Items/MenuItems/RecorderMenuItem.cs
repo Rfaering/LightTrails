@@ -1,12 +1,11 @@
-﻿using Assets.Projects.Scripts;
-using Assets.UI.Models;
+﻿using Assets.Models;
+using Assets.Projects.Scripts;
 using System;
 using System.Collections.Generic;
 #if UNITY_STANDALONE_WIN
 using System.Diagnostics;
 #endif
 using System.IO;
-using System.Linq;
 
 public class RecorderMenuItem : MenuItem
 {
@@ -26,7 +25,7 @@ public class RecorderMenuItem : MenuItem
     {
         _record = FindObjectOfType<Record>();
 
-        var attributes = new List<Assets.UI.Models.Attribute>()
+        var attributes = new List<Assets.Models.Attribute>()
         {
            new ActionAttribute()
            {

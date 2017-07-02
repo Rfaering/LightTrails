@@ -1,4 +1,4 @@
-﻿using Assets.UI.Models;
+﻿using Assets.Models;
 public class EffectOptions
 {
     public static Effect[] Options =

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using Assets.UI.Models;
+using Assets.Models;
 
 public class EffectOption : MonoBehaviour, IPointerClickHandler
 {

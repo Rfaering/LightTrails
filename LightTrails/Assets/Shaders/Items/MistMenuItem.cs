@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Assets.UI.Models;
+using Assets.Models;
 
 public class MistMenuItem : ShaderEffectMenuItem
 {

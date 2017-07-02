@@ -11,7 +11,7 @@
 Shader "Custom/Disortion" {
 	Properties{
 		_MainTex("Texture", 2D) = "white" {}
-		_Mask("Texture", 2D) = "white" {}
+		_AttMask("Mask", 2D) = "white" {}
 		_Intensity("Intensity", Range(10, 100)) = 50
 		_Speed("Speed", Range(0, 3)) = 1
 		_InputTime("Time", Range(0, 1000000000)) = 0
@@ -72,14 +72,14 @@ Shader "Custom/Disortion" {
 		}
 
 		float _Intensity;
-		sampler2D _Mask;
+		sampler2D _AttMask;
 		float _InputTime;
 
 		fixed4 frag(v2f i) : COLOR
 		{
 			half2 distortLocation = i.texcoord + _InputTime * _Speed / 10.0f;
 			half2 distort = tex2D(_MainTex, frac(distortLocation)).xy;
-			float maskPixel = tex2D(_Mask, i.texcoord).a;
+			float maskPixel = tex2D(_AttMask, i.texcoord).r;
 
 			// distort*2-1 transforms range from 0..1 to -1..1.
 			// negative values move to the left, positive to the right.

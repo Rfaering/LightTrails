@@ -7,7 +7,7 @@ Shader "Custom/Movement"
 		_EffectTex("Layer", 2D) = "black"{}
 		_EffectColor("Color", Color) = (1,1,1,1)
 		_MotionLayer("Motion Layer", 2D) = "black"{}
-		_Mask("Mask", 2D) = "white"{}
+		_AttMask("Mask", 2D) = "white"{}
 		_Speed("Speed", float) = 0
 		_Zoom("Zoom", float) = 1.0
 		_InputTime("Time", Range(0, 1000000000)) = 0
@@ -48,7 +48,7 @@ Shader "Custom/Movement"
 			sampler2D _GrabTexture;
 
 			sampler2D _EffectTex;
-			sampler2D _Mask;
+			sampler2D _AttMask;
 			sampler2D _MotionLayer;
 			float _Speed;
 			half4 _EffectColor;
@@ -74,7 +74,7 @@ Shader "Custom/Movement"
 				fixed4 col = tex2D(_GrabTexture, i.screenuv);
 				fixed bg = col.a;
 
-				fixed4 mask = tex2D(_Mask, i.uv);
+				fixed4 mask = tex2D(_AttMask, i.uv);
 				fixed4 motionLayer = tex2D(_MotionLayer, i.uv);
 				fixed4 motion = tex2D(_EffectTex, fixed2(_InputTime * _Speed/10, 0) + i.screenuv * _Zoom * fixed2(1.5f - motionLayer.r / 2 , 1.0f));
 				motion *= _EffectColor;

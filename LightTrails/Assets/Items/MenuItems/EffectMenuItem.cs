@@ -1,8 +1,8 @@
-﻿using Assets.UI.Models;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 using Assets.Projects.Scripts;
+using Assets.Models;
 
 public class EffectMenuItem : MenuItem
 {

@@ -1,13 +1,10 @@
-﻿using Assets.UI.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 
 public class LightningMenuItem : ParticleEffectMenuItem
 {
-    public override List<Assets.UI.Models.Attribute> GetAttributes()
+    public override List<Assets.Models.Attribute> GetAttributes()
     {
-        List<Assets.UI.Models.Attribute> attribtues = new List<Assets.UI.Models.Attribute>()
+        List<Assets.Models.Attribute> attribtues = new List<Assets.Models.Attribute>()
         {
             /*new SliderAttribute()
             {

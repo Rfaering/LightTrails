@@ -1,8 +1,6 @@
-﻿using Assets.UI.Models;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Linq;
+using Assets.Models;
 
 public class EffectContentContainer : MonoBehaviour
 {
@@ -19,7 +17,8 @@ public class EffectContentContainer : MonoBehaviour
 
         foreach (var effect in EffectOptions.Options.Where(x => x.Type == EffectKind))
         {
-            var newGameObject = Instantiate(Prefab, transform);
+            var newGameObject = Instantiate(Prefab);
+            newGameObject.transform.SetParent(transform);
             newGameObject.name = effect.Name;
             newGameObject.GetComponent<EffectOption>().Initialize(effect);
         }

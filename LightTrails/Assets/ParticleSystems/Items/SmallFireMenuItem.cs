@@ -1,13 +1,11 @@
-﻿using Assets.UI.Models;
-using System;
+﻿using Assets.Models;
 using System.Collections.Generic;
-using System.Linq;
 
 public class SmallFireMenuItem : ParticleEffectMenuItem
 {
-    public override List<Assets.UI.Models.Attribute> GetAttributes()
+    public override List<Assets.Models.Attribute> GetAttributes()
     {
-        List<Assets.UI.Models.Attribute> attributes = new List<Assets.UI.Models.Attribute>()
+        List<Assets.Models.Attribute> attributes = new List<Assets.Models.Attribute>()
         {
             new ToggleAttribute()
             {

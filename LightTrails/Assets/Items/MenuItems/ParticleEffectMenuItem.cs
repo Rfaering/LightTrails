@@ -1,9 +1,9 @@
-﻿using Assets.UI.Models;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
-using System.Collections.Generic;
 using Assets.Projects.Scripts;
+using Assets.Models;
+using System.Collections.Generic;
 
 public class ParticleEffectMenuItem : EffectMenuItem
 {
@@ -12,13 +12,15 @@ public class ParticleEffectMenuItem : EffectMenuItem
         EffectName = effect.Name;
         GetComponentInChildren<Text>().text = effect.Name;
         var child = Resources.Load<GameObject>("Prefabs/" + effect.Name);
-        if(child == null)
+        if (child == null)
         {
             Debug.Log("Could not find prefab for particle system");
             return;
         }
 
-        var createdEffect = Instantiate(child, FindObjectOfType<ActiveParticleList>().gameObject.transform);
+        var createdEffect = Instantiate(child);
+        createdEffect.transform.SetParent(FindObjectOfType<ActiveParticleList>().gameObject.transform);
+
         createdEffect.gameObject.SetActive(true);
 
         assosicatedEffect = createdEffect.gameObject;

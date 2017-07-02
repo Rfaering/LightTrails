@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using Assets.UI.Models;
-using UnityEngine.UI;
+using Assets.Models;
 
 public class DistortionMenuItem : ShaderEffectMenuItem
 {

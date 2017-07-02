@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Assets.UI.Models;
 using UnityEngine;
-using UnityEngine.UI;
+using Assets.Models;
 
 public class BarsMenuItem : ShaderEffectMenuItem
 {

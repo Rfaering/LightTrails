@@ -1,14 +1,12 @@
-﻿using Assets.UI.Models;
-using System;
+﻿using Assets.Models;
 using System.Collections.Generic;
-using System.Linq;
 
 public class FireworksMenuItem : ParticleEffectMenuItem
 {
-    public override List<Assets.UI.Models.Attribute> GetAttributes()
+    public override List<Attribute> GetAttributes()
     {
         var fireworksEffect = assosicatedEffect.GetComponent<FireworksEffects>();
-        List<Assets.UI.Models.Attribute> fireAttributes = new List<Assets.UI.Models.Attribute>()
+        List<Attribute> fireAttributes = new List<Attribute>()
         {
             /*new OptionsAttribute()
             {

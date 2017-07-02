@@ -23,15 +23,14 @@ public class ShaderEffectMenuItem : EffectMenuItem
     public override List<Attribute> GetAttributes()
     {
         var attributes = base.GetAttributes();
-        var texture = Material.GetTexture("_Mask");
-        if (texture != null)
+        var hasTexture = Material.HasProperty("_AttMask");
+        if (hasTexture)
         {
             attributes.Add(new MaskAttribute() { SelectedValue = "Mask01" });
         }
 
         return attributes;
     }
-
 
     private GameObject GetShaderEffect()
     {

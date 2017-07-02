@@ -40,7 +40,7 @@ Shader "Custom/Movement"
 
 			struct v2f
 			{
-				float4 vertex : SV_POSITION;				
+				float4 vertex : SV_POSITION;
 				float2 screenuv : TEXCOORD0;
 				float2 uv : TEXCOORD1;
 			};
@@ -58,11 +58,9 @@ Shader "Custom/Movement"
 			v2f vert(appdata v)
 			{
 				v2f o;
-				// transform position to clip space
-				// (multiply with model*view*projection matrix)
 				o.vertex = UnityObjectToClipPos(v.vertex);
 
-				half4 screenpos = ComputeGrabScreenPos(o.vertex);			
+				half4 screenpos = ComputeGrabScreenPos(o.vertex);
 				o.screenuv = screenpos.xy;
 				o.uv = v.uv;
 
@@ -76,15 +74,15 @@ Shader "Custom/Movement"
 
 				fixed4 mask = tex2D(_AttMask, i.uv);
 				fixed4 motionLayer = tex2D(_MotionLayer, i.uv);
-				fixed4 motion = tex2D(_EffectTex, fixed2(_InputTime * _Speed/10, 0) + i.screenuv * _Zoom * fixed2(1.5f - motionLayer.r / 2 , 1.0f));
+				fixed4 motion = tex2D(_EffectTex, fixed2(_InputTime * _Speed / 10, 0) + i.screenuv * _Zoom * fixed2(1.5f - motionLayer.r / 2 , 1.0f));
 				motion *= _EffectColor;
 				motion *= mask.r;
 				col += motion * motion.a;
 
 #if DEBUGUV
-				col.r = i.uv2;
-				col.g = 0;
-				col.b = 0;
+				//col.r = i.uv2;
+				//col.g = 0;
+				//col.b = 0;
 #endif
 
 				return col;

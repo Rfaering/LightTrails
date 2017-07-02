@@ -7,6 +7,7 @@ public class EffectOptions
           Effect.Create("Fireworks",Effect.EffectKind.Particle, typeof(FireworksMenuItem)),
           Effect.Create("Snow", Effect.EffectKind.Particle, typeof(SnowMenuItem)),
           Effect.Create("Distortion", Effect.EffectKind.Shader, typeof(DistortionMenuItem)),
+          Effect.Create("Water", Effect.EffectKind.Shader, typeof(WaterMenuItem)),
           Effect.Create("Mist", Effect.EffectKind.Shader, typeof(MistMenuItem)),
           Effect.Create("SpeedLines", Effect.EffectKind.Shader),
           Effect.Create("Hay", Effect.EffectKind.Shader),

@@ -18,7 +18,7 @@ public class MistMenuItem : ShaderEffectMenuItem
         };
 
         attributes.AddRange(base.GetAttributes());
-
+        attributes.SetDefaultMaskValue("Mask08");
         return attributes;
     }
 }

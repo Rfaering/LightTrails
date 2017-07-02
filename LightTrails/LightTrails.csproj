@@ -95,21 +95,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\UI\General\CameraScaling.cs" />
     <Compile Include="Assets\EffectOptions.cs" />
     <Compile Include="Assets\Items\ItemsMenu.cs" />
     <Compile Include="Assets\Items\MenuItems\AddEffectMenuItem.cs" />
     <Compile Include="Assets\Items\MenuItems\EffectMenuItem.cs" />
     <Compile Include="Assets\Items\MenuItems\ImageMenuItem.cs" />
+    <Compile Include="Assets\Items\MenuItems\ListAttributeExtensions.cs" />
     <Compile Include="Assets\Items\MenuItems\MenuItem.cs" />
     <Compile Include="Assets\Items\MenuItems\ParticleEffectMenuItem.cs" />
     <Compile Include="Assets\Items\MenuItems\RecorderMenuItem.cs" />
     <Compile Include="Assets\Items\MenuItems\ShaderEffectMenuItem.cs" />
-    <Compile Include="Assets\Models\MaskAttribute.cs" />
-    <Compile Include="Assets\Shaders\Mask\MaskImages.cs" />
-    <Compile Include="Assets\Shaders\Mask\MaskItem.cs" />
-    <Compile Include="Assets\Shaders\Mask\MaskList.cs" />
-    <Compile Include="Assets\Shaders\Mask\MaskPanel.cs" />
     <Compile Include="Assets\Mirza Beig\Particle Systems\Ultimate VFX\2 - Expansions\XP - TITLES\Scripts\DemoManager_XPTitles.cs" />
     <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\AnimatedLight.cs" />
     <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\DestroyAfterTime.cs" />
@@ -142,6 +137,7 @@
     <Compile Include="Assets\Models\ActionAttribute.cs" />
     <Compile Include="Assets\Models\Attribute.cs" />
     <Compile Include="Assets\Models\Effect.cs" />
+    <Compile Include="Assets\Models\MaskAttribute.cs" />
     <Compile Include="Assets\Models\OptionsAttribute.cs" />
     <Compile Include="Assets\Models\SliderAttribute.cs" />
     <Compile Include="Assets\Models\ToggleAttribute.cs" />
@@ -197,7 +193,12 @@
     <Compile Include="Assets\Recording\VideoProgressBar.cs" />
     <Compile Include="Assets\Shaders\Items\BarsMenuItem.cs" />
     <Compile Include="Assets\Shaders\Items\DistortionMenuItem.cs" />
+    <Compile Include="Assets\Shaders\Items\WaterMenuItem.cs" />
     <Compile Include="Assets\Shaders\Items\MistMenuItem.cs" />
+    <Compile Include="Assets\Shaders\Mask\MaskImages.cs" />
+    <Compile Include="Assets\Shaders\Mask\MaskItem.cs" />
+    <Compile Include="Assets\Shaders\Mask\MaskList.cs" />
+    <Compile Include="Assets\Shaders\Mask\MaskPanel.cs" />
     <Compile Include="Assets\Shaders\Misc\PaintScript.cs" />
     <Compile Include="Assets\Shaders\Misc\ShaderEffect.cs" />
     <Compile Include="Assets\UI\Attribute\AttributesMenu.cs" />
@@ -205,9 +206,9 @@
     <Compile Include="Assets\UI\Attribute\ImageProperties.cs" />
     <Compile Include="Assets\UI\Attribute\MenuItems\ActionMenuItem.cs" />
     <Compile Include="Assets\UI\Attribute\MenuItems\AttributeMenuItem.cs" />
+    <Compile Include="Assets\UI\Attribute\MenuItems\MaskMenuItem.cs" />
     <Compile Include="Assets\UI\Attribute\MenuItems\OptionsMenuItem.cs" />
     <Compile Include="Assets\UI\Attribute\MenuItems\SliderMenuItem.cs" />
-    <Compile Include="Assets\UI\Attribute\MenuItems\MaskMenuItem.cs" />
     <Compile Include="Assets\UI\Attribute\MenuItems\ToggleMenuItem.cs" />
     <Compile Include="Assets\UI\Effects\EffectContentContainer.cs" />
     <Compile Include="Assets\UI\Effects\EffectOption.cs" />
@@ -219,6 +220,7 @@
     <Compile Include="Assets\UI\FileBrowser\StandaloneFileBrowserMetro.cs" />
     <Compile Include="Assets\UI\FileBrowser\StandaloneFileBrowserWindows.cs" />
     <Compile Include="Assets\UI\General\ActiveParticleList.cs" />
+    <Compile Include="Assets\UI\General\CameraScaling.cs" />
     <Compile Include="Assets\UI\General\DebugInput.cs" />
     <Compile Include="Assets\UI\General\LightPlane.cs" />
     <Compile Include="Assets\UI\General\ParticleList.cs" />
@@ -257,6 +259,7 @@
     <None Include="Assets\Shaders\Bars.shader" />
     <None Include="Assets\Shaders\Distortion.shader" />
     <None Include="Assets\Shaders\Movement.shader" />
+    <None Include="Assets\Shaders\Water.shader" />
     <None Include="Assets\Shaders\Paint.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

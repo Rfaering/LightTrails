@@ -17,7 +17,7 @@ public class RecorderMenuItem : MenuItem
 
     public string SelectedSeconds = Time10Secs;
     public FfmpegWrapper.OutputFormat SelectedOutput = FfmpegWrapper.OutputFormat.AVI;
-    public FfmpegWrapper.Fps SelectedFrameRate = FfmpegWrapper.Fps.fps24;
+    public FfmpegWrapper.Fps SelectedFrameRate = FfmpegWrapper.Fps.fps25;
 
     public Record _record;
 

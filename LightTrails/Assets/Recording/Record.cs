@@ -129,7 +129,7 @@ public partial class Record : MonoBehaviour
 
         switch (fps)
         {
-            case Fps.fps24:
+            case Fps.fps25:
                 TimeBetweenFrames = 1.0f / 25.0f;
                 break;
             case Fps.fps48:

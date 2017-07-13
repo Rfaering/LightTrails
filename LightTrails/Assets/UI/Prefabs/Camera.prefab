@@ -75,8 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0fdf686c5040c4685e42259199842a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Selected: 0
-  SelectedSeconds: 5 seconds
+  SelectedSeconds: 10 seconds
   SelectedOutput: 1
   SelectedFrameRate: 0
   _record: {fileID: 0}

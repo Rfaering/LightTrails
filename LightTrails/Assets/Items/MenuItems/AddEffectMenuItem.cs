@@ -8,7 +8,7 @@ public class AddEffectMenuItem : MonoBehaviour, IPointerClickHandler
 {
     private Record recorder;
 
-    private bool IsDisabled { get { return recorder.Recording; } }
+    private bool IsDisabled { get { return recorder.ActivelyRecording; } }
 
     public Color DisabledColor = new Color(0.8f, 0.8f, 0.8f);
     public Color NormalColor = new Color(1.0f, 1.0f, 1.0f);

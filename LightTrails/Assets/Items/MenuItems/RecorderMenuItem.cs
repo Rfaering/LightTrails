@@ -31,7 +31,7 @@ public class RecorderMenuItem : MenuItem
            {
                Name = "Begin",
                Action = () => { StartRecording(); },
-               IsEnabled = () => !_record.Recording
+               IsEnabled = () => !_record.ActivelyRecording
            },
            new OptionsAttribute<FfmpegWrapper.OutputFormat>()
            {
@@ -42,7 +42,7 @@ public class RecorderMenuItem : MenuItem
                    AttributeMenuItem.RefreshButtonEnabledState();
                },
                SpecificSelectedValue = SelectedOutput,
-               IsEnabled = () => !_record.Recording
+               IsEnabled = () => !_record.ActivelyRecording
            },
            new OptionsAttribute<FfmpegWrapper.Fps>()
            {
@@ -53,7 +53,7 @@ public class RecorderMenuItem : MenuItem
                    AttributeMenuItem.RefreshButtonEnabledState();
                },
                SpecificSelectedValue = SelectedFrameRate,
-               IsEnabled = () => !_record.Recording
+               IsEnabled = () => !_record.ActivelyRecording
            },
            new OptionsAttribute()
            {
@@ -62,7 +62,7 @@ public class RecorderMenuItem : MenuItem
                { Time10Secs, Time20Secs, Time30Secs, Time60Secs },
                SelectedValue = SelectedSeconds,
                CallBack = newSelection => { SelectedSeconds = newSelection; },
-               IsEnabled = () => !_record.Recording
+               IsEnabled = () => !_record.ActivelyRecording
            },
 
            new ActionAttribute()
@@ -90,6 +90,18 @@ public class RecorderMenuItem : MenuItem
         {
             SetSaveState(Project.CurrentModel.Items.Recorder);
         }
+    }
+
+    public override void HasBeenSelected()
+    {
+        FindObjectOfType<Record>().PrepareRecordMode(GetSelectedRecordingTime());
+        base.HasBeenSelected();
+    }
+
+    public override void HasBeenUnSelected()
+    {
+        FindObjectOfType<Record>().StopRecordingMode();
+        base.HasBeenUnSelected();
     }
 
     public int GetSelectedRecordingTime()
@@ -162,6 +174,6 @@ public class RecorderMenuItem : MenuItem
 
     private bool FileOpenEnabled(string file)
     {
-        return !_record.Recording && File.Exists(VideoFileName());
+        return !_record.ActivelyRecording && File.Exists(VideoFileName());
     }
 }

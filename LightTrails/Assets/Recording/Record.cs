@@ -6,7 +6,8 @@ using System.Collections.Generic;
 
 public partial class Record : MonoBehaviour
 {
-    public bool Recording = false;
+    public bool ActivelyRecording = false;
+    public bool RecordMode = false;
 
     public float TimeBetweenFrames = 1.0f / 25.0f;
 
@@ -30,7 +31,7 @@ public partial class Record : MonoBehaviour
 
     private void OnPreRender()
     {
-        if (!Recording)
+        if (!ActivelyRecording)
         {
             return;
         }
@@ -38,7 +39,7 @@ public partial class Record : MonoBehaviour
 
     void OnPostRender()
     {
-        if (!Recording)
+        if (!ActivelyRecording)
         {
             return;
         }
@@ -53,19 +54,13 @@ public partial class Record : MonoBehaviour
             ElapsedVideoTime += TimeBetweenFrames;
             foreach (var ps in RecordedEffects)
             {
-                ps.Progress(TimeBetweenFrames);
+                ps.Progress(ElapsedVideoTime);
             }
         }
 
         if (ElapsedVideoTime > RecordingTime)
         {
             StopRecording();
-            foreach (var ps in RecordedEffects)
-            {
-                ps.Destroy();
-            }
-
-            RecordedEffects.Clear();
             return;
         }
 
@@ -86,13 +81,33 @@ public partial class Record : MonoBehaviour
         Destroy(lOut);
     }
 
+    public void StopRecordingMode()
+    {
+        if (!RecordMode)
+        {
+            return;
+        }
+
+        foreach (var ps in RecordedEffects)
+        {
+            ps.Destroy();
+        }
+
+        RecordedEffects.Clear();
+        RecordMode = false;
+    }
+
     void Update()
     {
-        if (Recording)
+        if (RecordMode)
         {
             var videoProgressbar = ProgressBar.GetComponent<VideoProgressBar>();
             videoProgressbar.Show();
-            videoProgressbar.SetProgress((ElapsedVideoTime / RecordingTime));
+
+            if (ActivelyRecording)
+            {
+                videoProgressbar.SetProgress((ElapsedVideoTime / RecordingTime));
+            }
         }
         else
         {
@@ -100,9 +115,13 @@ public partial class Record : MonoBehaviour
         }
     }
 
-    public void StartRecording(int recordingTime, OutputFormat format)
+    public void PrepareRecordMode(int recordingTime)
     {
-        Recording = true;
+        if (RecordMode)
+        {
+            StopRecordingMode();
+        }
+
         FirstFrame = true;
         ElapsedVideoTime = 0;
         RecordingTime = recordingTime;
@@ -115,7 +134,6 @@ public partial class Record : MonoBehaviour
                                     .GetComponentsInChildren<ParticleSystem>()
                                     .Where(x => x.transform.parent == activeParticleList.transform);
 
-
         var particleEffects = allParticleSystems.Select(ps => new RecordedParticleSystem(ps, RecordingTime)).ToArray();
 
         var shaderEffects = FindObjectsOfType<ShaderEffect>()
@@ -124,7 +142,18 @@ public partial class Record : MonoBehaviour
         RecordedEffects.AddRange(particleEffects);
         RecordedEffects.AddRange(shaderEffects);
 
+        RecordMode = true;
+    }
+
+    public void StartRecording(int recordingTime, OutputFormat format)
+    {
+        PrepareRecordMode(recordingTime);
+
+        ActivelyRecording = true;
+
+        var recorderMenuItem = FindObjectOfType<RecorderMenuItem>();
         var videoFileName = recorderMenuItem.VideoFileName();
+
         var fps = recorderMenuItem.SelectedFrameRate;
 
         switch (fps)
@@ -158,7 +187,7 @@ public partial class Record : MonoBehaviour
     public void StopRecording()
     {
         ElapsedVideoTime = 0;
-        Recording = false;
+        ActivelyRecording = false;
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR
         Recorder.Close();
 #endif
@@ -172,6 +201,15 @@ public partial class Record : MonoBehaviour
         Recorder.Close();
 #endif
         AttributeMenuItem.RefreshButtonEnabledState();
+    }
+
+    internal void SetPercentage(float value)
+    {
+        ElapsedVideoTime = RecordingTime * value;
+        foreach (var ps in RecordedEffects)
+        {
+            ps.Progress(ElapsedVideoTime);
+        }
     }
 }
 

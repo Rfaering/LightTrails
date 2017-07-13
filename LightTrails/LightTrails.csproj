@@ -191,10 +191,11 @@
     <Compile Include="Assets\Recording\RecordedShader.cs" />
     <Compile Include="Assets\Recording\Utils.cs" />
     <Compile Include="Assets\Recording\VideoProgressBar.cs" />
+    <Compile Include="Assets\SetRecorderTimer.cs" />
     <Compile Include="Assets\Shaders\Items\BarsMenuItem.cs" />
     <Compile Include="Assets\Shaders\Items\DistortionMenuItem.cs" />
-    <Compile Include="Assets\Shaders\Items\WaterMenuItem.cs" />
     <Compile Include="Assets\Shaders\Items\MistMenuItem.cs" />
+    <Compile Include="Assets\Shaders\Items\WaterMenuItem.cs" />
     <Compile Include="Assets\Shaders\Mask\MaskImages.cs" />
     <Compile Include="Assets\Shaders\Mask\MaskItem.cs" />
     <Compile Include="Assets\Shaders\Mask\MaskList.cs" />
@@ -258,9 +259,11 @@
     <None Include="Assets\Mirza Beig\Shaders\Particles\Unmultiply\Unmultiply-AlphaFromLuminance.shader" />
     <None Include="Assets\Shaders\Bars.shader" />
     <None Include="Assets\Shaders\Distortion.shader" />
+    <None Include="Assets\Shaders\Wave.shader" />
     <None Include="Assets\Shaders\Movement.shader" />
-    <None Include="Assets\Shaders\Water.shader" />
     <None Include="Assets\Shaders\Paint.shader" />
+    <None Include="Assets\Shaders\Grid.shader" />
+    <None Include="Assets\Shaders\Water.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -5,7 +5,7 @@ using System.Text;
 
 public interface IRecordedEffect
 {
-    void Progress(float deltaTime);
+    void Progress(float totalTime);
     void Destroy();
 }
 

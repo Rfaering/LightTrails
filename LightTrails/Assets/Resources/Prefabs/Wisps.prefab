@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7801df88b6a98cd4893ec52b829b02bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsLooping: 1
+  IsLooping: 0
 --- !u!114 &114404104698971762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2291,7 +2291,7 @@ ParticleSystem:
     radiusScale: 1
   SubModule:
     serializedVersion: 2
-    enabled: 1
+    enabled: 0
     subEmitters:
     - emitter: {fileID: 0}
       type: 0

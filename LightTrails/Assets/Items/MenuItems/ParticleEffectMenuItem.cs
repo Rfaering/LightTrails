@@ -31,6 +31,8 @@ public class ParticleEffectMenuItem : EffectMenuItem
         var draggableSystem = Resources.FindObjectsOfTypeAll<DraggableParticleSystem>().First();
         draggableSystem.ConnectEffect(assosicatedEffect);
         draggableSystem.gameObject.SetActive(true);
+
+        base.HasBeenSelected();
     }
 
     public override void SetEffectSaveState(StoredEffectItem state)

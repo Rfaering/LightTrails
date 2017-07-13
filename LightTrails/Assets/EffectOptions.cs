@@ -11,7 +11,7 @@ public class EffectOptions
           Effect.Create("Mist", Effect.EffectKind.Shader, typeof(MistMenuItem)),
           Effect.Create("SpeedLines", Effect.EffectKind.Shader),
           Effect.Create("Hay", Effect.EffectKind.Shader),
-          Effect.Create("Wisps",Effect.EffectKind.Particle, typeof(WispMenuItem), loop: true),
+          Effect.Create("Wisps",Effect.EffectKind.Particle, typeof(WispMenuItem), loop: false),
           Effect.Create("Rain",Effect.EffectKind.Particle),
           Effect.Create("SmallFire", Effect.EffectKind.Particle, typeof(SmallFireMenuItem), loop: true),
           Effect.Create("Trails", Effect.EffectKind.Particle, typeof(TrailsMenuItem)),

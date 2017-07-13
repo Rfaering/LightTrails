@@ -7,13 +7,13 @@ using UnityEngine.UI;
 
 public class MenuItem : MonoBehaviour, IPointerClickHandler
 {
-    public bool Selected;
+    public bool Selected { get; private set; }
 
     private Color SelectedColor = new Color(0.8f, 1.0f, 0.8f);
     private Color DisabledColor = new Color(0.8f, 0.8f, 0.8f);
     private Color UnSelectedColor = Color.white;
 
-    private bool IsDisabled { get { return FindObjectOfType<Record>().Recording; } }
+    private bool IsDisabled { get { return FindObjectOfType<Record>().ActivelyRecording; } }
 
     public Attribute[] Attributes;
 
@@ -51,7 +51,12 @@ public class MenuItem : MonoBehaviour, IPointerClickHandler
 
     public virtual void HasBeenSelected()
     {
+        Selected = true;
+    }
 
+    public virtual void HasBeenUnSelected()
+    {
+        Selected = false;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -67,7 +72,6 @@ public class MenuItem : MonoBehaviour, IPointerClickHandler
         }
 
         FindObjectOfType<ItemsMenu>().ItemSelected(this);
-        HasBeenSelected();
     }
 
     // Update is called once per frame

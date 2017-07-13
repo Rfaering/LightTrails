@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Water
-  m_Shader: {fileID: 4800000, guid: fb0cfbed9d9877b48ad1aa3aa2b37a1c, type: 3}
+  m_Shader: {fileID: 4800000, guid: d5f19417e4c1a6f468e29e405e5b2eb0, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -106,7 +106,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _InputTime: 11.891082
+    - _InputTime: 1.6894512
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -118,7 +118,7 @@ Material:
     - _Speed: 2
     - _SrcBlend: 1
     - _UVSec: 0
-    - _WaterDistortion: 1
+    - _WaterDistortion: 0
     - _WaveScale: 0.063
     - _ZWrite: 1
     - _Zoom: 1

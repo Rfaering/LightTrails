@@ -96,10 +96,14 @@ public class ItemsMenu : MonoBehaviour
 
         foreach (var item in GetComponentsInChildren<MenuItem>())
         {
-            item.Selected = false;
+            if (item != element)
+            {
+                item.HasBeenUnSelected();
+            }
+
         }
 
-        element.Selected = true;
+        element.HasBeenSelected();
 
         FindObjectOfType<AttributesMenu>().CreateProperties(element.Attributes);
 

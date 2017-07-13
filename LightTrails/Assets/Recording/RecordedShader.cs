@@ -22,9 +22,9 @@ public partial class Record : MonoBehaviour
             ElapsedTime = 0;
         }
 
-        public void Progress(float deltaTime)
+        public void Progress(float newElapsedTime)
         {
-            ElapsedTime += deltaTime;
+            ElapsedTime = newElapsedTime;
             Material.SetFloat("_InputTime", ElapsedTime);
         }
 

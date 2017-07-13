@@ -12,6 +12,22 @@ public class ColorManipulation : MonoBehaviour
     public Gradient[] trailColor = new Gradient[0];
     public int trailColorIndex = -1;
 
+    public bool FadeInAndOut = true;
+
+    void Start()
+    {
+        foreach (var item in colors)
+        {
+            item.alphaKeys = new GradientAlphaKey[]
+            {
+                new GradientAlphaKey(0, 0),
+                new GradientAlphaKey(1, 0.10f),
+                new GradientAlphaKey(1, 0.90f),
+                new GradientAlphaKey(0, 1)
+            };
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

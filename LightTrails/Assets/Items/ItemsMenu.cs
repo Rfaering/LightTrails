@@ -83,9 +83,13 @@ public class ItemsMenu : MonoBehaviour
         }
 
         newGameObject.name = effect.Name;
-        newGameObject.GetComponent<EffectMenuItem>().Initialize(effect);
+
+        effectMenuItem.Initialize(effect);
         addEffectItem.SetParent(transform);
-        newGameObject.GetComponent<EffectMenuItem>().SelectEffect();
+        effectMenuItem.SelectEffect();
+
+        var recorder = FindObjectOfType<Record>();
+        recorder.Playing = true;
 
         return effectMenuItem;
     }

@@ -174,10 +174,15 @@
     <None Include="Assets\Mirza Beig\Shaders\Particles\No Fog\NoFog-Alpha.shader" />
     <None Include="Assets\Mirza Beig\Shaders\Particles\Unmultiply\Unmultiply-AlphaFromLuminance.shader" />
     <None Include="Assets\Shaders\Bars.shader" />
+    <None Include="Assets\Shaders\Basic.shader" />
+    <None Include="Assets\Shaders\Bubbles.shader" />
     <None Include="Assets\Shaders\Distortion.shader" />
     <None Include="Assets\Shaders\Grid.shader" />
     <None Include="Assets\Shaders\Movement.shader" />
     <None Include="Assets\Shaders\Paint.shader" />
+    <None Include="Assets\Shaders\Transition.shader" />
+    <None Include="Assets\Shaders\Vignetting.shader" />
+    <None Include="Assets\Shaders\Voronoi.shader" />
     <None Include="Assets\Shaders\Water.shader" />
     <None Include="Assets\Shaders\Wave.shader" />
   </ItemGroup>

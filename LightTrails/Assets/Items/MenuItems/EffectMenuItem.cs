@@ -52,6 +52,9 @@ public class EffectMenuItem : MenuItem
 
     public virtual void Initialize(Effect effect)
     {
+        var record = FindObjectOfType<Record>();
+        assosicatedEffect.GetComponent<RunningEffect>()
+            .Initialize(record.RecordingTime);
     }
 
     internal void SetRotation(float value)

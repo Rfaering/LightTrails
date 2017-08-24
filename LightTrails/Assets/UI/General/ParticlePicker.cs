@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class ParticlePicker : MonoBehaviour
 {
-    public List<ShowCaseScript> ParticleSystems;
+    public List<ParticleEffect> ParticleSystems;
     private Dropdown dropDown;
-    private ShowCaseScript _lastSelection;
+    private ParticleEffect _lastSelection;
 
     // Use this for initialization
     void Start()
     {
         var particleList = FindObjectOfType<ParticleList>();
-        var list = particleList.GetComponentsInChildren<ShowCaseScript>(true);
+        var list = particleList.GetComponentsInChildren<ParticleEffect>(true);
         ParticleSystems.AddRange(list);
 
         dropDown = GetComponent<Dropdown>();
@@ -37,7 +37,7 @@ public class ParticlePicker : MonoBehaviour
         _lastSelection = newSelection;
     }
 
-    private Dropdown.OptionData MapToOption(ShowCaseScript system)
+    private Dropdown.OptionData MapToOption(ParticleEffect system)
     {
         return new Dropdown.OptionData()
         {

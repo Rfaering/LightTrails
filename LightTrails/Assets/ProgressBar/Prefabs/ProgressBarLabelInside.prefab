@@ -61,15 +61,13 @@ GameObject:
   - component: {fileID: 22449070}
   - component: {fileID: 22249070}
   - component: {fileID: 11449068}
-  - component: {fileID: 114946258218846768}
-  - component: {fileID: 114134410950099966}
   m_Layer: 5
   m_Name: ProgressBarLabelInside
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &11449062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,7 +177,7 @@ MonoBehaviour:
   m_Sprite: {fileID: 21300000, guid: 72ae3e05650b1954e81bbd76050fedeb, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
-  m_FillCenter: 1
+  m_FillCenter: 0
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
@@ -294,27 +292,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 149070}
   m_IsPrefabParent: 1
---- !u!114 &114134410950099966
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75cf7bf4be34bda4e85785c207695c3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FillRect: {fileID: 22449068}
-  m_AttachedText: {fileID: 11449064}
---- !u!114 &114946258218846768
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2a81be30b366244ba6ecc9a2448695f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

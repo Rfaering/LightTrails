@@ -1,32 +1,29 @@
 ﻿using FfmpegWrapper;
 using UnityEngine;
-using System.Linq;
 using System.Collections;
-using System.Collections.Generic;
 
 public partial class Record : MonoBehaviour
 {
     public bool ActivelyRecording = false;
-    public bool RecordMode = false;
+    public bool Playing = false;
+    public bool ShowProgressBar = true;
 
     public float TimeBetweenFrames = 1.0f / 25.0f;
 
     public float ElapsedVideoTime = 0;
-    private float RecordingTime = 10;
-
-    public bool FirstFrame = false;
+    public float RecordingTime = 10;
 
     public GameObject ProgressBar;
+    private SetRecorderTimer _recordTimer;
 
     public int Frame = 0;
-
-    public List<IRecordedEffect> RecordedEffects = new List<IRecordedEffect>();
 
     void Start()
     {
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR
         Recorder.Close();
 #endif
+        _recordTimer = FindObjectOfType<SetRecorderTimer>();
     }
 
     private void OnPreRender()
@@ -39,119 +36,96 @@ public partial class Record : MonoBehaviour
 
     void OnPostRender()
     {
-        if (!ActivelyRecording)
+        if (!Playing)
         {
             return;
-        }
-
-        if (FirstFrame)
-        {
-            Frame = 0;
-            FirstFrame = false;
-        }
-        else
-        {
-            ElapsedVideoTime += TimeBetweenFrames;
-            foreach (var ps in RecordedEffects)
-            {
-                ps.Progress(ElapsedVideoTime);
-            }
         }
 
         if (ElapsedVideoTime > RecordingTime)
         {
-            StopRecording();
+            ElapsedVideoTime = 0;
+
+            if (ActivelyRecording)
+            {
+                StopRecording();
+            }
             return;
         }
 
-        var imagePicker = FindObjectOfType<ImageAreaPicker>();
-        Rect rect = imagePicker.GetRect();
-        int width = (int)rect.width;
-        int height = (int)rect.height;
+        if (ActivelyRecording)
+        {
+            var imagePicker = FindObjectOfType<ImageAreaPicker>();
+            Rect rect = imagePicker.GetRect();
+            int width = (int)rect.width;
+            int height = (int)rect.height;
 
-        Texture2D lOut = new Texture2D(width, height, TextureFormat.ARGB32, false);
-        lOut.ReadPixels(rect, 0, 0);
+            Texture2D lOut = new Texture2D(width, height, TextureFormat.ARGB32, false);
+            lOut.ReadPixels(rect, 0, 0);
 
-        Frame++;
-        var bytes = lOut.GetRawTextureData();
+            Frame++;
+            var bytes = lOut.GetRawTextureData();
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR
-        Recorder.SetFrameThroughBitMap(bytes, width, height);
+            Recorder.SetFrameThroughBitMap(bytes, width, height);
 #endif
-        Destroy(lOut);
-    }
-
-    public void StopRecordingMode()
-    {
-        if (!RecordMode)
-        {
-            return;
+            Destroy(lOut);
         }
-
-        foreach (var ps in RecordedEffects)
-        {
-            ps.Destroy();
-        }
-
-        RecordedEffects.Clear();
-        RecordMode = false;
     }
 
     void Update()
     {
-        if (RecordMode)
+        if (ShowProgressBar)
         {
-            var videoProgressbar = ProgressBar.GetComponent<VideoProgressBar>();
-            videoProgressbar.Show();
+            _recordTimer.Show();
 
-            if (ActivelyRecording)
+            if (Playing)
             {
-                videoProgressbar.SetProgress((ElapsedVideoTime / RecordingTime));
+                if (ActivelyRecording)
+                {
+                    ElapsedVideoTime += TimeBetweenFrames;
+                }
+                else
+                {
+                    ElapsedVideoTime += Time.deltaTime;
+                }
+
+                _recordTimer.SetProgress(ElapsedVideoTime / RecordingTime);
             }
         }
         else
         {
-            ProgressBar.GetComponent<VideoProgressBar>().Hide();
+            _recordTimer.Hide();
         }
     }
 
-    public void PrepareRecordMode(int recordingTime)
+    public void ResetRecordTime(int recordingTime)
     {
-        if (RecordMode)
+        if (Playing)
         {
-            StopRecordingMode();
+            //StopRecordingMode();
         }
 
-        FirstFrame = true;
         ElapsedVideoTime = 0;
         RecordingTime = recordingTime;
 
-        var recorderMenuItem = FindObjectOfType<RecorderMenuItem>();
-
-        var activeParticleList = FindObjectOfType<ActiveParticleList>().gameObject;
-
-        var allParticleSystems = activeParticleList
-                                    .GetComponentsInChildren<ParticleSystem>()
-                                    .Where(x => x.transform.parent == activeParticleList.transform);
-
-        var particleEffects = allParticleSystems.Select(ps => new RecordedParticleSystem(ps, RecordingTime)).ToArray();
-
-        var shaderEffects = FindObjectsOfType<ShaderEffect>()
-            .Select(shaderEffect => new RecordedShader(shaderEffect, RecordingTime)).ToArray();
-
-        RecordedEffects.AddRange(particleEffects);
-        RecordedEffects.AddRange(shaderEffects);
-
-        RecordMode = true;
+        foreach (var item in FindObjectsOfType<RunningEffect>())
+        {
+            item.Length = RecordingTime;
+            item.Initialize(RecordingTime);
+        }
     }
 
-    public void StartRecording(int recordingTime, OutputFormat format)
+    public void StartRecording()
     {
-        PrepareRecordMode(recordingTime);
+        var recorderMenuItem = FindObjectOfType<RecorderMenuItem>();
+        var recordingTime = recorderMenuItem.GetSelectedRecordingTime();
+        var format = recorderMenuItem.SelectedOutput;
+
+        ResetRecordTime(recordingTime);
 
         ActivelyRecording = true;
+        Playing = true;
 
-        var recorderMenuItem = FindObjectOfType<RecorderMenuItem>();
         var videoFileName = recorderMenuItem.VideoFileName();
 
         var fps = recorderMenuItem.SelectedFrameRate;
@@ -206,9 +180,10 @@ public partial class Record : MonoBehaviour
     internal void SetPercentage(float value)
     {
         ElapsedVideoTime = RecordingTime * value;
-        foreach (var ps in RecordedEffects)
+
+        foreach (var item in FindObjectsOfType<RunningEffect>())
         {
-            ps.Progress(ElapsedVideoTime);
+            item.Progress(ElapsedVideoTime);
         }
     }
 }

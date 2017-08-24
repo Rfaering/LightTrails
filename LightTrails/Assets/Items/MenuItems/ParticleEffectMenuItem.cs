@@ -24,6 +24,8 @@ public class ParticleEffectMenuItem : EffectMenuItem
         createdEffect.gameObject.SetActive(true);
 
         assosicatedEffect = createdEffect.gameObject;
+
+        base.Initialize(effect);
     }
 
     public override void HasBeenSelected()

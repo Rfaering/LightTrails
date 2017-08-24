@@ -27,12 +27,6 @@ public class RecorderMenuItem : MenuItem
 
         var attributes = new List<Assets.Models.Attribute>()
         {
-           new ActionAttribute()
-           {
-               Name = "Begin",
-               Action = () => { StartRecording(); },
-               IsEnabled = () => !_record.ActivelyRecording
-           },
            new OptionsAttribute<FfmpegWrapper.OutputFormat>()
            {
                Name = "Output Type",
@@ -61,7 +55,10 @@ public class RecorderMenuItem : MenuItem
                Options = new List<string>
                { Time10Secs, Time20Secs, Time30Secs, Time60Secs },
                SelectedValue = SelectedSeconds,
-               CallBack = newSelection => { SelectedSeconds = newSelection; },
+               CallBack = newSelection => {
+                   SelectedSeconds = newSelection;
+                   FindObjectOfType<Record>().ResetRecordTime(GetSelectedRecordingTime());
+               },
                IsEnabled = () => !_record.ActivelyRecording
            },
 
@@ -94,13 +91,13 @@ public class RecorderMenuItem : MenuItem
 
     public override void HasBeenSelected()
     {
-        FindObjectOfType<Record>().PrepareRecordMode(GetSelectedRecordingTime());
+        //FindObjectOfType<Record>().ResetRecordTime(GetSelectedRecordingTime());
         base.HasBeenSelected();
     }
 
     public override void HasBeenUnSelected()
     {
-        FindObjectOfType<Record>().StopRecordingMode();
+        //FindObjectOfType<Record>().StopRecordingMode();
         base.HasBeenUnSelected();
     }
 
@@ -118,12 +115,6 @@ public class RecorderMenuItem : MenuItem
         }
 
         return 0;
-    }
-
-    public void StartRecording()
-    {
-        int value = GetSelectedRecordingTime();
-        FindObjectOfType<Record>().StartRecording(value, SelectedOutput);
     }
 
     public void OpenFile(string filePath)

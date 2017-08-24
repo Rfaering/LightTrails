@@ -17,6 +17,8 @@ public class ShaderEffectMenuItem : EffectMenuItem
         assosicatedEffect = gameObject;
 
         Material = assosicatedEffect.GetComponent<RawImage>().material;
+
+        base.Initialize(effect);
     }
 
 

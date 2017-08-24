@@ -5,6 +5,7 @@ public class EffectOptionsOverlay : MonoBehaviour, IPointerClickHandler
 {
     internal void Close()
     {
+        FindObjectOfType<Record>().ShowProgressBar = true;
         gameObject.SetActive(false);
     }
 
@@ -18,6 +19,7 @@ public class EffectOptionsOverlay : MonoBehaviour, IPointerClickHandler
 
     internal void Open()
     {
+        FindObjectOfType<Record>().ShowProgressBar = false;
         MaskPanel.Close();
         gameObject.SetActive(true);
     }

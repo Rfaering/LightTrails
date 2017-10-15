@@ -9,26 +9,37 @@ namespace Assets.Projects.Scripts
         public StoredItems()
         {
             Recorder = new StoredItem();
-            Image = new StoredItem();
-            Effects = new StoredEffectItem[0];
+            Images = new StoredImageItem[0];
+            Effects = new StoredParticleItem[0];
         }
 
         public StoredItem Recorder;
-        public StoredItem Image;
-        public StoredEffectItem[] Effects;
+        public StoredImageItem[] Images;
+        public StoredParticleItem[] Effects;
     }
 
     [Serializable]
     public class StoredItem
     {
-
         public AttributesValues Attributes;
     }
 
     [Serializable]
-    public class StoredEffectItem : StoredItem
+    public class StoredIndexedItem : StoredItem
     {
-        // Position is optional
+        public int Index;
+    }
+
+    [Serializable]
+    public class StoredImageItem : StoredIndexedItem
+    {
+        public string ImagePath;
+        public string Shader;
+    }
+
+    [Serializable]
+    public class StoredParticleItem : StoredIndexedItem
+    {
         public float[] Position;
         public string Name;
     }

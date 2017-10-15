@@ -1,26 +1,33 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class ShaderEffect : MonoBehaviour
+public class ShaderEffect : RunningEffect
 {
     public Material Material;
-    public bool TimeRunning;
 
-    // Use this for initialization
-    void Start()
+    private void Update()
     {
         Material = GetComponent<RawImage>().material;
-        TimeRunning = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Initialize(float newLength)
     {
-        if (TimeRunning)
+        Length = newLength;
+        ElapsedTime = 0;
+
+        if (Material != null)
         {
-            var inputTime = Material.GetFloat("_InputTime");
-            inputTime += Time.deltaTime;
-            Material.SetFloat("_InputTime", inputTime);
+            Material.SetFloat("_InputTime", 0);
+        }
+    }
+
+    public override void Progress(float newElapsedTime)
+    {
+        ElapsedTime = newElapsedTime;
+
+        if (Material != null)
+        {
+            Material.SetFloat("_InputTime", ElapsedTime);
         }
     }
 }

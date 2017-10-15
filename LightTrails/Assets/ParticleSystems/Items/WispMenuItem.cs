@@ -1,14 +1,13 @@
 ﻿using Assets.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
 public class WispMenuItem : ParticleEffectMenuItem
 {
-    public override List<Assets.Models.Attribute> GetAttributes()
+    public override Attribute[] GetAttributes()
     {
         var value = assosicatedEffect.GetComponentInChildren<SystemManipulation>().IntensityValue;
-        List<Assets.Models.Attribute> attribtues = new List<Assets.Models.Attribute>()
+        List<Attribute> attribtues = new List<Attribute>()
         {
             new SliderAttribute()
             {
@@ -21,21 +20,21 @@ public class WispMenuItem : ParticleEffectMenuItem
             new OptionsAttribute()
             {
                 Name = "Color",
-                Options = Enum.GetNames(typeof(WispsEffects.Color)).ToList(),
-                SelectedValue = Enum.GetName(typeof(WispsEffects.Color), WispsEffects.Color.Red),
+                Options = System.Enum.GetNames(typeof(WispsEffects.Color)).ToList(),
+                SelectedValue = System.Enum.GetName(typeof(WispsEffects.Color), WispsEffects.Color.Red),
                 CallBack = ChangeColor
             }
         };
 
         attribtues.AddRange(base.GetAttributes());
 
-        return attribtues;
+        return attribtues.ToArray();
     }
 
     public void ChangeColor(string name)
     {
         var wispSetColor = assosicatedEffect.GetComponentInChildren<WispsEffects>();
-        wispSetColor.color = (WispsEffects.Color)Enum.Parse(typeof(WispsEffects.Color), name);
+        wispSetColor.color = (WispsEffects.Color)System.Enum.Parse(typeof(WispsEffects.Color), name);
     }
 
     public void SetIntensity(float value)

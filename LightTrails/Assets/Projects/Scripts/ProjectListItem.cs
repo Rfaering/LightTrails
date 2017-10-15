@@ -39,16 +39,19 @@ public class ProjectListItem : MonoBehaviour
         _project = project;
         GetComponentInChildren<Text>().text = project.Name;
 
-        var localProjectFile = _project.GetLocalImagePath();
+        var localProjectFile = _project.GetThumbnail();
 
         if (File.Exists(localProjectFile))
         {
             Texture2D tex = new Texture2D(0, 0);
             var bytes = File.ReadAllBytes(localProjectFile);
-            tex.LoadImage(bytes);
-            var rawImage = GetComponentsInChildren<RawImage>().Last();
-            rawImage.texture = tex;
-            rawImage.SizeToBounds(150.0f, 150.0f);
+            if (bytes.Any())
+            {
+                tex.LoadImage(bytes);
+                var rawImage = GetComponentsInChildren<RawImage>().Last();
+                rawImage.texture = tex;
+                rawImage.SizeToBounds(150.0f, 150.0f);
+            }
         }
     }
 

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Assets.Models;
 
-public class MistMenuItem : ShaderEffectMenuItem
+public class MistMenuItem : ShaderAttributes
 {
     public override List<Attribute> GetAttributes()
     {
@@ -18,7 +18,7 @@ public class MistMenuItem : ShaderEffectMenuItem
         };
 
         attributes.AddRange(base.GetAttributes());
-        attributes.SetDefaultMaskValue("Mask08");
+        //attributes.SetDefaultMaskValue("Mask08");
         return attributes;
     }
 }

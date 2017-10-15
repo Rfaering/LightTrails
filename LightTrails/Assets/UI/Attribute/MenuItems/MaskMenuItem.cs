@@ -14,10 +14,15 @@ public class MaskMenuItem : AttributeMenuItem
     internal void Initialize(MaskAttribute maskAttribute)
     {
         _maskPanel = Resources.FindObjectsOfTypeAll<MaskPanel>().FirstOrDefault();
+
+        var maskList = Resources.FindObjectsOfTypeAll<MaskList>().FirstOrDefault();
+        maskList.EnsureLoaded();
+
         _maskAttribute = maskAttribute;
         GetComponentInChildren<Button>().onClick.AddListener(OpenMaskPanel);
 
-        var maskItem = Resources.FindObjectsOfTypeAll<MaskItem>().FirstOrDefault(x => x.Name == _maskAttribute.SelectedValue);
+        var maskItems = Resources.FindObjectsOfTypeAll<MaskItem>();
+        var maskItem = maskItems.FirstOrDefault(x => x.Name == _maskAttribute.SelectedValue);
         maskItem.Select();
 
         EnsureImageIsCorrect();

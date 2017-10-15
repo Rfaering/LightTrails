@@ -173,13 +173,19 @@
     <None Include="Assets\Mirza Beig\Shaders\Particles\No Fog\NoFog-Add.shader" />
     <None Include="Assets\Mirza Beig\Shaders\Particles\No Fog\NoFog-Alpha.shader" />
     <None Include="Assets\Mirza Beig\Shaders\Particles\Unmultiply\Unmultiply-AlphaFromLuminance.shader" />
-    <None Include="Assets\Shaders\Bars.shader" />
-    <None Include="Assets\Shaders\Distortion.shader" />
-    <None Include="Assets\Shaders\Grid.shader" />
-    <None Include="Assets\Shaders\Movement.shader" />
-    <None Include="Assets\Shaders\Paint.shader" />
-    <None Include="Assets\Shaders\Water.shader" />
-    <None Include="Assets\Shaders\Wave.shader" />
+    <None Include="Assets\Shaders\Shaders\Bars.shader" />
+    <None Include="Assets\Shaders\Shaders\Basic.shader" />
+    <None Include="Assets\Shaders\Shaders\Brightness.shader" />
+    <None Include="Assets\Shaders\Shaders\Bubbles.shader" />
+    <None Include="Assets\Shaders\Shaders\Distortion.shader" />
+    <None Include="Assets\Shaders\Shaders\Grid.shader" />
+    <None Include="Assets\Shaders\Shaders\Movement.shader" />
+    <None Include="Assets\Shaders\Shaders\Paint.shader" />
+    <None Include="Assets\Shaders\Shaders\Transition.shader" />
+    <None Include="Assets\Shaders\Shaders\Vignetting.shader" />
+    <None Include="Assets\Shaders\Shaders\Voronoi.shader" />
+    <None Include="Assets\Shaders\Shaders\Water.shader" />
+    <None Include="Assets\Shaders\Shaders\Wave.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

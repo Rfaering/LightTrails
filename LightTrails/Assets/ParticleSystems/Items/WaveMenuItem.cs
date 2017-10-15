@@ -7,7 +7,7 @@ public class WaveMenuItem : ParticleEffectMenuItem
     public enum Color { Orange = 0, Green = 1, Blue = 2, Red = 3 }
     public enum Figures { Blobs = 0, Bubbles = 1, Leafs = 2, Hearts = 3 }
 
-    public override List<Attribute> GetAttributes()
+    public override Attribute[] GetAttributes()
     {
         List<Attribute> attributes = new List<Attribute>()
         {
@@ -56,6 +56,6 @@ public class WaveMenuItem : ParticleEffectMenuItem
 
         attributes.AddRange(base.GetAttributes());
 
-        return attributes;
+        return attributes.ToArray();
     }
 }

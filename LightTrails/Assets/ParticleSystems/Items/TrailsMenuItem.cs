@@ -5,7 +5,7 @@ public class TrailsMenuItem : ParticleEffectMenuItem
 {
     public enum Color { Orange = 0, Green = 1, Blue = 2 }
 
-    public override List<Attribute> GetAttributes()
+    public override Attribute[] GetAttributes()
     {
         var value = assosicatedEffect.GetComponentInChildren<SystemManipulation>().IntensityValue;
         List<Attribute> attributes = new List<Attribute>()
@@ -55,7 +55,7 @@ public class TrailsMenuItem : ParticleEffectMenuItem
 
         attributes.AddRange(base.GetAttributes());
 
-        return attributes;
+        return attributes.ToArray();
     }
 
     public void SetIntensity(float value)

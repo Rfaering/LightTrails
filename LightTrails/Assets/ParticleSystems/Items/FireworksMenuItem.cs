@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class FireworksMenuItem : ParticleEffectMenuItem
 {
-    public override List<Attribute> GetAttributes()
+    public override Attribute[] GetAttributes()
     {
         var fireworksEffect = assosicatedEffect.GetComponent<FireworksEffects>();
         List<Attribute> fireAttributes = new List<Attribute>()
@@ -35,7 +35,7 @@ public class FireworksMenuItem : ParticleEffectMenuItem
 
         fireAttributes.AddRange(base.GetAttributes());
 
-        return fireAttributes;
+        return fireAttributes.ToArray();
     }
 
     private void SetItensity(float value)

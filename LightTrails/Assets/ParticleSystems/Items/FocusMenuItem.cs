@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class FocusMenuItem : ParticleEffectMenuItem
 {
-    public override List<Attribute> GetAttributes()
+    public override Attribute[] GetAttributes()
     {
         var focusEffect = assosicatedEffect.GetComponent<FocusEffect>();
         List<Attribute> fireAttributes = new List<Attribute>()
@@ -20,7 +20,7 @@ public class FocusMenuItem : ParticleEffectMenuItem
 
         fireAttributes.AddRange(base.GetAttributes());
 
-        return fireAttributes;
+        return fireAttributes.ToArray();
     }
 
     public void SetSpeed(float speed)

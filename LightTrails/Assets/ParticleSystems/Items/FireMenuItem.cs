@@ -5,7 +5,7 @@ public class FireMenuItem : ParticleEffectMenuItem
 {
     public enum Color { Red = 0, Green = 1, Blue = 2 }
 
-    public override List<Attribute> GetAttributes()
+    public override Attribute[] GetAttributes()
     {
         List<Attribute> fireAttributes = new List<Attribute>()
         {
@@ -27,7 +27,7 @@ public class FireMenuItem : ParticleEffectMenuItem
 
         fireAttributes.AddRange(base.GetAttributes());
 
-        return fireAttributes;
+        return fireAttributes.ToArray();
     }
 
     public void ChangeColor(Color color)

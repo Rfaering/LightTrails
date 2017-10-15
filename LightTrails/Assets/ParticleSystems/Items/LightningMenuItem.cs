@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Models;
+using System.Collections.Generic;
 
 public class LightningMenuItem : ParticleEffectMenuItem
 {
-    public override List<Assets.Models.Attribute> GetAttributes()
+    public override Attribute[] GetAttributes()
     {
-        List<Assets.Models.Attribute> attribtues = new List<Assets.Models.Attribute>()
+        List<Attribute> attribtues = new List<Assets.Models.Attribute>()
         {
             /*new SliderAttribute()
             {
@@ -26,6 +27,6 @@ public class LightningMenuItem : ParticleEffectMenuItem
 
         attribtues.AddRange(base.GetAttributes());
 
-        return attribtues;
+        return attribtues.ToArray();
     }
 }

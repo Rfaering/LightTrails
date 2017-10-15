@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class HeartsMenuItem : ParticleEffectMenuItem
 {
-    public override List<Attribute> GetAttributes()
+    public override Attribute[] GetAttributes()
     {
         List<Attribute> attribtues = new List<Attribute>()
         {
@@ -27,7 +27,7 @@ public class HeartsMenuItem : ParticleEffectMenuItem
 
         attribtues.AddRange(base.GetAttributes());
 
-        return attribtues;
+        return attribtues.ToArray();
     }
 
     private void SetItensity(float value)

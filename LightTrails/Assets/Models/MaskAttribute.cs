@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Assets.Projects.Scripts;
 
 namespace Assets.Models
 {
@@ -6,7 +7,13 @@ namespace Assets.Models
     {
         public MaskAttribute()
         {
+            Name = "Mask";
             Options = MaskImages.Masks.Select(x => x.name).ToList();
+        }
+
+        public override void SetAttributeValue(AttributeValue value)
+        {
+            CallBack(value.Value as string);
         }
     }
 }

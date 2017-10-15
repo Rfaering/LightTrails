@@ -1,5 +1,6 @@
 ﻿using Assets.Models;
 using Assets.Projects.Scripts;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -7,13 +8,15 @@ public class ItemsMenu : MonoBehaviour
 {
     public GameObject ParticleEffectPrefab;
     public GameObject ShaderEffectPrefab;
+    public GameObject ImagePrefab;
 
     void Start()
     {
-        ItemSelected(FindObjectOfType<RecorderMenuItem>());
         LoadEffects();
 
         MaskPanel.EnsureLoaded();
+
+        SelectFirstItem();
     }
 
     internal void SelectFirstItem()
@@ -26,18 +29,76 @@ public class ItemsMenu : MonoBehaviour
         if (Project.CurrentModel != null)
         {
             var names = EffectOptions.Options.ToDictionary(x => x.Name);
-            foreach (var item in Project.CurrentModel.Items.Effects)
+
+            var storedMenuItems = new List<StoredIndexedItem>();
+            storedMenuItems.AddRange(Project.CurrentModel.Items.Effects);
+            storedMenuItems.AddRange(Project.CurrentModel.Items.Images);
+
+            foreach (var item in storedMenuItems.OrderBy(x => x.Index))
             {
-                if (names.ContainsKey(item.Name))
+                if (item is StoredParticleItem)
                 {
-                    var menuItem = AddEffect(names[item.Name]);
-                    menuItem.SetEffectSaveState(item);
+                    var effectItem = item as StoredParticleItem;
+                    if (names.ContainsKey(effectItem.Name))
+                    {
+                        var menuItem = AddEffect(names[effectItem.Name]);
+                        menuItem.SetEffectSaveState(effectItem);
+                    }
                 }
+
+                if (item is StoredImageItem)
+                {
+                    var imageItem = item as StoredImageItem;
+                    var image = AddImage();
+                    image.ImageProperties.SetImage(imageItem.ImagePath);
+                    image.SetShader(imageItem.Shader);
+                    image.SetSaveState(imageItem);
+                }
+            }
+
+            if (storedMenuItems.Any())
+            {
+                FindObjectOfType<Record>().Playing = true;
             }
         }
     }
 
+    public ImageMenuItem AddImage()
+    {
+        var newGameObject = Instantiate(ImagePrefab);
+        newGameObject.transform.SetParent(transform);
+
+        var image = FindObjectOfType<ImageList>().AddImage();
+        var imageMenuItem = newGameObject.GetComponent<ImageMenuItem>();
+        imageMenuItem.Initialize(image);
+
+        return imageMenuItem;
+    }
+
+    public ImageMenuItem GetSelectedImageMenuItem()
+    {
+        return GetComponentsInChildren<ImageMenuItem>().FirstOrDefault(x => x.Selected);
+    }
+
     internal EffectMenuItem AddEffect(Effect effect)
+    {
+        if (effect.Type == Effect.EffectKind.Particle)
+        {
+            return SetParticleEffect(effect);
+        }
+        else if (effect.Type == Effect.EffectKind.Shader)
+        {
+            var selectedImageMenuItem = GetSelectedImageMenuItem();
+            selectedImageMenuItem.SetShader(effect);
+
+            var recorder = FindObjectOfType<Record>();
+            recorder.Playing = true;
+        }
+
+        return null;
+    }
+
+    private EffectMenuItem SetParticleEffect(Effect effect)
     {
         var addEffectItem = transform.Find("AddEffect");
         addEffectItem.SetParent(addEffectItem.root);
@@ -45,47 +106,26 @@ public class ItemsMenu : MonoBehaviour
         GameObject newGameObject = null;
         EffectMenuItem effectMenuItem = null;
 
-        if (effect.Type == Effect.EffectKind.Particle)
+        newGameObject = Instantiate(ParticleEffectPrefab);
+        newGameObject.transform.SetParent(transform);
+
+        if (effect.MenuItemType != null)
         {
-            newGameObject = Instantiate(ParticleEffectPrefab);
-            newGameObject.transform.SetParent(transform);
-
-            if (effect.MenuItemType != null)
-            {
-                effectMenuItem = newGameObject.AddComponent(effect.MenuItemType) as ParticleEffectMenuItem;
-            }
-            else
-            {
-                effectMenuItem = newGameObject.AddComponent<ParticleEffectMenuItem>();
-            }
-
+            effectMenuItem = newGameObject.AddComponent(effect.MenuItemType) as ParticleEffectMenuItem;
         }
-        else if (effect.Type == Effect.EffectKind.Shader)
+        else
         {
-            var otherShader = GetComponentsInChildren<ShaderEffectMenuItem>().FirstOrDefault();
-            if (otherShader != null)
-            {
-                otherShader.Remove();
-            }
-
-
-            newGameObject = Instantiate(ShaderEffectPrefab);
-            newGameObject.transform.SetParent(transform);
-
-            if (effect.MenuItemType != null)
-            {
-                effectMenuItem = newGameObject.AddComponent(effect.MenuItemType) as ShaderEffectMenuItem;
-            }
-            else
-            {
-                effectMenuItem = newGameObject.AddComponent<ShaderEffectMenuItem>();
-            }
+            effectMenuItem = newGameObject.AddComponent<ParticleEffectMenuItem>();
         }
 
         newGameObject.name = effect.Name;
-        newGameObject.GetComponent<EffectMenuItem>().Initialize(effect);
+
+        effectMenuItem.Initialize(effect);
         addEffectItem.SetParent(transform);
-        newGameObject.GetComponent<EffectMenuItem>().SelectEffect();
+        effectMenuItem.SelectEffect();
+
+        var recorder = FindObjectOfType<Record>();
+        recorder.Playing = true;
 
         return effectMenuItem;
     }
@@ -105,7 +145,7 @@ public class ItemsMenu : MonoBehaviour
 
         element.HasBeenSelected();
 
-        FindObjectOfType<AttributesMenu>().CreateProperties(element.Attributes);
+        FindObjectOfType<AttributesMenu>().CreateProperties(element.GetAttributes());
 
         var draggableSystem = Resources.FindObjectsOfTypeAll<DraggableParticleSystem>().First();
         draggableSystem.gameObject.SetActive(false);

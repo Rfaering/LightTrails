@@ -27,7 +27,7 @@ public class NewProjectDialog : MonoBehaviour, IPointerClickHandler
     internal void Open()
     {
         SetProjectName(string.Empty);
-        GetComponentInChildren<NewProjectImagePicker>().SetDefaultImage();
+        //GetComponentInChildren<NewProjectImagePicker>().SetDefaultImage();
         gameObject.SetActive(true);
     }
 }

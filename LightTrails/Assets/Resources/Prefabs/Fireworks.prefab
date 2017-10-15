@@ -216,7 +216,7 @@ ParticleSystem:
   looping: 1
   prewarm: 0
   playOnAwake: 1
-  autoRandomSeed: 1
+  autoRandomSeed: 0
   startDelay:
     minMaxState: 0
     scalar: 0
@@ -5889,7 +5889,7 @@ ParticleSystem:
   looping: 0
   prewarm: 0
   playOnAwake: 1
-  autoRandomSeed: 1
+  autoRandomSeed: 0
   startDelay:
     minMaxState: 0
     scalar: 0
@@ -5932,7 +5932,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1350849289
+  randomSeed: -836856145
   InitialModule:
     serializedVersion: 3
     enabled: 1

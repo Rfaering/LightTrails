@@ -25,14 +25,29 @@ public class RecorderMenuItem : MenuItem
     {
         _record = FindObjectOfType<Record>();
 
+        if (Project.CurrentModel != null)
+        {
+            SetSaveState(Project.CurrentModel.Items.Recorder);
+        }
+    }
+
+    public override Assets.Models.Attribute[] GetAttributes()
+    {
+        var areaPicker = FindObjectOfType<RecorderAreaPicker>();
+
         var attributes = new List<Assets.Models.Attribute>()
         {
-           new ActionAttribute()
+            new SizeAttribute()
            {
-               Name = "Begin",
-               Action = () => { StartRecording(); },
-               IsEnabled = () => !_record.ActivelyRecording
+               Name = "Recorded Area",
+               X = areaPicker.X,
+               Y = areaPicker.Y,
+               ForceWidth = areaPicker.Width,
+               ForceHeight = areaPicker.Height,
+               SizeChanged = values => { areaPicker.SetSize(values.x, values.y); },
+               OffSetChanged= values => { areaPicker.SetOffSet(values.x, values.y); }
            },
+
            new OptionsAttribute<FfmpegWrapper.OutputFormat>()
            {
                Name = "Output Type",
@@ -61,7 +76,10 @@ public class RecorderMenuItem : MenuItem
                Options = new List<string>
                { Time10Secs, Time20Secs, Time30Secs, Time60Secs },
                SelectedValue = SelectedSeconds,
-               CallBack = newSelection => { SelectedSeconds = newSelection; },
+               CallBack = newSelection => {
+                   SelectedSeconds = newSelection;
+                   FindObjectOfType<Record>().ResetRecordTime(GetSelectedRecordingTime());
+               },
                IsEnabled = () => !_record.ActivelyRecording
            },
 
@@ -83,24 +101,18 @@ public class RecorderMenuItem : MenuItem
                 Action = () => { OpenFile(VideoFileDirectory()); }
             }
     };
-
-        Attributes = attributes.ToArray();
-
-        if (Project.CurrentModel != null)
-        {
-            SetSaveState(Project.CurrentModel.Items.Recorder);
-        }
+        return attributes.ToArray();
     }
 
     public override void HasBeenSelected()
     {
-        FindObjectOfType<Record>().PrepareRecordMode(GetSelectedRecordingTime());
+        //FindObjectOfType<Record>().ResetRecordTime(GetSelectedRecordingTime());
         base.HasBeenSelected();
     }
 
     public override void HasBeenUnSelected()
     {
-        FindObjectOfType<Record>().StopRecordingMode();
+        //FindObjectOfType<Record>().StopRecordingMode();
         base.HasBeenUnSelected();
     }
 
@@ -118,12 +130,6 @@ public class RecorderMenuItem : MenuItem
         }
 
         return 0;
-    }
-
-    public void StartRecording()
-    {
-        int value = GetSelectedRecordingTime();
-        FindObjectOfType<Record>().StartRecording(value, SelectedOutput);
     }
 
     public void OpenFile(string filePath)

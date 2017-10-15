@@ -9,6 +9,7 @@ public class AttributesMenu : MonoBehaviour
     public GameObject ActionPrefab;
     public GameObject TogglePrefab;
     public GameObject MaskPrefab;
+    public GameObject SizePrefab;
 
     // Use this for initialization
     void Start()
@@ -41,6 +42,12 @@ public class AttributesMenu : MonoBehaviour
             {
                 var newMask = Instantiate(MaskPrefab);
                 newMask.GetComponent<MaskMenuItem>().Initialize(attribute as MaskAttribute);
+                newMask.transform.SetParent(transform);
+            }
+            else if (attribute is SizeAttribute)
+            {
+                var newMask = Instantiate(SizePrefab);
+                newMask.GetComponent<SizeMenuItem>().Initialize(attribute as SizeAttribute);
                 newMask.transform.SetParent(transform);
             }
             else if (attribute is OptionsAttribute)

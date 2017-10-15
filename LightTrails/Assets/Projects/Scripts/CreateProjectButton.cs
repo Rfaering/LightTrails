@@ -13,9 +13,9 @@ public class CreateProjectButton : MonoBehaviour
     private void CreateProject()
     {
         var projectDialog = FindObjectOfType<NewProjectDialog>();
-        var newProjectDialog = FindObjectOfType<NewProjectImagePicker>();
+        //var newProjectDialog = FindObjectOfType<NewProjectImagePicker>();
 
-        Project.CreateNew(projectDialog.GetProjectName(), newProjectDialog.selectedPath).Save();
+        Project.CreateNew(projectDialog.GetProjectName(), null).Save();
         FindObjectOfType<ProjectList>().Reload();
         projectDialog.Close();
     }

@@ -4,9 +4,21 @@ public class MaskList : MonoBehaviour
 {
     public GameObject MaskPrefab;
 
+    public bool HasBeenLoaded = false;
+
     // Use this for initialization
-    void Start()
+    void Awake()
     {
+        EnsureLoaded();
+    }
+
+    public void EnsureLoaded()
+    {
+        if (HasBeenLoaded)
+        {
+            return;
+        }
+
         foreach (Transform child in transform)
         {
             DestroyObject(child.gameObject);
@@ -19,5 +31,15 @@ public class MaskList : MonoBehaviour
             newMaskButtom.transform.SetParent(transform);
             newMaskButtom.SetActive(true);
         }
+
+        HasBeenLoaded = true;
+    }
+
+    public void AddMask(Texture2D texture)
+    {
+        var newMaskButtom = Instantiate(MaskPrefab);
+        newMaskButtom.GetComponent<MaskItem>().Initialize(texture);
+        newMaskButtom.transform.SetParent(transform);
+        newMaskButtom.SetActive(true);
     }
 }

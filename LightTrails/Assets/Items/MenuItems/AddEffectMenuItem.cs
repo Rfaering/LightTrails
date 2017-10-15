@@ -25,7 +25,7 @@ public class AddEffectMenuItem : MonoBehaviour, IPointerClickHandler
         }
 
         var overlay = Resources.FindObjectsOfTypeAll<EffectOptionsOverlay>().First();
-        overlay.Open();
+        overlay.Open(Assets.Models.Effect.EffectKind.Particle);
     }
 
     void Update()

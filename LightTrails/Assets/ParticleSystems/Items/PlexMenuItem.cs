@@ -5,7 +5,7 @@ public class PlexMenuItem : ParticleEffectMenuItem
 {
     public enum Color { White, BlueGreen, RedOrange, PurplePink }
 
-    public override List<Attribute> GetAttributes()
+    public override Attribute[] GetAttributes()
     {
         List<Attribute> attributes = new List<Attribute>()
         {
@@ -27,6 +27,6 @@ public class PlexMenuItem : ParticleEffectMenuItem
 
         attributes.AddRange(base.GetAttributes());
 
-        return attributes;
+        return attributes.ToArray();
     }
 }

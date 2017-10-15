@@ -11,16 +11,6 @@ public class EffectOption : MonoBehaviour, IPointerClickHandler
     {
         _effect = effect;
         GetComponentInChildren<Text>().text = effect.Name;
-
-        if (effect.Loop)
-        {
-            GetComponentInChildren<LoopIcon>().Show();
-        }
-        else
-        {
-            GetComponentInChildren<LoopIcon>().Hide();
-        }
-
         GetComponentInChildren<EffectOptionImageLoader>().SetImage(effect);
     }
 

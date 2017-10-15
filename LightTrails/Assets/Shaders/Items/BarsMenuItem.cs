@@ -2,7 +2,7 @@
 using UnityEngine;
 using Assets.Models;
 
-public class BarsMenuItem : ShaderEffectMenuItem
+public class BarsMenuItem : ShaderAttributes
 {
     public override List<Attribute> GetAttributes()
     {
@@ -45,18 +45,6 @@ public class BarsMenuItem : ShaderEffectMenuItem
         attributes.AddRange(base.GetAttributes());
 
         return attributes;
-    }
-
-    public void TogglePaint(bool newValue)
-    {
-        if (newValue)
-        {
-            assosicatedEffect.GetComponent<PaintScript>().StartPaintMode();
-        }
-        else
-        {
-            assosicatedEffect.GetComponent<PaintScript>().StopPaintMode();
-        }
     }
 }
 

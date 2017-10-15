@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class MaskItem : MonoBehaviour
@@ -34,10 +31,14 @@ public class MaskItem : MonoBehaviour
 
         Selected = true;
 
-        var selectedShader = FindObjectOfType<ItemsMenu>().GetSelectedItem() as ShaderEffectMenuItem;
+        var selectedShader = FindObjectOfType<ItemsMenu>().GetSelectedImageMenuItem();
         if (selectedShader != null)
         {
-            selectedShader.SetMask(Texture);
+            var shaderAttribute = selectedShader.GetComponent<ShaderAttributes>();
+            if (shaderAttribute != null)
+            {
+                shaderAttribute.SetMask(Texture);
+            }
         }
 
         var maskMenuItem = FindObjectOfType<MaskMenuItem>();

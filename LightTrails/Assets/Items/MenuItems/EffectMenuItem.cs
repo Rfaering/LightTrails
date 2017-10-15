@@ -11,23 +11,12 @@ public class EffectMenuItem : MenuItem
 
     public string EffectName;
 
-    // Use this for initialization
-    void Start()
-    {
-        if (Attributes == null)
-        {
-            Attributes = GetAttributes().ToArray();
-        }
-
-        SelectEffect();
-    }
-
     public virtual string GetName()
     {
         return string.Empty;
     }
 
-    public virtual List<Attribute> GetAttributes()
+    public override Attribute[] GetAttributes()
     {
         return new Attribute[]
         {
@@ -47,7 +36,7 @@ public class EffectMenuItem : MenuItem
                 SelectedValue = 0,
                 CallBack = SetRotation
             }*/
-        }.ToList();
+        };
     }
 
     public virtual void Initialize(Effect effect)
@@ -67,25 +56,19 @@ public class EffectMenuItem : MenuItem
         assosicatedEffect.transform.localScale = new Vector3(value, value, value);
     }
 
-    internal StoredEffectItem GetEffectSaveState()
+    internal StoredParticleItem GetEffectSaveState()
     {
-        return new StoredEffectItem()
+        return new StoredParticleItem()
         {
             Name = EffectName,
             Position = new[] { assosicatedEffect.transform.localPosition.x, assosicatedEffect.transform.localPosition.y, assosicatedEffect.transform.localPosition.z },
-            Attributes = GetSaveState().Attributes
+            Attributes = GetSaveState().Attributes,
+            Index = transform.GetSiblingIndex()
         };
     }
 
-    public virtual void SetEffectSaveState(StoredEffectItem state)
+    public virtual void SetEffectSaveState(StoredParticleItem state)
     {
-        Attributes = GetAttributes().ToArray();
         SetSaveState(state);
-    }
-
-    public virtual void Remove()
-    {
-        FindObjectOfType<ItemsMenu>().SelectFirstItem();
-        Destroy(gameObject);
     }
 }

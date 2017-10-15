@@ -1,12 +1,13 @@
 ﻿using Assets.Projects.Scripts;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SaveProject : MonoBehaviour
 {
-    private Project _project;
-
+    public Project Project;
+    
     void Start()
     {
         if (Project.CurrentModel == null)
@@ -15,28 +16,39 @@ public class SaveProject : MonoBehaviour
             return;
         }
 
-        _project = Project.CurrentModel;
+        Project = Project.CurrentModel;
         GetComponent<Button>().onClick.AddListener(SaveClicked);
     }
 
     private void SaveClicked()
     {
-        var effects = new List<StoredEffectItem>();
+        var storedEffectState = new List<StoredParticleItem>();
+        var storedImageState = new List<StoredImageItem>();
+
         var effectMenuItems = FindObjectsOfType<EffectMenuItem>();
+        var imageMenuItem = FindObjectsOfType<ImageMenuItem>();
 
         foreach (var item in effectMenuItems)
         {
-            effects.Add(item.GetEffectSaveState());
+            storedEffectState.Add(item.GetEffectSaveState());
         }
 
-        _project.Items = new StoredItems()
+        foreach (var item in imageMenuItem)
+        {
+            storedImageState.Add(item.GetImageSaveState());
+        }
+
+        Project.Items = new StoredItems()
         {
             Recorder = FindObjectOfType<RecorderMenuItem>().GetSaveState(),
-            Image = FindObjectOfType<ImageMenuItem>().GetSaveState(),
-            Effects = effects.ToArray()
+            Images = storedImageState.ToArray(),
+            Effects = storedEffectState.ToArray()
         };
 
-        _project.Save();
+
+        FindObjectOfType<ScreenShot>().TakeProjectThumbnail = true;
+
+        Project.Save();
 
         GetComponent<Animation>().Play();
     }

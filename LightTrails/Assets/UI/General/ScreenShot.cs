@@ -4,22 +4,35 @@ using UnityEngine;
 
 public class ScreenShot : MonoBehaviour
 {
-    bool TakeScreenShot = false;
+    public bool TakeScreenShot = false;
+    public bool TakeProjectThumbnail = false;
 
     // Use this for initialization
     void Start()
     {
 
         TakeScreenShot = false;
-
     }
 
     void OnPostRender()
     {
-
-        if (TakeScreenShot)
+        if (TakeProjectThumbnail)
         {
-            var imagePicker = FindObjectOfType<ImageAreaPicker>();
+            TakeProjectThumbnail = false;
+            var imagePicker = FindObjectOfType<RecorderAreaPicker>();
+            Rect rect = imagePicker.Center(512);
+            int width = (int)rect.width;
+            int height = (int)rect.height;
+
+            Texture2D lOut = new Texture2D(width, height, TextureFormat.ARGB32, false);
+            lOut.ReadPixels(rect, 0, 0);
+
+            FindObjectOfType<SaveProject>().Project.SaveThumbnail(lOut.EncodeToPNG());
+        }
+
+        /*if (TakeScreenShot)
+        {
+            var imagePicker = FindObjectOfType<RecorderAreaPicker>();
             Rect rect = imagePicker.Center(512);
             int width = (int)rect.width;
             int height = (int)rect.height;
@@ -34,7 +47,7 @@ public class ScreenShot : MonoBehaviour
             TakeScreenShot = false;
 
             Debug.Log("Screenshot taken! " + name);
-        }
+        }*/
     }
 
     void Update()

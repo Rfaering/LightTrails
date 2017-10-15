@@ -25,8 +25,29 @@ public class RecorderMenuItem : MenuItem
     {
         _record = FindObjectOfType<Record>();
 
+        if (Project.CurrentModel != null)
+        {
+            SetSaveState(Project.CurrentModel.Items.Recorder);
+        }
+    }
+
+    public override Assets.Models.Attribute[] GetAttributes()
+    {
+        var areaPicker = FindObjectOfType<RecorderAreaPicker>();
+
         var attributes = new List<Assets.Models.Attribute>()
         {
+            new SizeAttribute()
+           {
+               Name = "Recorded Area",
+               X = areaPicker.X,
+               Y = areaPicker.Y,
+               ForceWidth = areaPicker.Width,
+               ForceHeight = areaPicker.Height,
+               SizeChanged = values => { areaPicker.SetSize(values.x, values.y); },
+               OffSetChanged= values => { areaPicker.SetOffSet(values.x, values.y); }
+           },
+
            new OptionsAttribute<FfmpegWrapper.OutputFormat>()
            {
                Name = "Output Type",
@@ -80,13 +101,7 @@ public class RecorderMenuItem : MenuItem
                 Action = () => { OpenFile(VideoFileDirectory()); }
             }
     };
-
-        Attributes = attributes.ToArray();
-
-        if (Project.CurrentModel != null)
-        {
-            SetSaveState(Project.CurrentModel.Items.Recorder);
-        }
+        return attributes.ToArray();
     }
 
     public override void HasBeenSelected()

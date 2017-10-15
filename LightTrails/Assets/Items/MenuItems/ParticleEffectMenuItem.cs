@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Linq;
 using Assets.Projects.Scripts;
 using Assets.Models;
-using System.Collections.Generic;
 
 public class ParticleEffectMenuItem : EffectMenuItem
 {
@@ -21,9 +20,19 @@ public class ParticleEffectMenuItem : EffectMenuItem
         var createdEffect = Instantiate(child);
         createdEffect.transform.SetParent(FindObjectOfType<ActiveParticleList>().gameObject.transform);
 
+        foreach (ParticleSystem ps in createdEffect.GetComponentsInChildren<ParticleSystem>())
+        {
+            ps.Clear();
+            ps.Stop();
+            ps.randomSeed = (uint)Random.Range(0, 10000);
+            ps.Play();
+        }
+
         createdEffect.gameObject.SetActive(true);
 
         assosicatedEffect = createdEffect.gameObject;
+
+        createdEffect.transform.localPosition = new Vector3(0, 0, 10);
 
         base.Initialize(effect);
     }
@@ -37,7 +46,7 @@ public class ParticleEffectMenuItem : EffectMenuItem
         base.HasBeenSelected();
     }
 
-    public override void SetEffectSaveState(StoredEffectItem state)
+    public override void SetEffectSaveState(StoredParticleItem state)
     {
         assosicatedEffect.transform.localPosition = new Vector3(state.Position[0], state.Position[1], state.Position[2]);
         base.SetEffectSaveState(state);

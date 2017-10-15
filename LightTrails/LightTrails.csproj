@@ -96,6 +96,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\EffectOptions.cs" />
+    <Compile Include="Assets\ImageTranslation.cs" />
+    <Compile Include="Assets\ImportMask.cs" />
     <Compile Include="Assets\Items\ItemsMenu.cs" />
     <Compile Include="Assets\Items\MenuItems\AddEffectMenuItem.cs" />
     <Compile Include="Assets\Items\MenuItems\EffectMenuItem.cs" />
@@ -105,6 +107,7 @@
     <Compile Include="Assets\Items\MenuItems\ParticleEffectMenuItem.cs" />
     <Compile Include="Assets\Items\MenuItems\RecorderMenuItem.cs" />
     <Compile Include="Assets\Items\MenuItems\ShaderEffectMenuItem.cs" />
+    <Compile Include="Assets\LinkButton.cs" />
     <Compile Include="Assets\Mirza Beig\Particle Systems\Ultimate VFX\2 - Expansions\XP - TITLES\Scripts\DemoManager_XPTitles.cs" />
     <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\AnimatedLight.cs" />
     <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\DestroyAfterTime.cs" />
@@ -139,6 +142,7 @@
     <Compile Include="Assets\Models\Effect.cs" />
     <Compile Include="Assets\Models\MaskAttribute.cs" />
     <Compile Include="Assets\Models\OptionsAttribute.cs" />
+    <Compile Include="Assets\Models\SizeAttribute.cs" />
     <Compile Include="Assets\Models\SliderAttribute.cs" />
     <Compile Include="Assets\Models\ToggleAttribute.cs" />
     <Compile Include="Assets\ParticleSystems\Effects\ExplosionEffects.cs" />
@@ -183,14 +187,15 @@
     <Compile Include="Assets\Projects\Scripts\ProjectList.cs" />
     <Compile Include="Assets\Projects\Scripts\ProjectListItem.cs" />
     <Compile Include="Assets\Projects\Scripts\StoredItems.cs" />
-    <Compile Include="Assets\UI\RecorderPanel\RecordButton.cs" />
-    <Compile Include="Assets\Recording\ImageAreaPicker.cs" />
+    <Compile Include="Assets\Recording\NewMonoBehaviour.cs" />
     <Compile Include="Assets\Recording\Record.cs" />
+    <Compile Include="Assets\Recording\RecorderAreaPicker.cs" />
     <Compile Include="Assets\Recording\Utils.cs" />
-    <Compile Include="Assets\UI\RecorderPanel\SetRecorderTimer.cs" />
     <Compile Include="Assets\Shaders\Items\BarsMenuItem.cs" />
+    <Compile Include="Assets\Shaders\Items\BrightnessMenuItem.cs" />
     <Compile Include="Assets\Shaders\Items\DistortionMenuItem.cs" />
     <Compile Include="Assets\Shaders\Items\MistMenuItem.cs" />
+    <Compile Include="Assets\Shaders\Items\ShaderAttributes.cs" />
     <Compile Include="Assets\Shaders\Items\WaterMenuItem.cs" />
     <Compile Include="Assets\Shaders\Mask\MaskImages.cs" />
     <Compile Include="Assets\Shaders\Mask\MaskItem.cs" />
@@ -198,7 +203,7 @@
     <Compile Include="Assets\Shaders\Mask\MaskPanel.cs" />
     <Compile Include="Assets\Shaders\Misc\PaintScript.cs" />
     <Compile Include="Assets\Shaders\Misc\ShaderEffect.cs" />
-    <Compile Include="Assets\UI\RecorderPanel\StartButton.cs" />
+    <Compile Include="Assets\SizeExpandOnClick.cs" />
     <Compile Include="Assets\UI\Attribute\AttributesMenu.cs" />
     <Compile Include="Assets\UI\Attribute\DraggableParticleSystem.cs" />
     <Compile Include="Assets\UI\Attribute\ImageProperties.cs" />
@@ -206,6 +211,7 @@
     <Compile Include="Assets\UI\Attribute\MenuItems\AttributeMenuItem.cs" />
     <Compile Include="Assets\UI\Attribute\MenuItems\MaskMenuItem.cs" />
     <Compile Include="Assets\UI\Attribute\MenuItems\OptionsMenuItem.cs" />
+    <Compile Include="Assets\UI\Attribute\MenuItems\SizeMenuItem.cs" />
     <Compile Include="Assets\UI\Attribute\MenuItems\SliderMenuItem.cs" />
     <Compile Include="Assets\UI\Attribute\MenuItems\ToggleMenuItem.cs" />
     <Compile Include="Assets\UI\Effects\EffectContentContainer.cs" />
@@ -218,19 +224,28 @@
     <Compile Include="Assets\UI\FileBrowser\StandaloneFileBrowserMetro.cs" />
     <Compile Include="Assets\UI\FileBrowser\StandaloneFileBrowserWindows.cs" />
     <Compile Include="Assets\UI\General\ActiveParticleList.cs" />
+    <Compile Include="Assets\UI\General\AddImageButton.cs" />
     <Compile Include="Assets\UI\General\CameraScaling.cs" />
     <Compile Include="Assets\UI\General\DebugInput.cs" />
+    <Compile Include="Assets\UI\General\DraggableFrame\FlexableFrame.cs" />
+    <Compile Include="Assets\UI\General\DraggableFrame\FlexibleDraggableObject.cs" />
+    <Compile Include="Assets\UI\General\DraggableFrame\FlexibleExtensions.cs" />
+    <Compile Include="Assets\UI\General\DraggableFrame\FlexibleResizeHandler.cs" />
     <Compile Include="Assets\UI\General\Effect.cs" />
+    <Compile Include="Assets\UI\General\ImageList.cs" />
     <Compile Include="Assets\UI\General\LightPlane.cs" />
     <Compile Include="Assets\UI\General\ParticleEffect.cs" />
     <Compile Include="Assets\UI\General\ParticleList.cs" />
-    <Compile Include="Assets\UI\General\ParticlePicker.cs" />
     <Compile Include="Assets\UI\General\ParticlesNavigation.cs" />
     <Compile Include="Assets\UI\General\ParticlesUI.cs" />
     <Compile Include="Assets\UI\General\RemoveEffectButton.cs" />
     <Compile Include="Assets\UI\General\SaveProject.cs" />
     <Compile Include="Assets\UI\General\ScreenShot.cs" />
     <Compile Include="Assets\UI\General\UnityMainThreadDispatcher.cs" />
+    <Compile Include="Assets\UI\RecorderPanel\RecordButton.cs" />
+    <Compile Include="Assets\UI\RecorderPanel\SetRecorderTimer.cs" />
+    <Compile Include="Assets\UI\RecorderPanel\StartButton.cs" />
+    <Compile Include="Assets\Zoom.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Golden Demo\Golden.shader" />
@@ -255,20 +270,20 @@
     <None Include="Assets\Mirza Beig\Shaders\Particles\No Fog\NoFog-Add.shader" />
     <None Include="Assets\Mirza Beig\Shaders\Particles\No Fog\NoFog-Alpha.shader" />
     <None Include="Assets\Mirza Beig\Shaders\Particles\Unmultiply\Unmultiply-AlphaFromLuminance.shader" />
-    <None Include="Assets\Shaders\Bars.shader" />
-    <None Include="Assets\Shaders\Basic.shader" />
-    <None Include="Assets\Shaders\Bubbles.shader" />
-    <None Include="Assets\Shaders\Distortion.shader" />
-    <None Include="Assets\Shaders\Grid.shader" />
-    <None Include="Assets\Shaders\Movement.shader" />
-    <None Include="Assets\Shaders\Paint.shader" />
-    <None Include="Assets\Shaders\Transition.shader" />
-    <None Include="Assets\Shaders\Vignetting.shader" />
-    <None Include="Assets\Shaders\Voronoi.shader" />
-    <None Include="Assets\Shaders\Water.shader" />
-    <None Include="Assets\Shaders\Wave.shader" />
+    <None Include="Assets\Shaders\Shaders\Bars.shader" />
+    <None Include="Assets\Shaders\Shaders\Basic.shader" />
+    <None Include="Assets\Shaders\Shaders\Brightness.shader" />
+    <None Include="Assets\Shaders\Shaders\Bubbles.shader" />
+    <None Include="Assets\Shaders\Shaders\Distortion.shader" />
+    <None Include="Assets\Shaders\Shaders\Grid.shader" />
+    <None Include="Assets\Shaders\Shaders\Movement.shader" />
+    <None Include="Assets\Shaders\Shaders\Paint.shader" />
+    <None Include="Assets\Shaders\Shaders\Transition.shader" />
+    <None Include="Assets\Shaders\Shaders\Vignetting.shader" />
+    <None Include="Assets\Shaders\Shaders\Voronoi.shader" />
+    <None Include="Assets\Shaders\Shaders\Water.shader" />
+    <None Include="Assets\Shaders\Shaders\Wave.shader" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
 </Project>

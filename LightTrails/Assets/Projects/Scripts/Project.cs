@@ -24,6 +24,37 @@ namespace Assets.Projects.Scripts
             Items = new StoredItems();
         }
 
+        public string ThumbnailPath()
+        {
+            var images = Path.Combine(GetProjectPath(), "images");
+            var file = Path.Combine(images, "thumbnail.png");
+
+            return file;
+        }
+
+        public void SaveThumbnail(byte[] bytes)
+        {
+            var thumbnailPath = ThumbnailPath();
+
+            if (!Directory.Exists(thumbnailPath))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(thumbnailPath));
+            }
+
+            if (!File.Exists(thumbnailPath))
+            {
+                var file = File.Create(thumbnailPath);
+                file.Close();
+            }
+
+            File.WriteAllBytes(thumbnailPath, bytes);
+        }
+
+        internal string GetThumbnail()
+        {
+            return ThumbnailPath();
+        }
+
         public string GetLocalImagePath()
         {
             if (string.IsNullOrEmpty(OriginalImagePath))

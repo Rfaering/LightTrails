@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class StartDustMenuItem : ParticleEffectMenuItem
 {
-    public override List<Attribute> GetAttributes()
+    public override Attribute[] GetAttributes()
     {
         List<Attribute> attribtues = new List<Attribute>()
         {
@@ -33,6 +33,6 @@ public class StartDustMenuItem : ParticleEffectMenuItem
 
         attribtues.AddRange(base.GetAttributes());
 
-        return attribtues;
+        return attribtues.ToArray();
     }
 }

@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 199701997093064526}
   - component: {fileID: 198207364628154430}
   - component: {fileID: 114245657743849154}
+  - component: {fileID: 114160407360987024}
   m_Layer: 0
   m_Name: Focus
   m_TagString: Untagged
@@ -167,6 +168,18 @@ Transform:
   m_Father: {fileID: 4409010815893166}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114160407360987024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1160337097777838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7801df88b6a98cd4893ec52b829b02bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsLooping: 0
 --- !u!114 &114245657743849154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,7 +215,7 @@ ParticleSystem:
   looping: 0
   prewarm: 0
   playOnAwake: 1
-  autoRandomSeed: 1
+  autoRandomSeed: 0
   startDelay:
     minMaxState: 0
     scalar: 0
@@ -3206,7 +3219,7 @@ ParticleSystem:
   looping: 1
   prewarm: 1
   playOnAwake: 1
-  autoRandomSeed: 1
+  autoRandomSeed: 0
   startDelay:
     minMaxState: 0
     scalar: 0
@@ -6762,7 +6775,7 @@ ParticleSystem:
   looping: 1
   prewarm: 1
   playOnAwake: 1
-  autoRandomSeed: 1
+  autoRandomSeed: 0
   startDelay:
     minMaxState: 0
     scalar: 0
@@ -10354,7 +10367,7 @@ ParticleSystem:
   looping: 1
   prewarm: 1
   playOnAwake: 1
-  autoRandomSeed: 1
+  autoRandomSeed: 0
   startDelay:
     minMaxState: 0
     scalar: 0
@@ -13922,7 +13935,7 @@ ParticleSystem:
   looping: 1
   prewarm: 1
   playOnAwake: 1
-  autoRandomSeed: 1
+  autoRandomSeed: 0
   startDelay:
     minMaxState: 0
     scalar: 0

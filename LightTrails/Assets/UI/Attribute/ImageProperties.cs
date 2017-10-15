@@ -17,13 +17,11 @@ public class ImageProperties : MonoBehaviour
 
     public float CorrectionScale = 1.0f;
 
+    public string ImagePath;
+
     // Use this for initialization
     void Start()
     {
-        if (Project.CurrentModel != null)
-        {
-            SetImage(Project.CurrentModel.GetLocalImagePath());
-        }
 
     }
 
@@ -38,18 +36,21 @@ public class ImageProperties : MonoBehaviour
 
     public void SetImage(string path)
     {
+        ImagePath = path;
+
         if (File.Exists(path))
         {
             try
             {
                 Texture2D tex = new Texture2D(1, 1);
+                tex.filterMode = FilterMode.Bilinear;
+                tex.wrapMode = TextureWrapMode.Clamp;
+
                 var bytes = File.ReadAllBytes(path);
                 tex.LoadImage(bytes);
                 var rawImage = GetComponent<RawImage>();
                 rawImage.texture = tex;
                 rawImage.rectTransform.sizeDelta = new Vector2(tex.width, tex.height);
-
-                GetComponent<ImageAreaPicker>().Recalculate();
             }
             catch (Exception e)
             {

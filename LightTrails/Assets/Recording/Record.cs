@@ -26,52 +26,6 @@ public partial class Record : MonoBehaviour
         _recordTimer = FindObjectOfType<SetRecorderTimer>();
     }
 
-    private void OnPreRender()
-    {
-        if (!ActivelyRecording)
-        {
-            return;
-        }
-    }
-
-    void OnPostRender()
-    {
-        if (!Playing)
-        {
-            return;
-        }
-
-        if (ElapsedVideoTime > RecordingTime)
-        {
-            ElapsedVideoTime = 0;
-
-            if (ActivelyRecording)
-            {
-                StopRecording();
-            }
-            return;
-        }
-
-        if (ActivelyRecording)
-        {
-            var imagePicker = FindObjectOfType<ImageAreaPicker>();
-            Rect rect = imagePicker.GetRect();
-            int width = (int)rect.width;
-            int height = (int)rect.height;
-
-            Texture2D lOut = new Texture2D(width, height, TextureFormat.ARGB32, false);
-            lOut.ReadPixels(rect, 0, 0);
-
-            Frame++;
-            var bytes = lOut.GetRawTextureData();
-
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR
-            Recorder.SetFrameThroughBitMap(bytes, width, height);
-#endif
-            Destroy(lOut);
-        }
-    }
-
     void Update()
     {
         if (ShowProgressBar)
@@ -95,6 +49,82 @@ public partial class Record : MonoBehaviour
         else
         {
             _recordTimer.Hide();
+        }
+
+        if (!Playing)
+        {
+            return;
+        }
+
+        if (ElapsedVideoTime > RecordingTime)
+        {
+            ElapsedVideoTime = 0;
+
+            if (ActivelyRecording)
+            {
+                StopRecording();
+            }
+            return;
+        }
+
+        CaptureRecording();
+    }
+
+    private void CaptureRecording()
+    {
+        if (ActivelyRecording)
+        {
+            var camera = FindObjectOfType<Camera>();
+
+            var originalSize = camera.orthographicSize;
+            var originalPosition = camera.transform.position;
+
+            var imagePicker = FindObjectOfType<RecorderAreaPicker>();
+
+            int width = imagePicker.Width;
+            int height = imagePicker.Height;
+
+            float widthRatio = camera.pixelWidth / (float)width;
+            float heightRatio = camera.pixelHeight / (float)height;
+
+            if (widthRatio > heightRatio)
+            {
+                camera.orthographicSize = camera.pixelHeight / 200.0f / heightRatio;
+            }
+            else
+            {
+                camera.orthographicSize = camera.pixelHeight / 200.0f / widthRatio;
+            }
+
+            camera.transform.position = new Vector3((imagePicker.X / 100.0f), (imagePicker.Y / 100.0f), 0);
+
+
+            var renderTexture = new RenderTexture(width, height, 24);
+
+            camera.forceIntoRenderTexture = true;
+            camera.targetTexture = renderTexture;
+            camera.Render();
+
+            RenderTexture.active = renderTexture;
+
+            Texture2D lOut = new Texture2D(width, height, TextureFormat.ARGB32, false);
+            lOut.ReadPixels(new Rect(0, 0, width, height), 0, 0);
+
+            Frame++;
+            var bytes = lOut.GetRawTextureData();
+
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR
+            Recorder.SetFrameThroughBitMap(bytes, width, height);
+#endif
+            Destroy(lOut);
+            camera.orthographicSize = originalSize;
+            camera.transform.position = originalPosition;
+            camera.forceIntoRenderTexture = false;
+            camera.targetTexture = null;
+            //imageTransform.Center();
+            RenderTexture.active = null;
+
+            Destroy(renderTexture);
         }
     }
 

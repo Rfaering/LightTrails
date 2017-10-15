@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class SnowMenuItem : ParticleEffectMenuItem
 {
-    public override List<Attribute> GetAttributes()
+    public override Attribute[] GetAttributes()
     {
         List<Attribute> attribtues = new List<Attribute>()
         {
@@ -19,6 +19,6 @@ public class SnowMenuItem : ParticleEffectMenuItem
 
         attribtues.AddRange(base.GetAttributes());
 
-        return attribtues;
+        return attribtues.ToArray();
     }
 }

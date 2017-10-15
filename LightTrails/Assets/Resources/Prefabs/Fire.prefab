@@ -188,6 +188,7 @@ MonoBehaviour:
   colorOverLifeTimeIndex: -1
   trailColor: []
   trailColorIndex: -1
+  FadeInAndOut: 1
 --- !u!114 &114388988141149064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -211,7 +212,7 @@ ParticleSystem:
   looping: 1
   prewarm: 1
   playOnAwake: 1
-  autoRandomSeed: 1
+  autoRandomSeed: 0
   startDelay:
     minMaxState: 0
     scalar: 0
@@ -254,7 +255,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -395356188
+  randomSeed: -1574396469
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3113,7 +3114,7 @@ ParticleSystem:
   looping: 0
   prewarm: 0
   playOnAwake: 1
-  autoRandomSeed: 1
+  autoRandomSeed: 0
   startDelay:
     minMaxState: 0
     scalar: 0
@@ -3156,7 +3157,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -87204004
+  randomSeed: -1266397077
   InitialModule:
     serializedVersion: 3
     enabled: 1

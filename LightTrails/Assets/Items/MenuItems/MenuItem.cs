@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MenuItem : MonoBehaviour, IPointerClickHandler
+public abstract class MenuItem : MonoBehaviour, IPointerClickHandler
 {
     public bool Selected { get; private set; }
 
@@ -14,8 +14,8 @@ public class MenuItem : MonoBehaviour, IPointerClickHandler
     private Color UnSelectedColor = Color.white;
 
     private bool IsDisabled { get { return FindObjectOfType<Record>().ActivelyRecording; } }
-
-    public Attribute[] Attributes;
+    
+    public abstract Attribute[] GetAttributes();    
 
     internal StoredItem GetSaveState()
     {
@@ -23,7 +23,7 @@ public class MenuItem : MonoBehaviour, IPointerClickHandler
         {
             Attributes = new AttributesValues()
             {
-                Values = Attributes
+                Values = GetAttributes()
                 .Select(x => x.GetAttributeValue())
                 .Where(x => x != null)
                 .ToArray()
@@ -38,7 +38,7 @@ public class MenuItem : MonoBehaviour, IPointerClickHandler
             return;
         }
 
-        var attributesByName = Attributes.ToDictionary(x => x.Name);
+        var attributesByName = GetAttributes().ToDictionary(x => x.Name);
 
         foreach (var value in item.Attributes.Values)
         {
@@ -89,5 +89,11 @@ public class MenuItem : MonoBehaviour, IPointerClickHandler
         {
             GetComponent<Image>().color = UnSelectedColor;
         }
+    }
+
+    public virtual void Remove()
+    {
+        FindObjectOfType<ItemsMenu>().SelectFirstItem();
+        Destroy(gameObject);
     }
 }

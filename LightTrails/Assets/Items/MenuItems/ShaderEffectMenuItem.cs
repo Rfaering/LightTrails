@@ -8,30 +8,29 @@ public class ShaderEffectMenuItem : EffectMenuItem
 {
     public Material Material;
 
-    public override void Initialize(Effect effect)
+    public void Initialize(Effect effect)
     {
-        EffectName = effect.Name;
-        GetComponentInChildren<Text>().text = effect.Name;
         var gameObject = GetShaderEffect();
         gameObject.SetActive(true);
+
         assosicatedEffect = gameObject;
+        //Material = assosicatedEffect.GetComponent<RawImage>().material;
 
-        Material = assosicatedEffect.GetComponent<RawImage>().material;
-
-        base.Initialize(effect);
+        var record = FindObjectOfType<Record>();
+        assosicatedEffect.GetComponent<RunningEffect>().Initialize(record.RecordingTime);
     }
 
 
-    public override List<Attribute> GetAttributes()
+    public override Attribute[] GetAttributes()
     {
-        var attributes = base.GetAttributes();
+        var attributes = base.GetAttributes().ToList();
         var hasTexture = Material.HasProperty("_AttMask");
         if (hasTexture)
         {
-            attributes.Add(new MaskAttribute() { SelectedValue = "Mask01" });
+            attributes.Add(new MaskAttribute() { Name = "Mask", SelectedValue = "Mask01" });
         }
 
-        return attributes;
+        return attributes.ToArray();
     }
 
     private GameObject GetShaderEffect()

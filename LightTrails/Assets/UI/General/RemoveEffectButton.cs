@@ -11,6 +11,6 @@ public class RemoveEffectButton : MonoBehaviour
 
     private void RemoveEffect()
     {
-        GetComponentInParent<EffectMenuItem>().Remove();
+        GetComponentInParent<MenuItem>().Remove();
     }
 }

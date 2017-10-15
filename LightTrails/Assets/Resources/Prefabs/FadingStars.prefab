@@ -175,6 +175,7 @@ MonoBehaviour:
   colorOverLifeTimeIndex: -1
   trailColor: []
   trailColorIndex: -1
+  FadeInAndOut: 1
 --- !u!114 &114441243868754174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,7 +200,7 @@ ParticleSystem:
   looping: 1
   prewarm: 0
   playOnAwake: 1
-  autoRandomSeed: 1
+  autoRandomSeed: 0
   startDelay:
     minMaxState: 0
     scalar: 0
@@ -3203,7 +3204,7 @@ ParticleSystem:
   looping: 1
   prewarm: 1
   playOnAwake: 1
-  autoRandomSeed: 1
+  autoRandomSeed: 0
   startDelay:
     minMaxState: 0
     scalar: 0

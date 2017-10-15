@@ -1,13 +1,11 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ShaderEffect : RunningEffect
 {
     public Material Material;
 
-    // Use this for initialization
-    void Start()
+    private void Update()
     {
         Material = GetComponent<RawImage>().material;
     }
@@ -16,12 +14,20 @@ public class ShaderEffect : RunningEffect
     {
         Length = newLength;
         ElapsedTime = 0;
-        Material.SetFloat("_InputTime", 0);
+
+        if (Material != null)
+        {
+            Material.SetFloat("_InputTime", 0);
+        }
     }
 
     public override void Progress(float newElapsedTime)
     {
         ElapsedTime = newElapsedTime;
-        Material.SetFloat("_InputTime", ElapsedTime);
+
+        if (Material != null)
+        {
+            Material.SetFloat("_InputTime", ElapsedTime);
+        }
     }
 }

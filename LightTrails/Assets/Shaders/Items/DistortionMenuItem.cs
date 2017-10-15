@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Assets.Models;
 
-public class DistortionMenuItem : ShaderEffectMenuItem
+public class DistortionMenuItem : ShaderAttributes
 {
     public override List<Attribute> GetAttributes()
     {
@@ -34,18 +34,6 @@ public class DistortionMenuItem : ShaderEffectMenuItem
         attributes.AddRange(base.GetAttributes());
 
         return attributes;
-    }
-
-    public void TogglePaint(bool newValue)
-    {
-        if (newValue)
-        {
-            assosicatedEffect.GetComponent<PaintScript>().StartPaintMode();
-        }
-        else
-        {
-            assosicatedEffect.GetComponent<PaintScript>().StopPaintMode();
-        }
     }
 }
 

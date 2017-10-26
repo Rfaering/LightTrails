@@ -264,6 +264,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLooping: 1
+  X: 0
+  Y: 0
+  Width: 900
+  Height: 900
+  CanChangePosition: 1
 --- !u!120 &120039084012579228
 LineRenderer:
   m_ObjectHideFlags: 1

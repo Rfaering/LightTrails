@@ -5,7 +5,7 @@ public class StartDustMenuItem : ParticleEffectMenuItem
 {
     public override Attribute[] GetAttributes()
     {
-        List<Attribute> attribtues = new List<Attribute>()
+        List<Attribute> attribtues = new List<Attribute>(base.GetAttributes())
         {
             new SliderAttribute()
             {
@@ -31,7 +31,6 @@ public class StartDustMenuItem : ParticleEffectMenuItem
             },
         };
 
-        attribtues.AddRange(base.GetAttributes());
 
         return attribtues.ToArray();
     }

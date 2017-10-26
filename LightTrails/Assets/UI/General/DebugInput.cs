@@ -18,7 +18,7 @@ public class DebugInput : MonoBehaviour
 #if DEBUG
         if (Input.GetKeyDown(KeyCode.U))
         {
-            var uiGameObject = Resources.FindObjectsOfTypeAll<ParticlesUI>().First().gameObject;
+            var uiGameObject = Resources.FindObjectsOfTypeAll<MainCanvas>().First().gameObject;
             var shown = uiGameObject.activeInHierarchy;
             uiGameObject.SetActive(!shown);
         }

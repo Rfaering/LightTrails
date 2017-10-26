@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Assets.Projects.Scripts;
+using System;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,6 +36,12 @@ public class ImportMask : MonoBehaviour
                 Texture2D tex = new Texture2D(1, 1);
                 var bytes = File.ReadAllBytes(path);
                 tex.LoadImage(bytes);
+
+                if (Project.CurrentModel != null)
+                {
+                    Project.CurrentModel.SaveMask(bytes);
+                }
+
                 return tex;
             }
             catch (Exception e)

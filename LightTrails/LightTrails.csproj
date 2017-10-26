@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>5.6.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -95,6 +93,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CloseButton.cs" />
+    <Compile Include="Assets\CloseVideoGrid.cs" />
     <Compile Include="Assets\EffectOptions.cs" />
     <Compile Include="Assets\ImageTranslation.cs" />
     <Compile Include="Assets\ImportMask.cs" />
@@ -145,6 +145,8 @@
     <Compile Include="Assets\Models\SizeAttribute.cs" />
     <Compile Include="Assets\Models\SliderAttribute.cs" />
     <Compile Include="Assets\Models\ToggleAttribute.cs" />
+    <Compile Include="Assets\Notifications.cs" />
+    <Compile Include="Assets\OpenVideoDirectoryButton.cs" />
     <Compile Include="Assets\ParticleSystems\Effects\ExplosionEffects.cs" />
     <Compile Include="Assets\ParticleSystems\Effects\FireworksEffects.cs" />
     <Compile Include="Assets\ParticleSystems\Effects\FocusEffect.cs" />
@@ -187,10 +189,11 @@
     <Compile Include="Assets\Projects\Scripts\ProjectList.cs" />
     <Compile Include="Assets\Projects\Scripts\ProjectListItem.cs" />
     <Compile Include="Assets\Projects\Scripts\StoredItems.cs" />
-    <Compile Include="Assets\Recording\NewMonoBehaviour.cs" />
+    <Compile Include="Assets\RecorderProgressBar.cs" />
     <Compile Include="Assets\Recording\Record.cs" />
     <Compile Include="Assets\Recording\RecorderAreaPicker.cs" />
     <Compile Include="Assets\Recording\Utils.cs" />
+    <Compile Include="Assets\Services\FileLocationService.cs" />
     <Compile Include="Assets\Shaders\Items\BarsMenuItem.cs" />
     <Compile Include="Assets\Shaders\Items\BrightnessMenuItem.cs" />
     <Compile Include="Assets\Shaders\Items\DistortionMenuItem.cs" />
@@ -204,6 +207,7 @@
     <Compile Include="Assets\Shaders\Misc\PaintScript.cs" />
     <Compile Include="Assets\Shaders\Misc\ShaderEffect.cs" />
     <Compile Include="Assets\SizeExpandOnClick.cs" />
+    <Compile Include="Assets\Tab.cs" />
     <Compile Include="Assets\UI\Attribute\AttributesMenu.cs" />
     <Compile Include="Assets\UI\Attribute\DraggableParticleSystem.cs" />
     <Compile Include="Assets\UI\Attribute\ImageProperties.cs" />
@@ -234,10 +238,9 @@
     <Compile Include="Assets\UI\General\Effect.cs" />
     <Compile Include="Assets\UI\General\ImageList.cs" />
     <Compile Include="Assets\UI\General\LightPlane.cs" />
+    <Compile Include="Assets\UI\General\MainCanvas.cs" />
     <Compile Include="Assets\UI\General\ParticleEffect.cs" />
     <Compile Include="Assets\UI\General\ParticleList.cs" />
-    <Compile Include="Assets\UI\General\ParticlesNavigation.cs" />
-    <Compile Include="Assets\UI\General\ParticlesUI.cs" />
     <Compile Include="Assets\UI\General\RemoveEffectButton.cs" />
     <Compile Include="Assets\UI\General\SaveProject.cs" />
     <Compile Include="Assets\UI\General\ScreenShot.cs" />
@@ -245,6 +248,10 @@
     <Compile Include="Assets\UI\RecorderPanel\RecordButton.cs" />
     <Compile Include="Assets\UI\RecorderPanel\SetRecorderTimer.cs" />
     <Compile Include="Assets\UI\RecorderPanel\StartButton.cs" />
+    <Compile Include="Assets\VideoContainer.cs" />
+    <Compile Include="Assets\VideoFileInfo.cs" />
+    <Compile Include="Assets\VideoGrid.cs" />
+    <Compile Include="Assets\VideoItem.cs" />
     <Compile Include="Assets\Zoom.cs" />
   </ItemGroup>
   <ItemGroup>

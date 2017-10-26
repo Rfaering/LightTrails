@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Assets.Projects.Scripts;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -27,10 +28,10 @@ public class ScreenShot : MonoBehaviour
             Texture2D lOut = new Texture2D(width, height, TextureFormat.ARGB32, false);
             lOut.ReadPixels(rect, 0, 0);
 
-            FindObjectOfType<SaveProject>().Project.SaveThumbnail(lOut.EncodeToPNG());
+            Project.CurrentModel.SaveThumbnail(lOut.EncodeToPNG());
         }
 
-        /*if (TakeScreenShot)
+        if (TakeScreenShot)
         {
             var imagePicker = FindObjectOfType<RecorderAreaPicker>();
             Rect rect = imagePicker.Center(512);
@@ -40,14 +41,25 @@ public class ScreenShot : MonoBehaviour
             Texture2D lOut = new Texture2D(width, height, TextureFormat.ARGB32, false);
             lOut.ReadPixels(rect, 0, 0);
 
+            string name = null;
+
             var effect = FindObjectsOfType<EffectMenuItem>().FirstOrDefault();
-            var name = effect.gameObject.name ?? "test";
+
+            if (effect == null)
+            {
+                var imageMenuItem = FindObjectsOfType<ImageMenuItem>().FirstOrDefault();
+                name = imageMenuItem.ShaderAttributes.Material.name;
+            }
+            else
+            {
+                name = effect.gameObject.name ?? "test";
+            }
 
             File.WriteAllBytes(Application.dataPath + @"\Resources\Preview\" + name + ".png", lOut.EncodeToPNG());
             TakeScreenShot = false;
 
             Debug.Log("Screenshot taken! " + name);
-        }*/
+        }
     }
 
     void Update()

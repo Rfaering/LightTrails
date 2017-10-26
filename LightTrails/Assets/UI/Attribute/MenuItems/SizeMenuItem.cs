@@ -27,7 +27,7 @@ public class SizeMenuItem : AttributeMenuItem
             Open = !Open;
         }
 
-        GetComponent<LayoutElement>().minHeight = Open ? 180 : 80;
+        GetComponent<LayoutElement>().minHeight = Open ? 180 : 100;
         Closed.SetActive(!Open);
         Expand.SetActive(Open);
     }
@@ -41,7 +41,7 @@ public class SizeMenuItem : AttributeMenuItem
         var yInput = ExpandedY.GetComponent<InputField>();
 
         GetComponentInChildren<Text>().text = size.Name;
-        GetComponentInChildren<LinkButton>().IsLinked = size.IsLinked;
+        //GetComponentInChildren<LinkButton>().IsLinked = size.IsLinked;
 
         xInput.onEndEdit.AddListener(newValue =>
         {
@@ -53,6 +53,7 @@ public class SizeMenuItem : AttributeMenuItem
             }
 
             UpdateText();
+            UpdateFrameOffset();
         });
 
         yInput.onEndEdit.AddListener(newValue =>
@@ -65,7 +66,11 @@ public class SizeMenuItem : AttributeMenuItem
             }
 
             UpdateText();
+            UpdateFrameOffset();
         });
+
+        widthInput.interactable = size.Resizeable;
+        heightInput.interactable = size.Resizeable;
 
         widthInput.onEndEdit.AddListener(newValue =>
         {
@@ -77,6 +82,7 @@ public class SizeMenuItem : AttributeMenuItem
             }
 
             UpdateText();
+            UpdateFrameSize();
         });
 
         heightInput.onEndEdit.AddListener(newValue =>
@@ -89,6 +95,7 @@ public class SizeMenuItem : AttributeMenuItem
             }
 
             UpdateText();
+            UpdateFrameSize();
         });
 
         SizeAttribute = size;
@@ -99,25 +106,34 @@ public class SizeMenuItem : AttributeMenuItem
 
         FindObjectOfType<FlexableFrame>().SetOffSet(size.X, size.Y);
         FindObjectOfType<FlexableFrame>().SetSize(size.Width, size.Height);
-        /*_slider = slider;
-        GetComponentInChildren<Text>().text = slider.Name;
-        var sliderComponent = GetComponentInChildren<Slider>();
-        sliderComponent.minValue = slider.Min;
-        sliderComponent.maxValue = slider.Max;
-        sliderComponent.value = slider.SelectedValue;
-        sliderComponent.onValueChanged.AddListener(value => slider.Changed(value));*/
+
+        Closed.SetActive(!Open);
+        Expand.SetActive(Open);
+
     }
 
     internal void SetOffSet(float x, float y)
     {
         SizeAttribute.SetOffSet(x, y);
         UpdateText();
+        UpdateFrameOffset();
     }
 
     internal void SetSize(float width, float height)
     {
         SizeAttribute.SetSize(width, height);
         UpdateText();
+        UpdateFrameSize();
+    }
+
+    internal void UpdateFrameSize()
+    {
+        FindObjectOfType<FlexableFrame>().SetSize(SizeAttribute.Width, SizeAttribute.Height);
+    }
+
+    internal void UpdateFrameOffset()
+    {
+        FindObjectOfType<FlexableFrame>().SetOffSet(SizeAttribute.X, SizeAttribute.Y);
     }
 
     internal bool IsLinked()
@@ -139,8 +155,8 @@ public class SizeMenuItem : AttributeMenuItem
         var xInput = ExpandedX.GetComponent<InputField>();
         var yInput = ExpandedY.GetComponent<InputField>();
 
-        ClosedPosition.GetComponent<Text>().text = "Offset: " + x + " / " + y;
-        ClosedSize.GetComponent<Text>().text = "Size: " + width + " / " + height;
+        ClosedPosition.GetComponentInChildren<Text>().text = x + " / " + y;
+        ClosedSize.GetComponentInChildren<Text>().text = width + " / " + height;
 
         widthInput.text = width.ToString();
         heightInput.text = height.ToString();

@@ -6,7 +6,7 @@ public class FocusMenuItem : ParticleEffectMenuItem
     public override Attribute[] GetAttributes()
     {
         var focusEffect = assosicatedEffect.GetComponent<FocusEffect>();
-        List<Attribute> fireAttributes = new List<Attribute>()
+        List<Attribute> fireAttributes = new List<Attribute>(base.GetAttributes())
         {
             new SliderAttribute()
             {
@@ -18,7 +18,6 @@ public class FocusMenuItem : ParticleEffectMenuItem
             }
         };
 
-        fireAttributes.AddRange(base.GetAttributes());
 
         return fireAttributes.ToArray();
     }

@@ -6,15 +6,8 @@ public class FireworksMenuItem : ParticleEffectMenuItem
     public override Attribute[] GetAttributes()
     {
         var fireworksEffect = assosicatedEffect.GetComponent<FireworksEffects>();
-        List<Attribute> fireAttributes = new List<Attribute>()
+        List<Attribute> fireAttributes = new List<Attribute>(base.GetAttributes())
         {
-            /*new OptionsAttribute()
-            {
-                Name = "Color",
-                Options = Enum.GetNames(typeof(FireEffects.Color)).ToList(),
-                SelectedValue = Enum.GetName(typeof(FireEffects.Color), FireEffects.Color.Red),
-                CallBack = ChangeColor
-            },*/
             new SliderAttribute()
             {
                 Name = "Rotation",
@@ -33,7 +26,6 @@ public class FireworksMenuItem : ParticleEffectMenuItem
             }
         };
 
-        fireAttributes.AddRange(base.GetAttributes());
 
         return fireAttributes.ToArray();
     }

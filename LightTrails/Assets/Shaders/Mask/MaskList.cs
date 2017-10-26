@@ -24,7 +24,7 @@ public class MaskList : MonoBehaviour
             DestroyObject(child.gameObject);
         }
 
-        foreach (var item in MaskImages.Masks)
+        foreach (var item in MaskImages.AllMasks)
         {
             var newMaskButtom = Instantiate(MaskPrefab);
             newMaskButtom.GetComponent<MaskItem>().Initialize(item);

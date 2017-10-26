@@ -9,9 +9,9 @@ public abstract class MenuItem : MonoBehaviour, IPointerClickHandler
 {
     public bool Selected { get; private set; }
 
-    private Color SelectedColor = new Color(0.8f, 1.0f, 0.8f);
-    private Color DisabledColor = new Color(0.8f, 0.8f, 0.8f);
-    private Color UnSelectedColor = Color.white;
+    private Color SelectedColor = Color.white;
+    private Color DisabledColor = new Color(0.5f, 0.5f, 0.5f);
+    private Color UnSelectedColor = new Color(0.6f, 0.6f, 0.6f);
 
     private bool IsDisabled { get { return FindObjectOfType<Record>().ActivelyRecording; } }
     

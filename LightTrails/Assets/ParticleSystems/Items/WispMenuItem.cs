@@ -7,7 +7,7 @@ public class WispMenuItem : ParticleEffectMenuItem
     public override Attribute[] GetAttributes()
     {
         var value = assosicatedEffect.GetComponentInChildren<SystemManipulation>().IntensityValue;
-        List<Attribute> attribtues = new List<Attribute>()
+        List<Attribute> attribtues = new List<Attribute>(base.GetAttributes())
         {
             new SliderAttribute()
             {
@@ -25,8 +25,6 @@ public class WispMenuItem : ParticleEffectMenuItem
                 CallBack = ChangeColor
             }
         };
-
-        attribtues.AddRange(base.GetAttributes());
 
         return attribtues.ToArray();
     }

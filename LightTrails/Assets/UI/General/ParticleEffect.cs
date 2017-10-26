@@ -5,6 +5,14 @@ public class ParticleEffect : RunningEffect
 {
     public bool IsLooping = false;
 
+    public float X;
+    public float Y;
+
+    public float Width = 400;
+    public float Height = 400;
+
+    public bool CanChangePosition = false;
+
     public ParticleSystem ParticleSystem { get; private set; }
 
     public override void Initialize(float newLength)
@@ -16,6 +24,17 @@ public class ParticleEffect : RunningEffect
 
         Length = newLength;
         ElapsedTime = 0;
+    }
+
+    public void SetPosition(float x, float y)
+    {
+        transform.position = new Vector3(x / 100.0f, y / 100.0f, 10);
+    }
+
+    private void Update()
+    {
+        X = transform.position.x * 100.0f;
+        Y = transform.position.y * 100.0f;
     }
 
     private void SetDefaultValues(GameObject gameObject, float length)

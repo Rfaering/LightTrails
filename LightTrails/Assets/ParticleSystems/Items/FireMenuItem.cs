@@ -7,25 +7,29 @@ public class FireMenuItem : ParticleEffectMenuItem
 
     public override Attribute[] GetAttributes()
     {
-        List<Attribute> fireAttributes = new List<Attribute>()
+        var attributes = base.GetAttributes();
+
+        var value = assosicatedEffect.GetComponentInChildren<ColorManipulation>().colorOverLifeTimeIndex;
+
+        var particleEffect = assosicatedEffect.GetComponent<ParticleEffect>();
+
+        List<Attribute> fireAttributes = new List<Attribute>(attributes)
         {
             new OptionsAttribute<Color>()
             {
                 Name = "Color",
                 SpecificCallBack = ChangeColor,
-                SpecificSelectedValue = Color.Red
+                SpecificSelectedValue = value != -1 ? (Color)value : Color.Red
             },
             new SliderAttribute()
             {
                 Name = "Rotation",
                 Min = -180,
                 Max = 180,
-                SelectedValue = 0,
+                SelectedValue = assosicatedEffect.transform.localRotation.eulerAngles.z,
                 CallBack = SetRotation
             }
         };
-
-        fireAttributes.AddRange(base.GetAttributes());
 
         return fireAttributes.ToArray();
     }

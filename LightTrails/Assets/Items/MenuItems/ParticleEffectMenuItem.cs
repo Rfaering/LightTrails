@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Linq;
 using Assets.Projects.Scripts;
 using Assets.Models;
+using System.Collections.Generic;
 
 public class ParticleEffectMenuItem : EffectMenuItem
 {
@@ -35,6 +36,29 @@ public class ParticleEffectMenuItem : EffectMenuItem
         createdEffect.transform.localPosition = new Vector3(0, 0, 10);
 
         base.Initialize(effect);
+    }
+
+    public override Attribute[] GetAttributes()
+    {
+        var particleEffect = assosicatedEffect.GetComponent<ParticleEffect>();
+        var result = new List<Attribute>();
+
+        if (particleEffect.CanChangePosition)
+        {
+            result.Add(new SizeAttribute()
+            {
+                Name = "Area",
+                Resizeable = false,
+                X = particleEffect.X,
+                Y = particleEffect.Y,
+                ForceWidth = particleEffect.Width,
+                ForceHeight = particleEffect.Height,
+                OffSetChanged = values => particleEffect.SetPosition(values.x, values.y),
+                SizeChanged = values => { },
+            });
+        }
+
+        return result.ToArray();
     }
 
     public override void HasBeenSelected()

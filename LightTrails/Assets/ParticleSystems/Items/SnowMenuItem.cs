@@ -5,7 +5,7 @@ public class SnowMenuItem : ParticleEffectMenuItem
 {
     public override Attribute[] GetAttributes()
     {
-        List<Attribute> attribtues = new List<Attribute>()
+        List<Attribute> attribtues = new List<Attribute>(base.GetAttributes())
         {
             new SliderAttribute()
             {
@@ -16,8 +16,6 @@ public class SnowMenuItem : ParticleEffectMenuItem
                 CallBack = SetRotation
             },
         };
-
-        attribtues.AddRange(base.GetAttributes());
 
         return attribtues.ToArray();
     }

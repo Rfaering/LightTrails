@@ -5,7 +5,7 @@ public class LightningMenuItem : ParticleEffectMenuItem
 {
     public override Attribute[] GetAttributes()
     {
-        List<Attribute> attribtues = new List<Assets.Models.Attribute>()
+        List<Attribute> attribtues = new List<Assets.Models.Attribute>(base.GetAttributes())
         {
             /*new SliderAttribute()
             {

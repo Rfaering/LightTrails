@@ -8,7 +8,7 @@ public class TrailsMenuItem : ParticleEffectMenuItem
     public override Attribute[] GetAttributes()
     {
         var value = assosicatedEffect.GetComponentInChildren<SystemManipulation>().IntensityValue;
-        List<Attribute> attributes = new List<Attribute>()
+        List<Attribute> attributes = new List<Attribute>(base.GetAttributes())
         {
             new SliderAttribute()
             {
@@ -52,8 +52,6 @@ public class TrailsMenuItem : ParticleEffectMenuItem
                 CallBack = newValue => assosicatedEffect.GetComponent<SystemManipulation>().TurnOnNoise = newValue
             }
         };
-
-        attributes.AddRange(base.GetAttributes());
 
         return attributes.ToArray();
     }

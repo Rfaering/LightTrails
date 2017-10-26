@@ -86,6 +86,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLooping: 0
+  X: 0
+  Y: 0
+  Width: 250
+  Height: 250
+  CanChangePosition: 1
 --- !u!114 &114574174703911632
 MonoBehaviour:
   m_ObjectHideFlags: 1

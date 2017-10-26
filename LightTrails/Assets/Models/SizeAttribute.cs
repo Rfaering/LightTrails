@@ -6,6 +6,8 @@ namespace Assets.Models
 {
     public class SizeAttribute : Attribute
     {
+        public bool Resizeable = false;
+
         private float _x;
         public float X
         {
@@ -114,7 +116,7 @@ namespace Assets.Models
         }
 
 
-        public bool IsLinked = true;
+        public bool IsLinked = false;
 
         public Action<Vector2> SizeChanged;
         public Action<Vector2> OffSetChanged;

@@ -1,4 +1,5 @@
 ﻿using Assets.Models;
+using Assets.Projects.Scripts;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -23,8 +24,8 @@ public class ShaderAttributes : MonoBehaviour
 
     internal void SetMask(string name)
     {
-        var mask = MaskImages.Masks.FirstOrDefault(x => x.name == name);
-        SetMask(mask);
+        var masks = MaskImages.AllMasks.FirstOrDefault(x => x.name == name);
+        SetMask(masks);
     }
 
     public virtual List<Attribute> GetAttributes()

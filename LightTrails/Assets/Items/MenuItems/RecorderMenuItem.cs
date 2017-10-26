@@ -4,8 +4,11 @@ using System;
 using System.Collections.Generic;
 #if UNITY_STANDALONE_WIN
 using System.Diagnostics;
+using System.Globalization;
 #endif
 using System.IO;
+using System.Linq;
+using UnityEngine;
 
 public class RecorderMenuItem : MenuItem
 {
@@ -37,9 +40,10 @@ public class RecorderMenuItem : MenuItem
 
         var attributes = new List<Assets.Models.Attribute>()
         {
-            new SizeAttribute()
+           new SizeAttribute()
            {
                Name = "Recorded Area",
+               Resizeable = true,
                X = areaPicker.X,
                Y = areaPicker.Y,
                ForceWidth = areaPicker.Width,
@@ -47,7 +51,6 @@ public class RecorderMenuItem : MenuItem
                SizeChanged = values => { areaPicker.SetSize(values.x, values.y); },
                OffSetChanged= values => { areaPicker.SetOffSet(values.x, values.y); }
            },
-
            new OptionsAttribute<FfmpegWrapper.OutputFormat>()
            {
                Name = "Output Type",
@@ -82,13 +85,12 @@ public class RecorderMenuItem : MenuItem
                },
                IsEnabled = () => !_record.ActivelyRecording
            },
-
-           new ActionAttribute()
+           /*new ActionAttribute()
            {
                Name = "Open Video",
                Action = () => { OpenFile(VideoFileName()); },
                IsEnabled = () => FileOpenEnabled(VideoFileName())
-           },
+           },*/
            /*new ActionAttribute()
            {
                Name = "Open Website",
@@ -97,8 +99,8 @@ public class RecorderMenuItem : MenuItem
            },*/
            new ActionAttribute()
             {
-                Name = "Open Directory",
-                Action = () => { OpenFile(VideoFileDirectory()); }
+                Name = "Videos",
+                Action = () => { OpenVideoGrid(); /*OpenFile(VideoFileDirectory());*/ }
             }
     };
         return attributes.ToArray();
@@ -132,6 +134,11 @@ public class RecorderMenuItem : MenuItem
         return 0;
     }
 
+    public void OpenVideoGrid()
+    {
+        Resources.FindObjectsOfTypeAll<VideoGrid>().First().Open();
+    }
+
     public void OpenFile(string filePath)
     {
         var fullPath = Path.GetFullPath(filePath);
@@ -140,30 +147,17 @@ public class RecorderMenuItem : MenuItem
 #endif
     }
 
-    public string VideoFileDirectory()
-    {
-        if (Project.CurrentModel != null)
-        {
-            return Project.CurrentModel.GetClipDirectoryPath();
-        }
-
-#if DEBUG
-        return Path.GetFullPath(Directory.GetCurrentDirectory() + "\\..\\");
-#else
-        return Path.GetFullPath(Directory.GetCurrentDirectory() + "\\");
-#endif
-    }
-
     public string VideoFileName()
     {
         var extension = Enum.GetName(typeof(FfmpegWrapper.OutputFormat), SelectedOutput);
+        var value = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss", CultureInfo.InvariantCulture);
         if (Project.CurrentModel != null)
         {
-            return Project.CurrentModel.GetClipFilePath(extension);
+            return Project.CurrentModel.GetClipFilePath(value, extension);
         }
 
 #if DEBUG
-        return Path.GetFullPath(Directory.GetCurrentDirectory() + "\\..\\test." + extension);
+        return Path.GetFullPath(@"C:\Debug\Videos\" + value + "." + extension);
 #else
         return Path.GetFullPath(Directory.GetCurrentDirectory() + "\\test." + Enum.GetName(typeof(FfmpegWrapper.OutputFormat), SelectedOutput));
 #endif

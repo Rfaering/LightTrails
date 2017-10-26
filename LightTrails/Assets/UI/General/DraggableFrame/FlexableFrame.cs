@@ -5,6 +5,7 @@ public class FlexableFrame : MonoBehaviour
 {
     public GameObject Frame;
     public Zoom Zoom;
+    public bool Resizeable;
 
     public void Update()
     {
@@ -12,11 +13,17 @@ public class FlexableFrame : MonoBehaviour
 
         if (sizeItemMenu != null && sizeItemMenu.Open)
         {
+            Resizeable = sizeItemMenu.SizeAttribute.Resizeable;
             Frame.SetActive(true);
         }
         else
         {
             Frame.SetActive(false);
+        }
+
+        foreach (var resizeHandler in GetComponentsInChildren<FlexibleResizeHandler>(true))
+        {
+            resizeHandler.gameObject.SetActive(Resizeable);
         }
     }
 
@@ -42,17 +49,19 @@ public class FlexableFrame : MonoBehaviour
 
         if (sizeMenuItem != null)
         {
+            var zoomFactor = FindObjectOfType<Zoom>().ZoomFactor;
+
             var newx = pos.x;
             var newy = pos.y;
 
-            sizeMenuItem.SetOffSet(newx, newy);
+            sizeMenuItem.SetOffSet(newx / zoomFactor, newy / zoomFactor);
         }
     }
 
     public void SizeUpdated()
     {
         var sizeMenuItem = FindObjectOfType<SizeMenuItem>();
-        var size = GetComponent<RectTransform>().sizeDelta;
+        var size = GetComponent<RectTransform>().sizeDelta / Zoom.ZoomFactor;
 
         if (sizeMenuItem != null)
         {

@@ -55,11 +55,6 @@ public class ItemsMenu : MonoBehaviour
                     image.SetSaveState(imageItem);
                 }
             }
-
-            if (storedMenuItems.Any())
-            {
-                FindObjectOfType<Record>().Playing = true;
-            }
         }
     }
 
@@ -90,9 +85,6 @@ public class ItemsMenu : MonoBehaviour
         {
             var selectedImageMenuItem = GetSelectedImageMenuItem();
             selectedImageMenuItem.SetShader(effect);
-
-            var recorder = FindObjectOfType<Record>();
-            recorder.Playing = true;
         }
 
         return null;
@@ -123,9 +115,6 @@ public class ItemsMenu : MonoBehaviour
         effectMenuItem.Initialize(effect);
         addEffectItem.SetParent(transform);
         effectMenuItem.SelectEffect();
-
-        var recorder = FindObjectOfType<Record>();
-        recorder.Playing = true;
 
         return effectMenuItem;
     }

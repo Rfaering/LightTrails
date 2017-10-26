@@ -10,6 +10,7 @@ LightTrails/LightTrails_Data
 LightTrails/EffectsRecorder_Data/
 PublicSite/bin/
 LightTrails/UWP/
+Deployment/PublicSite/wwwroot/software/
 
 =============== 
 Deployment

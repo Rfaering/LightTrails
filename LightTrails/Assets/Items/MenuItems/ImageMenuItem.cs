@@ -14,6 +14,17 @@ public class ImageMenuItem : MenuItem
     {
         var attributes = new List<Attribute>()
         {
+            new SizeAttribute()
+            {
+                Name = "Image Area",
+                Resizeable = false,
+                ForceWidth = ImageProperties.Width,
+                ForceHeight = ImageProperties.Height,
+                X = ImageProperties.X,
+                Y = ImageProperties.Y,
+                SizeChanged = vec => {},
+                OffSetChanged = vec => ImageProperties.SetPosition(vec)
+            },
             new ActionAttribute()
             {
                 Name = "Change Image",
@@ -108,16 +119,6 @@ public class ImageMenuItem : MenuItem
         }
 
         return null;
-    }
-
-    public void UpdateLighting(float value)
-    {
-        ImageProperties.Lighting = value;
-    }
-
-    public void UpdateTransparency(float value)
-    {
-        ImageProperties.Transparency = value;
     }
 
     public void UpdateScale(float value)

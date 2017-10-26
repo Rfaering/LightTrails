@@ -1,11 +1,12 @@
 ﻿using FfmpegWrapper;
 using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public partial class Record : MonoBehaviour
 {
     public bool ActivelyRecording = false;
-    public bool Playing = false;
+    public bool Playing = true;
     public bool ShowProgressBar = true;
 
     public float TimeBetweenFrames = 1.0f / 25.0f;
@@ -51,6 +52,14 @@ public partial class Record : MonoBehaviour
             _recordTimer.Hide();
         }
 
+        if (!ActivelyRecording)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Playing = !Playing;
+            }
+        }
+
         if (!Playing)
         {
             return;
@@ -63,7 +72,9 @@ public partial class Record : MonoBehaviour
             if (ActivelyRecording)
             {
                 StopRecording();
+                Resources.FindObjectsOfTypeAll<VideoGrid>().FirstOrDefault().Open();
             }
+
             return;
         }
 

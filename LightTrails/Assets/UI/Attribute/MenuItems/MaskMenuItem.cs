@@ -36,10 +36,10 @@ public class MaskMenuItem : AttributeMenuItem
 
     private void EnsureImageIsCorrect()
     {
-        var mask = MaskImages.Masks.FirstOrDefault(x => x.name == _maskAttribute.SelectedValue);
+        var mask = MaskImages.AllMasks.FirstOrDefault(x => x.name == _maskAttribute.SelectedValue);
         if (mask != null)
         {
-            var childComponent = GetComponentInChildren<RawImage>();
+            var childComponent = GetComponentsInChildren<RawImage>().Last();
             childComponent.texture = mask;
         }
     }

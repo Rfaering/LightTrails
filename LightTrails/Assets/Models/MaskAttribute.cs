@@ -8,7 +8,7 @@ namespace Assets.Models
         public MaskAttribute()
         {
             Name = "Mask";
-            Options = MaskImages.Masks.Select(x => x.name).ToList();
+            Options = MaskImages.AllMasks.Select(x => x.name).ToList();
         }
 
         public override void SetAttributeValue(AttributeValue value)

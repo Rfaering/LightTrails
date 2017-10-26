@@ -14,20 +14,11 @@ public class FlexibleDraggableObject : MonoBehaviour
 
     void OnDrag(BaseEventData data)
     {
-        var zoomFactor = FindObjectOfType<Zoom>().ZoomFactor;
-
         var sizeMenuItem = FindObjectOfType<SizeMenuItem>();
 
         PointerEventData ped = (PointerEventData)data;
 
-        var rect = Target.GetComponent<RectTransform>();
-
-        rect.anchorMin = new Vector2(0.5f, 0.5f);
-        rect.anchorMax = new Vector2(0.5f, 0.5f);
-
-        rect.anchoredPosition = new Vector2(sizeMenuItem.SizeAttribute.X, sizeMenuItem.SizeAttribute.Y);
-
-        Target.transform.Translate(ped.delta / zoomFactor);
+        Target.transform.Translate(ped.delta);
 
         GetComponentInParent<FlexableFrame>().OffsetUpdated();
     }

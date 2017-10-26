@@ -9,7 +9,7 @@ public class WaveMenuItem : ParticleEffectMenuItem
 
     public override Attribute[] GetAttributes()
     {
-        List<Attribute> attributes = new List<Attribute>()
+        List<Attribute> attributes = new List<Attribute>(base.GetAttributes())
         {
             new SliderAttribute()
             {
@@ -53,8 +53,6 @@ public class WaveMenuItem : ParticleEffectMenuItem
                 SpecificSelectedValue = Figures.Blobs,
             },
         };
-
-        attributes.AddRange(base.GetAttributes());
 
         return attributes.ToArray();
     }

@@ -18,9 +18,7 @@ public class RecorderAreaPicker : MonoBehaviour
     public void SetSize(float width, float height)
     {
         Width = (int)width;
-        Height = (int)height;
-
-        FindObjectOfType<FlexableFrame>().SetSize(width, height);
+        Height = (int)height;        
     }
 
     internal Rect GetRect()

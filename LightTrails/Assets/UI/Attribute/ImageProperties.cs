@@ -1,5 +1,4 @@
-﻿using Assets.Projects.Scripts;
-using System;
+﻿using System;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,15 +6,15 @@ using UnityEngine.UI;
 public class ImageProperties : MonoBehaviour
 {
     [Range(10, 100)]
-    public float Lighting = 100;
-
-    [Range(10, 100)]
-    public float Transparency = 100;
-
-    [Range(10, 100)]
     public float Scale = 100;
 
     public float CorrectionScale = 1.0f;
+
+    public float Width;
+    public float Height;
+
+    public float X;
+    public float Y;
 
     public string ImagePath;
 
@@ -28,10 +27,22 @@ public class ImageProperties : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var color = Lighting / 100f;
-        var alpha = Transparency / 100f;
-        GetComponent<RawImage>().color = new Color(color, color, color, alpha);
         transform.localScale = CorrectionScale * new Vector3(Scale / 100, Scale / 100, Scale / 100);
+
+        var rect = GetComponent<RectTransform>();
+        var deltaSize = rect.sizeDelta;
+
+        Width = deltaSize.x;
+        Height = deltaSize.y;
+
+        X = rect.anchoredPosition.x;
+        Y = rect.anchoredPosition.y;
+    }
+
+    public void SetPosition(Vector2 position)
+    {
+        var rect = GetComponent<RectTransform>();
+        rect.anchoredPosition = position;
     }
 
     public void SetImage(string path)
@@ -51,6 +62,8 @@ public class ImageProperties : MonoBehaviour
                 var rawImage = GetComponent<RawImage>();
                 rawImage.texture = tex;
                 rawImage.rectTransform.sizeDelta = new Vector2(tex.width, tex.height);
+                Width = tex.width;
+                Height = tex.height;
             }
             catch (Exception e)
             {

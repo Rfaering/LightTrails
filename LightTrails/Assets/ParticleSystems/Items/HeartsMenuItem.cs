@@ -5,7 +5,7 @@ public class HeartsMenuItem : ParticleEffectMenuItem
 {
     public override Attribute[] GetAttributes()
     {
-        List<Attribute> attribtues = new List<Attribute>()
+        List<Attribute> attribtues = new List<Attribute>(base.GetAttributes())
         {
             new SliderAttribute()
             {
@@ -24,9 +24,7 @@ public class HeartsMenuItem : ParticleEffectMenuItem
                 CallBack = SetItensity
             }
         };
-
-        attribtues.AddRange(base.GetAttributes());
-
+        
         return attribtues.ToArray();
     }
 

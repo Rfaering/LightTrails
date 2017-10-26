@@ -1,15 +1,31 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class SetRecorderTimer : MonoBehaviour
 {
     private Record _record;
+    private RecorderProgressBar _recorderProgressBar;
 
     private void Start()
     {
+        _recorderProgressBar = GetComponentInChildren<RecorderProgressBar>();
         _record = FindObjectOfType<Record>();
         GetComponentInChildren<Slider>().value = 0;
         GetComponentInChildren<Slider>().onValueChanged.AddListener(ValueChanged);
+    }
+
+    private void Update()
+    {
+        var particleMenuItemsCount = FindObjectsOfType<ParticleEffectMenuItem>().Count();
+        if (particleMenuItemsCount > 0 || _record.ActivelyRecording)
+        {
+            _recorderProgressBar.gameObject.SetActive(true);
+        }
+        else
+        {
+            _recorderProgressBar.gameObject.SetActive(false);
+        }
     }
 
     public void Show()
@@ -24,7 +40,7 @@ public class SetRecorderTimer : MonoBehaviour
 
     public void SetProgress(float value)
     {
-        GetComponentInChildren<Slider>().value = value;
+        _recorderProgressBar.GetComponent<Slider>().value = value;
     }
 
     private void ValueChanged(float percentage)

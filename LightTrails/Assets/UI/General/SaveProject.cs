@@ -1,27 +1,35 @@
 ﻿using Assets.Projects.Scripts;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SaveProject : MonoBehaviour
 {
-    public Project Project;
-    
+    public Button _button;
+
     void Start()
     {
-        if (Project.CurrentModel == null)
+        /*if (Project.CurrentModel == null)
         {
             gameObject.SetActive(false);
             return;
-        }
+        }*/
 
-        Project = Project.CurrentModel;
-        GetComponent<Button>().onClick.AddListener(SaveClicked);
+        _button = GetComponent<Button>();
+        _button.onClick.AddListener(SaveClicked);
     }
 
     private void SaveClicked()
     {
+        if (Project.CurrentModel == null)
+        {
+            return;
+        }
+
+        _button.interactable = false;
+
+        FindObjectOfType<Notifications>().PlaySaveNotification(() => _button.interactable = true);
+
         var storedEffectState = new List<StoredParticleItem>();
         var storedImageState = new List<StoredImageItem>();
 
@@ -38,7 +46,7 @@ public class SaveProject : MonoBehaviour
             storedImageState.Add(item.GetImageSaveState());
         }
 
-        Project.Items = new StoredItems()
+        Project.CurrentModel.Items = new StoredItems()
         {
             Recorder = FindObjectOfType<RecorderMenuItem>().GetSaveState(),
             Images = storedImageState.ToArray(),
@@ -48,8 +56,8 @@ public class SaveProject : MonoBehaviour
 
         FindObjectOfType<ScreenShot>().TakeProjectThumbnail = true;
 
-        Project.Save();
+        Project.CurrentModel.Save();
 
-        GetComponent<Animation>().Play();
+        //GetComponent<Animation>().Play();
     }
 }

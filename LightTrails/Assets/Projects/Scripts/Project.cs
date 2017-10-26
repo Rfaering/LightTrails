@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 #if UNITY_STANDALONE_WIN
 using System.Runtime.Serialization.Formatters.Binary;
 #elif UNITY_METRO
@@ -19,6 +21,9 @@ namespace Assets.Projects.Scripts
         public string OriginalImagePath;
         public StoredItems Items;
 
+        [NonSerialized]
+        public List<Texture2D> Masks;
+
         public Project()
         {
             Items = new StoredItems();
@@ -32,22 +37,89 @@ namespace Assets.Projects.Scripts
             return file;
         }
 
+        public string MaskPath(string name)
+        {
+            var images = Path.Combine(GetProjectPath(), "masks");
+            var file = Path.Combine(images, name + ".png");
+
+            return file;
+        }
+
+        public void SaveMask(byte[] bytes)
+        {
+            var maskPath = MaskPath(Guid.NewGuid().ToString());
+            SaveFile(bytes, maskPath);
+
+            if (Masks != null)
+            {
+                Texture2D tex = new Texture2D(1, 1);
+                tex.name = Path.GetFileNameWithoutExtension(maskPath);
+                tex.LoadImage(bytes);
+
+                Masks.Add(tex);
+            }
+        }
+
+        public List<Texture2D> LoadMasks()
+        {
+            if (Masks != null)
+            {
+                return Masks;
+            }
+
+            List<Texture2D> textures = new List<Texture2D>();
+
+            var masks = Path.Combine(GetProjectPath(), "masks");
+
+            if (!Directory.Exists(masks))
+            {
+                Directory.CreateDirectory(masks);
+            }
+
+            var files = Directory.GetFiles(masks);
+            foreach (var file in files)
+            {
+                try
+                {
+                    var bytes = File.ReadAllBytes(file);
+
+                    Texture2D tex = new Texture2D(1, 1);
+                    tex.name = Path.GetFileNameWithoutExtension(file);
+                    tex.LoadImage(bytes);
+
+                    textures.Add(tex);
+                }
+                catch
+                {
+
+                }
+            }
+
+            Masks = textures;
+
+            return Masks;
+        }
+
         public void SaveThumbnail(byte[] bytes)
         {
             var thumbnailPath = ThumbnailPath();
+            SaveFile(bytes, thumbnailPath);
+        }
 
-            if (!Directory.Exists(thumbnailPath))
+        private static void SaveFile(byte[] bytes, string path)
+        {
+            if (!Directory.Exists(path))
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(thumbnailPath));
+                Directory.CreateDirectory(Path.GetDirectoryName(path));
             }
 
-            if (!File.Exists(thumbnailPath))
+            if (!File.Exists(path))
             {
-                var file = File.Create(thumbnailPath);
+                var file = File.Create(path);
                 file.Close();
             }
 
-            File.WriteAllBytes(thumbnailPath, bytes);
+            File.WriteAllBytes(path, bytes);
         }
 
         internal string GetThumbnail()
@@ -70,13 +142,35 @@ namespace Assets.Projects.Scripts
             return Path.Combine(GetProjectPath(), "data");
         }
 
-        public string GetClipFilePath(string extension)
+        public string GetClipFilePath(string name, string extension)
         {
             var clipDirPath = GetClipDirectoryPath();
 
-            var clipFilePath = Path.Combine(clipDirPath, Name + "." + extension);
+            var clipFilePath = Path.Combine(clipDirPath, name + "." + extension);
 
             return clipFilePath;
+        }
+
+        public bool DeleteClip(string name)
+        {
+            var directory = GetClipDirectoryPath();
+
+            var matchingFile = Directory.GetFiles(directory).FirstOrDefault(x => Path.GetFileNameWithoutExtension(x) == name);
+
+            try
+            {
+                if (matchingFile != null)
+                {
+                    File.Delete(matchingFile);
+                    return true;
+                }
+            }
+            catch
+            {
+                Debug.Log("Could not delete file");
+            }
+
+            return false;
         }
 
         public string GetClipDirectoryPath()

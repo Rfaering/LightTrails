@@ -32,10 +32,20 @@ public class ParticleEffectMenuItem : EffectMenuItem
         createdEffect.gameObject.SetActive(true);
 
         assosicatedEffect = createdEffect.gameObject;
-
         createdEffect.transform.localPosition = new Vector3(0, 0, 10);
 
         base.Initialize(effect);
+    }
+
+    public void SetEffectBasedOnIndex(int index)
+    {
+        var localPostion = assosicatedEffect.transform.localPosition;
+        assosicatedEffect.transform.localPosition = new Vector3(localPostion.x, localPostion.y, 30 - index);
+
+        foreach (ParticleSystemRenderer ps in assosicatedEffect.GetComponentsInChildren<ParticleSystemRenderer>())
+        {
+            ps.material.renderQueue = 3000 - index * 100;
+        }
     }
 
     public override Attribute[] GetAttributes()
@@ -59,6 +69,14 @@ public class ParticleEffectMenuItem : EffectMenuItem
         }
 
         return result.ToArray();
+    }
+
+    public override Rect GetRectOfAssociatedItem()
+    {
+        var particleEffect = assosicatedEffect.GetComponent<ParticleEffect>();
+        var result = new Rect(0, 0, particleEffect.Width, particleEffect.Height);
+        result.center = new Vector2(particleEffect.X, particleEffect.Y);
+        return result;
     }
 
     public override void HasBeenSelected()

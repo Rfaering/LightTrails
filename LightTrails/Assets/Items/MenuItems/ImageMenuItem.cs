@@ -4,11 +4,14 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.IO;
+using UnityEngine.SceneManagement;
 
 public class ImageMenuItem : MenuItem
 {
     public ImageProperties ImageProperties;
     public ShaderAttributes ShaderAttributes;
+    public int Index;
 
     public override Attribute[] GetAttributes()
     {
@@ -30,6 +33,11 @@ public class ImageMenuItem : MenuItem
                 Name = "Change Image",
                 Action = () => FindImage()
             },
+            new ActionAttribute()
+            {
+                Name = "Select Shader",
+                Action = SelectShader
+            },
             new SliderAttribute()
             {
                 Name = "Scale",
@@ -37,11 +45,6 @@ public class ImageMenuItem : MenuItem
                 SelectedValue = ImageProperties.Scale,
                 Min = 10
             },
-            new ActionAttribute()
-            {
-                Name = "Select Shader",
-                Action = SelectShader
-            }
             /*new ToggleAttribute()
             {
                 Name = "Light",
@@ -63,9 +66,20 @@ public class ImageMenuItem : MenuItem
         }*/
     }
 
-    internal void Initialize(GameObject image)
+    internal void UpdateImageLayer(int index)
+    {
+        Index = index;
+        ImageProperties.SetIndex(index);
+        if (ShaderAttributes != null)
+        {
+            ShaderAttributes.SetIndex(Index);
+        }
+    }
+
+    internal void Initialize(GameObject image, int index)
     {
         ImageProperties = image.GetComponent<ImageProperties>();
+        UpdateImageLayer(index);
     }
 
     public void SetShader(string name)
@@ -104,6 +118,7 @@ public class ImageMenuItem : MenuItem
             var newComponent = gameObject.AddComponent(shaderEffect.MenuItemType) as ShaderAttributes;
             newComponent.Initialize(newMaterial);
             ShaderAttributes = newComponent;
+            ShaderAttributes.SetIndex(Index);
         }
 
         FindObjectOfType<AttributesMenu>().CreateProperties(GetAttributes());
@@ -128,8 +143,8 @@ public class ImageMenuItem : MenuItem
 
     public void SelectShader()
     {
-        var overlay = Resources.FindObjectsOfTypeAll<EffectOptionsOverlay>().First();
-        overlay.Open(Effect.EffectKind.Shader);
+        EffectOptionsOverlay.RenderedEffectType = Effect.EffectKind.Shader;
+        SceneManager.LoadScene("Scenes/Effects", LoadSceneMode.Additive);
     }
 
     internal StoredImageItem GetImageSaveState()
@@ -145,15 +160,41 @@ public class ImageMenuItem : MenuItem
 
     public void FindImage()
     {
-        StandaloneFileBrowser.OpenFilePanel(callBack =>
+        StandaloneFileBrowser.OpenFilePanel(fullPath =>
        {
-           FindObjectOfType<ImageProperties>().SetImage(callBack);
+           SetImage(fullPath);
        });
+    }
+
+    public void SetImage(string filePath)
+    {
+        if (ImageProperties != null && ImageProperties.SetImage(filePath))
+        {
+            SetNameOfMenuItem(filePath);
+        }
     }
 
     public override void Remove()
     {
         Destroy(ImageProperties.gameObject);
         base.Remove();
+    }
+
+    private void SetNameOfMenuItem(string path)
+    {
+        var fileName = Path.GetFileNameWithoutExtension(path);
+
+        var text = GetComponentInChildren<Text>();
+        if (text != null)
+        {
+            text.text = fileName;
+        }
+    }
+
+    public override Rect GetRectOfAssociatedItem()
+    {
+        var result = new Rect(0, 0, ImageProperties.Width, ImageProperties.Height);
+        result.center = new Vector2(ImageProperties.X, ImageProperties.Y);
+        return result;
     }
 }

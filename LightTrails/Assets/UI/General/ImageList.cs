@@ -9,9 +9,8 @@ public class ImageList : MonoBehaviour
         var image = Instantiate(ImagePrefab);
         image.transform.SetParent(transform);
 
-        var siblingIndex = image.transform.GetSiblingIndex();
+        image.transform.localPosition = new Vector3(0, 0);
 
-        image.transform.localPosition = new Vector3(0, 0, 3000 - 100 * siblingIndex);
         return image;
     }
 }

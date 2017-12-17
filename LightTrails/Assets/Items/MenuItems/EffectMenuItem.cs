@@ -71,4 +71,9 @@ public class EffectMenuItem : MenuItem
     {
         SetSaveState(state);
     }
+
+    public override Rect GetRectOfAssociatedItem()
+    {
+        return Rect.zero;
+    }
 }

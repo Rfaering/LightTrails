@@ -140,39 +140,9 @@
   <ItemGroup>
     <Compile Include="Assets\Golden Demo\Editor\GoldenMaterialEditor.cs" />
     <Compile Include="Assets\Golden Demo\Editor\HelperExtensions.cs" />
-    <Compile Include="Assets\Mirza Beig\Editor Extensions\Effects\Particle Twister\Editor\ParticleTwisterEditorWindow.cs" />
-    <Compile Include="Assets\Mirza Beig\Editor Extensions\Effects\Particle Twister\Editor\ParticleTwisterExtensions.cs" />
-    <Compile Include="Assets\Mirza Beig\Editor Extensions\Utilities\Multi-Asset Renamer\Editor\MultiAssetRenamer.cs" />
-    <Compile Include="Assets\Mirza Beig\Editor Extensions\Utilities\Particle Playback\Editor\ParticlePlayback.cs" />
-    <Compile Include="Assets\Mirza Beig\Editor Extensions\Utilities\Particle Playback\Editor\ParticlePlaybackEditorWindow.cs" />
-    <Compile Include="Assets\Mirza Beig\Editor Extensions\Utilities\Particle Playback\Editor\ParticlePlaybackExtensions.cs" />
-    <Compile Include="Assets\Mirza Beig\Editor Extensions\Utilities\Particle Scaler\Editor\ParticleScalerEditorWindow.cs" />
-    <Compile Include="Assets\Mirza Beig\Editor Extensions\Utilities\Particle Scaler\Editor\ParticleScalerExtensions.cs" />
-    <Compile Include="Assets\Mirza Beig\Editor Extensions\_Common\Editor\ParticleEditorUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Golden Demo\Golden.shader" />
-    <None Include="Assets\Mirza Beig\Editor Extensions\Utilities\Multi-Asset Renamer\README.txt" />
-    <None Include="Assets\Mirza Beig\README - Action VFX.txt" />
-    <None Include="Assets\Mirza Beig\README - Advanced Particle Scaler.txt" />
-    <None Include="Assets\Mirza Beig\README - Shuriken to Spritesheet.txt" />
-    <None Include="Assets\Mirza Beig\README - Storm VFX.txt" />
-    <None Include="Assets\Mirza Beig\README - Ultimate VFX.txt" />
-    <None Include="Assets\Mirza Beig\Shaders\Image Effects\Resources\Sharpen\Sharpen.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Cutout\AlphaCutoff-Add.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Cutout\AlphaCutoff-Alpha.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Distortion\Distortion-Add (ORIGINAL).shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Distortion\Distortion-Add.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Distortion\Distortion-Alpha (ORIGINAL).shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Distortion\Distortion-Alpha.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Distortion\DistortionTextured-Add.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Distortion\DistortionTextured-Alpha.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Intersection Highlight\IntersectionHighlight-Add.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Intersection Highlight\IntersectionHighlight-Alpha.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Mask\Mask-Alpha.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\No Fog\NoFog-Add.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\No Fog\NoFog-Alpha.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Unmultiply\Unmultiply-AlphaFromLuminance.shader" />
     <None Include="Assets\Shaders\Shaders\Bars.shader" />
     <None Include="Assets\Shaders\Shaders\Basic.shader" />
     <None Include="Assets\Shaders\Shaders\Brightness.shader" />

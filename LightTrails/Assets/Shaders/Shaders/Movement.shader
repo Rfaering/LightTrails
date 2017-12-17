@@ -17,9 +17,12 @@ Shader "Custom/Movement"
 
 	SubShader
 	{
-		Tags { "RenderType" = "Opaque" }
-		Tags { "Queue" = "Transparent" }
-		LOD 100
+        Tags { "Queue"="Transparent" "RenderType"="Transparent" }
+        LOD 100
+
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
+
 
 		Pass
 		{

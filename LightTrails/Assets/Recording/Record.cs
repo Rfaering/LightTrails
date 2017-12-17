@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public partial class Record : MonoBehaviour
 {
@@ -72,7 +73,8 @@ public partial class Record : MonoBehaviour
             if (ActivelyRecording)
             {
                 StopRecording();
-                Resources.FindObjectsOfTypeAll<VideoGrid>().FirstOrDefault().Open();
+                SceneManager.LoadScene("Scenes/Videos");
+                SceneManager.SetActiveScene(SceneManager.GetSceneByName("Videos"));
             }
 
             return;

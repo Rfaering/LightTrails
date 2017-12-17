@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4314253011643290}
-  - component: {fileID: 114716282680914322}
   - component: {fileID: 199952416477261310}
   - component: {fileID: 198287214170629330}
   - component: {fileID: 114374564735946806}
@@ -105,17 +104,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
---- !u!114 &114716282680914322
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1273498769233510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a70f47e99623a5043adc11839706250a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114951991686632328
 MonoBehaviour:
   m_ObjectHideFlags: 1

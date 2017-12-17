@@ -12,6 +12,13 @@
     SubShader {
         Pass {
 
+        Tags { "Queue"="Transparent" "RenderType"="Transparent" }
+        LOD 100
+
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
+
+
         CGPROGRAM
         #pragma vertex vert
         #pragma fragment frag

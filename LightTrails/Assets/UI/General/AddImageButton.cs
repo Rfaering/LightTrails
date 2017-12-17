@@ -19,7 +19,7 @@ public class AddImageButton : MonoBehaviour
         {
             var itemsmenu = FindObjectOfType<ItemsMenu>();
             var image = itemsmenu.AddImage();
-            image.ImageProperties.SetImage(callBack);
+            image.SetImage(callBack);
             image.SetShader("Brightness");
             itemsmenu.ItemSelected(image);
         });

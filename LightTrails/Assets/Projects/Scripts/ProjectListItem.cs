@@ -30,7 +30,7 @@ public class ProjectListItem : MonoBehaviour
         else
         {
             Project.CurrentModel = _project;
-            SceneManager.LoadScene("Scenes/Particles");
+            SceneManager.LoadScene("Scenes/Main");
         }
     }
 

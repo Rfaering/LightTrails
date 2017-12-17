@@ -9,5 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Projects.unity
     guid: 40649866025b66f4d9b27f789d204570
   - enabled: 1
-    path: Assets/Scenes/Particles.unity
+    path: Assets/Scenes/Main.unity
     guid: a5c4c85e9c2025b4baf8fd3da2be71ca
+  - enabled: 1
+    path: Assets/Scenes/Effects.unity
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Videos.unity
+    guid: 00000000000000000000000000000000

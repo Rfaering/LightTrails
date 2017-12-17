@@ -14,8 +14,9 @@ public abstract class MenuItem : MonoBehaviour, IPointerClickHandler
     private Color UnSelectedColor = new Color(0.6f, 0.6f, 0.6f);
 
     private bool IsDisabled { get { return FindObjectOfType<Record>().ActivelyRecording; } }
-    
-    public abstract Attribute[] GetAttributes();    
+
+    public abstract Attribute[] GetAttributes();
+    public abstract Rect GetRectOfAssociatedItem();
 
     internal StoredItem GetSaveState()
     {

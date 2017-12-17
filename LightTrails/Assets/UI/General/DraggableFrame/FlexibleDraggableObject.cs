@@ -14,8 +14,6 @@ public class FlexibleDraggableObject : MonoBehaviour
 
     void OnDrag(BaseEventData data)
     {
-        var sizeMenuItem = FindObjectOfType<SizeMenuItem>();
-
         PointerEventData ped = (PointerEventData)data;
 
         Target.transform.Translate(ped.delta);

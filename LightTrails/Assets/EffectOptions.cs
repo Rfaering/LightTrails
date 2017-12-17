@@ -28,6 +28,8 @@ public class EffectOptions
           Effect.Create("FadingStars", Effect.EffectKind.Particle),
           Effect.Create("Lightning", Effect.EffectKind.Particle, typeof(LightningMenuItem)),
           Effect.Create("FlameThrower", Effect.EffectKind.Particle),
-          Effect.Create("Flare", Effect.EffectKind.Particle)
+          Effect.Create("Flare", Effect.EffectKind.Particle),
+          //Effect.Create("LightTrails", Effect.EffectKind.Particle)
 };
 }
+

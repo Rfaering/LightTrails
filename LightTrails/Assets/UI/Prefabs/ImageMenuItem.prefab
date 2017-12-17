@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 114817256448786972}
   - component: {fileID: 114047868522696054}
   - component: {fileID: 114530954196140108}
+  - component: {fileID: 114159547386827142}
   m_Layer: 5
   m_Name: ImageMenuItem
   m_TagString: Untagged
@@ -142,6 +143,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114159547386827142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1995451388378370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e000a3affc167941b58bef6456833b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsGrabbable: 1
+  IsFrozen: 0
 --- !u!114 &114188136194209184
 MonoBehaviour:
   m_ObjectHideFlags: 1

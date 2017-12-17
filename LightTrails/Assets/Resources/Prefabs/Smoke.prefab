@@ -36,7 +36,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4959692759777920}
-  - component: {fileID: 114761038982721358}
   - component: {fileID: 199657728923834576}
   - component: {fileID: 198440483598768222}
   - component: {fileID: 114758478507569032}
@@ -122,17 +121,6 @@ MonoBehaviour:
   Width: 300
   Height: 400
   CanChangePosition: 1
---- !u!114 &114761038982721358
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1165338973516208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a70f47e99623a5043adc11839706250a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!198 &198126766575400062
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -24,7 +24,7 @@ public class StandaloneFileBrowserWindows : IStandaloneFileBrowser
     public void OpenFilePanel(Action<string> callBack)
     {
         var extensions = new[] {
-            new ExtensionFilter("Image Files", "png", "jpg", "jpeg" ),
+            new ExtensionFilter("Image Files", "png", "jpg", "jpeg", "psd" ),
         };
 
         var paths = OpenFilePanel("Open File", System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyPictures), extensions, true);

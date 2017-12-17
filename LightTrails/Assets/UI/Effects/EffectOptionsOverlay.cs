@@ -1,18 +1,22 @@
 ﻿using Assets.Models;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class EffectOptionsOverlay : MonoBehaviour, IPointerClickHandler
 {
+    public static Effect.EffectKind? RenderedEffectType;
+
     internal void Close()
     {
-        foreach (var item in GetComponentsInChildren<EffectContentContainer>(true))
+        /*foreach (var item in GetComponentsInChildren<EffectContentContainer>(true))
         {
             item.gameObject.transform.parent.gameObject.SetActive(true);
         }
 
         FindObjectOfType<Record>().ShowProgressBar = true;
-        gameObject.SetActive(false);
+        gameObject.SetActive(false);*/
+        SceneManager.UnloadSceneAsync("Scenes/Effects");
     }
 
     void Update()
@@ -23,16 +27,15 @@ public class EffectOptionsOverlay : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    internal void Open(Effect.EffectKind effectType)
+    void Start()
     {
-        foreach (var item in GetComponentsInChildren<EffectContentContainer>())
+        if (RenderedEffectType != null)
         {
-            item.gameObject.transform.parent.gameObject.SetActive(item.EffectKind == effectType);
+            foreach (var item in GetComponentsInChildren<EffectContentContainer>())
+            {
+                item.gameObject.transform.parent.gameObject.SetActive(item.EffectKind == RenderedEffectType.Value);
+            }
         }
-
-        FindObjectOfType<Record>().ShowProgressBar = false;
-        MaskPanel.Close();
-        gameObject.SetActive(true);
     }
 
     public void OnPointerClick(PointerEventData eventData)

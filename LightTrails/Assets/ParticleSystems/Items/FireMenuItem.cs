@@ -11,8 +11,6 @@ public class FireMenuItem : ParticleEffectMenuItem
 
         var value = assosicatedEffect.GetComponentInChildren<ColorManipulation>().colorOverLifeTimeIndex;
 
-        var particleEffect = assosicatedEffect.GetComponent<ParticleEffect>();
-
         List<Attribute> fireAttributes = new List<Attribute>(attributes)
         {
             new OptionsAttribute<Color>()

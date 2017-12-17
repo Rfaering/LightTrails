@@ -26,8 +26,6 @@ public class FlexibleResizeHandler : MonoBehaviour
 
     void OnDrag(BaseEventData data)
     {
-        var linked = FindObjectOfType<SizeMenuItem>().IsLinked();
-
         PointerEventData ped = (PointerEventData)data;
 
         RectTransform.Edge? horizontalEdge = null;

@@ -28,7 +28,7 @@ public class ParticleEffect : RunningEffect
 
     public void SetPosition(float x, float y)
     {
-        transform.position = new Vector3(x / 100.0f, y / 100.0f, 10);
+        transform.position = new Vector3(x / 100.0f, y / 100.0f, transform.position.z);
     }
 
     private void Update()

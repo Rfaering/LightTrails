@@ -13,8 +13,11 @@ Shader "Custom/Transition"
 
 		SubShader
 		{
-			// No culling or depth
-			Cull Off ZWrite Off ZTest Always
+        Tags { "Queue"="Transparent" "RenderType"="Transparent" }
+        LOD 100
+
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
 
 			Pass
 			{

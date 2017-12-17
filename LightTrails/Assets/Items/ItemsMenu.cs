@@ -50,7 +50,7 @@ public class ItemsMenu : MonoBehaviour
                 {
                     var imageItem = item as StoredImageItem;
                     var image = AddImage();
-                    image.ImageProperties.SetImage(imageItem.ImagePath);
+                    image.SetImage(imageItem.ImagePath);
                     image.SetShader(imageItem.Shader);
                     image.SetSaveState(imageItem);
                 }
@@ -65,7 +65,8 @@ public class ItemsMenu : MonoBehaviour
 
         var image = FindObjectOfType<ImageList>().AddImage();
         var imageMenuItem = newGameObject.GetComponent<ImageMenuItem>();
-        imageMenuItem.Initialize(image);
+
+        imageMenuItem.Initialize(image, imageMenuItem.transform.GetSiblingIndex());
 
         return imageMenuItem;
     }
@@ -92,9 +93,6 @@ public class ItemsMenu : MonoBehaviour
 
     private EffectMenuItem SetParticleEffect(Effect effect)
     {
-        var addEffectItem = transform.Find("AddEffect");
-        addEffectItem.SetParent(addEffectItem.root);
-
         GameObject newGameObject = null;
         EffectMenuItem effectMenuItem = null;
 
@@ -113,14 +111,23 @@ public class ItemsMenu : MonoBehaviour
         newGameObject.name = effect.Name;
 
         effectMenuItem.Initialize(effect);
-        addEffectItem.SetParent(transform);
         effectMenuItem.SelectEffect();
+
+        if (effectMenuItem is ParticleEffectMenuItem)
+        {
+            (effectMenuItem as ParticleEffectMenuItem).SetEffectBasedOnIndex(effectMenuItem.transform.GetSiblingIndex());
+        }
 
         return effectMenuItem;
     }
 
     public void ItemSelected(MenuItem element)
     {
+        if (element.Selected)
+        {
+            return;
+        }
+
         MaskPanel.Close();
 
         foreach (var item in GetComponentsInChildren<MenuItem>())

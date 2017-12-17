@@ -1,5 +1,4 @@
-﻿using System;
-using Assets.Models;
+﻿using Assets.Models;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -30,6 +29,8 @@ public class SizeMenuItem : AttributeMenuItem
         GetComponent<LayoutElement>().minHeight = Open ? 180 : 100;
         Closed.SetActive(!Open);
         Expand.SetActive(Open);
+
+
     }
 
     internal void Initialize(SizeAttribute size)
@@ -109,6 +110,9 @@ public class SizeMenuItem : AttributeMenuItem
 
         Closed.SetActive(!Open);
         Expand.SetActive(Open);
+
+        var shrinkButton = GetComponentInChildren<ShrinkButton>(true);
+        shrinkButton.gameObject.SetActive(FindObjectOfType<RecorderMenuItem>().Selected);
 
     }
 

@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AddEffectMenuItem : MonoBehaviour, IPointerClickHandler
@@ -24,8 +25,8 @@ public class AddEffectMenuItem : MonoBehaviour, IPointerClickHandler
             return;
         }
 
-        var overlay = Resources.FindObjectsOfTypeAll<EffectOptionsOverlay>().First();
-        overlay.Open(Assets.Models.Effect.EffectKind.Particle);
+        EffectOptionsOverlay.RenderedEffectType = Assets.Models.Effect.EffectKind.Particle;
+        SceneManager.LoadScene("Scenes/Effects", LoadSceneMode.Additive);
     }
 
     void Update()

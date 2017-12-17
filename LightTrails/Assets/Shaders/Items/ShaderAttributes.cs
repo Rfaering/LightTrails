@@ -1,9 +1,7 @@
 ﻿using Assets.Models;
-using Assets.Projects.Scripts;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
 
 public class ShaderAttributes : MonoBehaviour
 {
@@ -14,6 +12,11 @@ public class ShaderAttributes : MonoBehaviour
     public void Initialize(Material material)
     {
         Material = material;
+
+        if (material != null)
+        {
+            material.renderQueue = (int)gameObject.transform.localPosition.z;
+        }
     }
 
     internal void SetMask(Texture2D texture)
@@ -43,5 +46,10 @@ public class ShaderAttributes : MonoBehaviour
         }
 
         return attributes;
+    }
+
+    internal void SetIndex(int index)
+    {
+        Material.renderQueue = 3000 - 100 * index;
     }
 }

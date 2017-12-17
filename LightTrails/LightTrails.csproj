@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>5.6.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -93,11 +95,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CloseButton.cs" />
-    <Compile Include="Assets\CloseVideoGrid.cs" />
     <Compile Include="Assets\EffectOptions.cs" />
-    <Compile Include="Assets\ImageTranslation.cs" />
-    <Compile Include="Assets\ImportMask.cs" />
+    <Compile Include="Assets\Events\Events.cs" />
     <Compile Include="Assets\Items\ItemsMenu.cs" />
     <Compile Include="Assets\Items\MenuItems\AddEffectMenuItem.cs" />
     <Compile Include="Assets\Items\MenuItems\EffectMenuItem.cs" />
@@ -107,36 +106,6 @@
     <Compile Include="Assets\Items\MenuItems\ParticleEffectMenuItem.cs" />
     <Compile Include="Assets\Items\MenuItems\RecorderMenuItem.cs" />
     <Compile Include="Assets\Items\MenuItems\ShaderEffectMenuItem.cs" />
-    <Compile Include="Assets\LinkButton.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\Ultimate VFX\2 - Expansions\XP - TITLES\Scripts\DemoManager_XPTitles.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\AnimatedLight.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\DestroyAfterTime.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\DestroyOnParticlesDead.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\DestroyOnTrailsDestroyed.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\IgnoreTimeScale.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\ParticleSystems.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\ParticleSystemsSimulationSpeed.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\PerlinNoise.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\RendererSortingOrder.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\Rotator.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\TrailRenderers.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\TransformNoise.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\_Demo\FPSDisplay.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\_Demo\FPSDisplay2.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\_Demo\FPSTest.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\_Demo\FollowMouse.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\_Demo\LoopingParticleSystemsManager.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\_Demo\OneshotParticleSystemsManager.cs" />
-    <Compile Include="Assets\Mirza Beig\Particle Systems\_Common\Scripts\_Demo\ParticleManager.cs" />
-    <Compile Include="Assets\Mirza Beig\Scripting\Effects\Particle Affectors\AttractionParticleAffector.cs" />
-    <Compile Include="Assets\Mirza Beig\Scripting\Effects\Particle Affectors\Noise.cs" />
-    <Compile Include="Assets\Mirza Beig\Scripting\Effects\Particle Affectors\ParticleAffector.cs" />
-    <Compile Include="Assets\Mirza Beig\Scripting\Effects\Particle Affectors\TurbulenceParticleAffector.cs" />
-    <Compile Include="Assets\Mirza Beig\Scripting\Effects\Particle Affectors\VortexParticleAffector.cs" />
-    <Compile Include="Assets\Mirza Beig\Scripting\Effects\Particle Lights\ParticleLights.cs" />
-    <Compile Include="Assets\Mirza Beig\Scripting\Effects\_Common\CreateLUT.cs" />
-    <Compile Include="Assets\Mirza Beig\Shaders\Image Effects\Resources\Sharpen\Sharpen.cs" />
-    <Compile Include="Assets\Mirza Beig\Shaders\_Common\IEBase.cs" />
     <Compile Include="Assets\Models\ActionAttribute.cs" />
     <Compile Include="Assets\Models\Attribute.cs" />
     <Compile Include="Assets\Models\Effect.cs" />
@@ -145,8 +114,6 @@
     <Compile Include="Assets\Models\SizeAttribute.cs" />
     <Compile Include="Assets\Models\SliderAttribute.cs" />
     <Compile Include="Assets\Models\ToggleAttribute.cs" />
-    <Compile Include="Assets\Notifications.cs" />
-    <Compile Include="Assets\OpenVideoDirectoryButton.cs" />
     <Compile Include="Assets\ParticleSystems\Effects\ExplosionEffects.cs" />
     <Compile Include="Assets\ParticleSystems\Effects\FireworksEffects.cs" />
     <Compile Include="Assets\ParticleSystems\Effects\FocusEffect.cs" />
@@ -189,7 +156,6 @@
     <Compile Include="Assets\Projects\Scripts\ProjectList.cs" />
     <Compile Include="Assets\Projects\Scripts\ProjectListItem.cs" />
     <Compile Include="Assets\Projects\Scripts\StoredItems.cs" />
-    <Compile Include="Assets\RecorderProgressBar.cs" />
     <Compile Include="Assets\Recording\Record.cs" />
     <Compile Include="Assets\Recording\RecorderAreaPicker.cs" />
     <Compile Include="Assets\Recording\Utils.cs" />
@@ -206,10 +172,12 @@
     <Compile Include="Assets\Shaders\Mask\MaskPanel.cs" />
     <Compile Include="Assets\Shaders\Misc\PaintScript.cs" />
     <Compile Include="Assets\Shaders\Misc\ShaderEffect.cs" />
-    <Compile Include="Assets\SizeExpandOnClick.cs" />
-    <Compile Include="Assets\Tab.cs" />
     <Compile Include="Assets\UI\Attribute\AttributesMenu.cs" />
     <Compile Include="Assets\UI\Attribute\DraggableParticleSystem.cs" />
+    <Compile Include="Assets\UI\Attribute\General\LinkButton.cs" />
+    <Compile Include="Assets\UI\Attribute\General\ShrinkButton.cs" />
+    <Compile Include="Assets\UI\Attribute\General\SizeExpandOnClick.cs" />
+    <Compile Include="Assets\UI\Attribute\General\Tab.cs" />
     <Compile Include="Assets\UI\Attribute\ImageProperties.cs" />
     <Compile Include="Assets\UI\Attribute\MenuItems\ActionMenuItem.cs" />
     <Compile Include="Assets\UI\Attribute\MenuItems\AttributeMenuItem.cs" />
@@ -230,6 +198,7 @@
     <Compile Include="Assets\UI\General\ActiveParticleList.cs" />
     <Compile Include="Assets\UI\General\AddImageButton.cs" />
     <Compile Include="Assets\UI\General\CameraScaling.cs" />
+    <Compile Include="Assets\UI\General\CloseButton.cs" />
     <Compile Include="Assets\UI\General\DebugInput.cs" />
     <Compile Include="Assets\UI\General\DraggableFrame\FlexableFrame.cs" />
     <Compile Include="Assets\UI\General\DraggableFrame\FlexibleDraggableObject.cs" />
@@ -237,46 +206,33 @@
     <Compile Include="Assets\UI\General\DraggableFrame\FlexibleResizeHandler.cs" />
     <Compile Include="Assets\UI\General\Effect.cs" />
     <Compile Include="Assets\UI\General\ImageList.cs" />
+    <Compile Include="Assets\UI\General\ImageTranslation.cs" />
     <Compile Include="Assets\UI\General\LightPlane.cs" />
     <Compile Include="Assets\UI\General\MainCanvas.cs" />
     <Compile Include="Assets\UI\General\ParticleEffect.cs" />
     <Compile Include="Assets\UI\General\ParticleList.cs" />
     <Compile Include="Assets\UI\General\RemoveEffectButton.cs" />
+    <Compile Include="Assets\UI\General\ReordeableList\ReorderableList.cs" />
+    <Compile Include="Assets\UI\General\ReordeableList\ReorderableListContent.cs" />
+    <Compile Include="Assets\UI\General\ReordeableList\ReorderableListElement.cs" />
     <Compile Include="Assets\UI\General\SaveProject.cs" />
     <Compile Include="Assets\UI\General\ScreenShot.cs" />
     <Compile Include="Assets\UI\General\UnityMainThreadDispatcher.cs" />
+    <Compile Include="Assets\UI\General\Zoom.cs" />
+    <Compile Include="Assets\UI\Masks\ImportMask.cs" />
+    <Compile Include="Assets\UI\Notifications\Notifications.cs" />
     <Compile Include="Assets\UI\RecorderPanel\RecordButton.cs" />
+    <Compile Include="Assets\UI\RecorderPanel\RecorderProgressBar.cs" />
     <Compile Include="Assets\UI\RecorderPanel\SetRecorderTimer.cs" />
     <Compile Include="Assets\UI\RecorderPanel\StartButton.cs" />
-    <Compile Include="Assets\VideoContainer.cs" />
-    <Compile Include="Assets\VideoFileInfo.cs" />
-    <Compile Include="Assets\VideoGrid.cs" />
-    <Compile Include="Assets\VideoItem.cs" />
-    <Compile Include="Assets\Zoom.cs" />
+    <Compile Include="Assets\UI\Video\CloseVideoGrid.cs" />
+    <Compile Include="Assets\UI\Video\OpenVideoDirectoryButton.cs" />
+    <Compile Include="Assets\UI\Video\VideoContainer.cs" />
+    <Compile Include="Assets\UI\Video\VideoFileInfo.cs" />
+    <Compile Include="Assets\UI\Video\VideoGrid.cs" />
+    <Compile Include="Assets\UI\Video\VideoItem.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Golden Demo\Golden.shader" />
-    <None Include="Assets\Mirza Beig\Editor Extensions\Utilities\Multi-Asset Renamer\README.txt" />
-    <None Include="Assets\Mirza Beig\README - Action VFX.txt" />
-    <None Include="Assets\Mirza Beig\README - Advanced Particle Scaler.txt" />
-    <None Include="Assets\Mirza Beig\README - Shuriken to Spritesheet.txt" />
-    <None Include="Assets\Mirza Beig\README - Storm VFX.txt" />
-    <None Include="Assets\Mirza Beig\README - Ultimate VFX.txt" />
-    <None Include="Assets\Mirza Beig\Shaders\Image Effects\Resources\Sharpen\Sharpen.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Cutout\AlphaCutoff-Add.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Cutout\AlphaCutoff-Alpha.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Distortion\Distortion-Add (ORIGINAL).shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Distortion\Distortion-Add.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Distortion\Distortion-Alpha (ORIGINAL).shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Distortion\Distortion-Alpha.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Distortion\DistortionTextured-Add.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Distortion\DistortionTextured-Alpha.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Intersection Highlight\IntersectionHighlight-Add.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Intersection Highlight\IntersectionHighlight-Alpha.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Mask\Mask-Alpha.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\No Fog\NoFog-Add.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\No Fog\NoFog-Alpha.shader" />
-    <None Include="Assets\Mirza Beig\Shaders\Particles\Unmultiply\Unmultiply-AlphaFromLuminance.shader" />
     <None Include="Assets\Shaders\Shaders\Bars.shader" />
     <None Include="Assets\Shaders\Shaders\Basic.shader" />
     <None Include="Assets\Shaders\Shaders\Brightness.shader" />
@@ -291,6 +247,7 @@
     <None Include="Assets\Shaders\Shaders\Water.shader" />
     <None Include="Assets\Shaders\Shaders\Wave.shader" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
 </Project>

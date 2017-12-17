@@ -54,7 +54,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4700359792527844}
-  - component: {fileID: 114812917543982346}
   - component: {fileID: 199527632495383546}
   - component: {fileID: 198873971515954966}
   - component: {fileID: 114272147305939346}
@@ -219,6 +218,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLooping: 1
+  X: 0
+  Y: 0
+  Width: 400
+  Height: 400
+  CanChangePosition: 0
 --- !u!114 &114299137855821180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,17 +251,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentOutput: 0
---- !u!114 &114812917543982346
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1775413039789668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a70f47e99623a5043adc11839706250a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!198 &198851925568620980
 ParticleSystem:
   m_ObjectHideFlags: 1

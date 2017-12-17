@@ -9,6 +9,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RecorderMenuItem : MenuItem
 {
@@ -136,7 +137,8 @@ public class RecorderMenuItem : MenuItem
 
     public void OpenVideoGrid()
     {
-        Resources.FindObjectsOfTypeAll<VideoGrid>().First().Open();
+        SceneManager.LoadScene("Scenes/Videos", LoadSceneMode.Additive);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Videos"));
     }
 
     public void OpenFile(string filePath)
@@ -175,5 +177,11 @@ public class RecorderMenuItem : MenuItem
     private bool FileOpenEnabled(string file)
     {
         return !_record.ActivelyRecording && File.Exists(VideoFileName());
+    }
+
+    public override Rect GetRectOfAssociatedItem()
+    {
+        var areaPicker = FindObjectOfType<RecorderAreaPicker>();
+        return new Rect(areaPicker.X, areaPicker.Y, areaPicker.Width, areaPicker.Height);
     }
 }

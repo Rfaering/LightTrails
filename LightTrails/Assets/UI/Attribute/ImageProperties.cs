@@ -45,7 +45,7 @@ public class ImageProperties : MonoBehaviour
         rect.anchoredPosition = position;
     }
 
-    public void SetImage(string path)
+    public bool SetImage(string path)
     {
         ImagePath = path;
 
@@ -64,12 +64,25 @@ public class ImageProperties : MonoBehaviour
                 rawImage.rectTransform.sizeDelta = new Vector2(tex.width, tex.height);
                 Width = tex.width;
                 Height = tex.height;
+
+                return true;
             }
             catch (Exception e)
             {
                 Debug.LogException(e);
+
             }
         }
+
+        return false;
+    }
+
+    internal void SetIndex(int index)
+    {
+        var zIndex = 3000 - index * 100;
+
+        var oldPosition = gameObject.transform.localPosition;
+        gameObject.transform.localPosition = new Vector3(oldPosition.x, oldPosition.y, zIndex);
     }
 }
 

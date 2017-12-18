@@ -225,15 +225,6 @@ public class ReorderableListElement : MonoBehaviour, IDragHandler, IBeginDragHan
         _draggingObject.rotation = _reorderableList.Content.transform.rotation;
         _draggingObject.SetSiblingIndex(_fromIndex);
 
-
-        var args = new ReorderableList.ReorderableListEventStruct
-        {
-            DroppedObject = _draggingObject.gameObject,
-            FromIndex = _fromIndex,
-            ToIndex = _fromIndex
-        };
-
-
         if (!isValid) throw new Exception("Transfer is already Cancelled.");
 
         //Delete fake element

@@ -8,7 +8,7 @@ public class ShaderEffectMenuItem : EffectMenuItem
 {
     public Material Material;
 
-    public void Initialize(Effect effect)
+    public override void Initialize(Effect effect)
     {
         var gameObject = GetShaderEffect();
         gameObject.SetActive(true);

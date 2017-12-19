@@ -9,6 +9,11 @@ public class ShaderAttributes : MonoBehaviour
 
     public string SelectedMaskValue = "Mask01";
 
+    public ShaderSliderAttribute CreateShaderSliderAttribute(string displayName, string propertyName, float min, float max)
+    {
+        return new ShaderSliderAttribute(displayName, propertyName, min, max, Material);
+    }
+
     public void Initialize(Material material)
     {
         Material = material;

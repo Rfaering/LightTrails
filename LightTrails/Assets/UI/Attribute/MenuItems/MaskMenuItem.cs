@@ -32,6 +32,7 @@ public class MaskMenuItem : AttributeMenuItem
     {
         _maskAttribute.SelectedValue = selection;
         EnsureImageIsCorrect();
+        _maskAttribute.Changed(selection);
     }
 
     private void EnsureImageIsCorrect()

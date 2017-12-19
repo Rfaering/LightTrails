@@ -6647,7 +6647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActivelyRecording: 0
-  Playing: 1
+  Playing: 0
   ShowProgressBar: 1
   TimeBetweenFrames: 0.041666668
   ElapsedVideoTime: 0

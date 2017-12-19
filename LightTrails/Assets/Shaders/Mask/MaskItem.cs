@@ -30,17 +30,7 @@ public class MaskItem : MonoBehaviour
         }
 
         Selected = true;
-
-        var selectedShader = FindObjectOfType<ItemsMenu>().GetSelectedImageMenuItem();
-        if (selectedShader != null)
-        {
-            var shaderAttribute = selectedShader.GetComponent<ShaderAttributes>();
-            if (shaderAttribute != null)
-            {
-                shaderAttribute.SetMask(Texture);
-            }
-        }
-
+        
         var maskMenuItem = FindObjectOfType<MaskMenuItem>();
         if (maskMenuItem != null)
         {

@@ -112,6 +112,7 @@
     <Compile Include="Assets\Models\MaskAttribute.cs" />
     <Compile Include="Assets\Models\OptionsAttribute.cs" />
     <Compile Include="Assets\Models\SizeAttribute.cs" />
+    <Compile Include="Assets\Models\ShaderSliderAttribute.cs" />
     <Compile Include="Assets\Models\SliderAttribute.cs" />
     <Compile Include="Assets\Models\ToggleAttribute.cs" />
     <Compile Include="Assets\ParticleSystems\Effects\ExplosionEffects.cs" />
@@ -165,6 +166,9 @@
     <Compile Include="Assets\Shaders\Items\DistortionMenuItem.cs" />
     <Compile Include="Assets\Shaders\Items\MistMenuItem.cs" />
     <Compile Include="Assets\Shaders\Items\ShaderAttributes.cs" />
+    <Compile Include="Assets\Shaders\Items\TransitionMenuItem.cs" />
+    <Compile Include="Assets\Shaders\Items\WaveMenuItem.cs" />
+    <Compile Include="Assets\Shaders\Items\VignettingMenuItem.cs" />
     <Compile Include="Assets\Shaders\Items\WaterMenuItem.cs" />
     <Compile Include="Assets\Shaders\Mask\MaskImages.cs" />
     <Compile Include="Assets\Shaders\Mask\MaskItem.cs" />

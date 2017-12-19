@@ -3,6 +3,10 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _Intensity("Intensity", Range(0.1, 10)) = 1
+        _X("X", Range(0.0, 1.0)) = 0.5
+        _Y("Y", Range(0.0, 1.0)) = 0.5
+        _Size("Size", Range(2.0, 0.5)) = 1.0
     }
     SubShader
     {
@@ -39,6 +43,11 @@
             sampler2D _MainTex;
             float4 _MainTex_ST;
             
+            float _Intensity;
+            float _X;
+            float _Y;
+            float _Size;
+
             v2f vert (appdata v)
             {
                 v2f o;
@@ -50,13 +59,13 @@
             
             fixed4 frag (v2f i) : SV_Target
             {
+                float2 offset = float2(_X, _Y) * 2 - 1;
                 float2 uv = i.uv * 2 - 1;
-            
-                // Background
-                fixed4 outColour = fixed4(1, 1, 1, 1);
-            
-                // Vignetting    
-                outColour *= sqrt(1-0.5*length(uv));
+                        
+
+                float size = 2.0 - _Size;
+                fixed4 outColour = fixed4(_Intensity, _Intensity, _Intensity, 1);                        
+                outColour *= sqrt(1-0.5*( size * length( uv + offset)));
 
                 return outColour * tex2D(_MainTex, i.uv);
             }

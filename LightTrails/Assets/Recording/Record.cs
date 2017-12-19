@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public partial class Record : MonoBehaviour
 {
     public bool ActivelyRecording = false;
-    public bool Playing = true;
+    public bool Playing = false;
     public bool ShowProgressBar = true;
 
     public float TimeBetweenFrames = 1.0f / 25.0f;

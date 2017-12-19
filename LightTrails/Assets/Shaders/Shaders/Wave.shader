@@ -1,11 +1,10 @@
 ﻿Shader "Custom/Wave" {
 	Properties{
-		_MainTex ("Texture", 2D) = "white" {}
-		_AttMask("Mask", 2D) = "white"{}
-		_Speed("Speed", Range(1.0, 5.0)) = 1.0
-		_Zoom("Zoom", Range(1.0, 3.0)) = 1.0
+		_MainTex ("Texture", 2D) = "white" {}		
 		_InputTime("Time", Range(0, 1000000000)) = 0
-		[Toggle(_WaterDistortion)] _WaterDistortion("Distortion", Float) = 0
+        _X("X", Range(0.0, 1.0)) = 0.5
+        _Y("Y", Range(0.0, 1.0)) = 0.5
+        _Intensity("Intensity", Range(1, 20)) = 5		
 	}
 	SubShader
     {
@@ -14,7 +13,6 @@
 
         ZWrite Off
         Blend SrcAlpha OneMinusSrcAlpha
-
 
         Pass
         {
@@ -43,11 +41,12 @@
             float4 _MainTex_ST;
 
 			
-			float _InputTime;
-			float _Zoom;
-			float _Speed;
+			float _InputTime;			
 			sampler2D _AttMask;
 			float _WaterDistortion;
+            float _X;
+            float _Y;
+            float _Intensity;
             
             v2f vert (appdata v)
             {
@@ -62,9 +61,9 @@
             {
 				float pi = 3.141592;
 
-				float2 uv = i.uv;
+				float2 uv = i.uv*2-1;
 
-				float2 pos = float2(0.5f, 0.5f);
+				float2 pos = float2(_X, _Y);
 				float dist = length(i.uv - pos);
 
 				float time = _InputTime;
@@ -72,11 +71,12 @@
 				float func = sin(pi * diff);
 				
 				float2 screenuv = i.uv;
-				screenuv += screenuv * uv * func * 0.02;
+				screenuv += screenuv * uv * func * 0.005 * _Intensity;
 
 				half4 bColor = tex2D(_MainTex, screenuv);
 
-				return bColor;// half4(dist, dist, 0.0f, 1.0f);
+                return bColor;
+				//return float4(func*0.2, func*0.2, func, 1.0);// bColor;// half4(dist, dist, 0.0f, 1.0f);
             }
             ENDCG
         }

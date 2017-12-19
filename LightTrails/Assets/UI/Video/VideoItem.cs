@@ -9,7 +9,6 @@ using UnityEngine.Video;
 public class VideoItem : MonoBehaviour
 {
     private VideoFileInfo _videoFileInfo;
-    private GameObject _player;
 
     void Start()
     {
@@ -32,8 +31,6 @@ public class VideoItem : MonoBehaviour
         _videoFileInfo = videoFileInfo;
         transform.Find("Type/Value").GetComponent<Text>().text = videoFileInfo.Type.Replace(".", "").ToLowerInvariant();
         transform.Find("Size/Value").GetComponent<Text>().text = SizeSuffix(videoFileInfo.Length);
-
-        _player = transform.Find("Player").gameObject;
 
         GetComponent<Button>().onClick.AddListener(StartPlaying);
     }

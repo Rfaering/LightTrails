@@ -113,13 +113,19 @@ public class ImageMenuItem : MenuItem
             ShaderAttributes = null;
         }
 
+        ShaderAttributes shaderAttribute;
         if (shaderEffect.MenuItemType != null)
         {
-            var newComponent = gameObject.AddComponent(shaderEffect.MenuItemType) as ShaderAttributes;
-            newComponent.Initialize(newMaterial);
-            ShaderAttributes = newComponent;
-            ShaderAttributes.SetIndex(Index);
+            shaderAttribute = gameObject.AddComponent(shaderEffect.MenuItemType) as ShaderAttributes;
         }
+        else
+        {
+            shaderAttribute = gameObject.AddComponent(typeof(ShaderAttributes)) as ShaderAttributes;
+        }
+
+        shaderAttribute.Initialize(newMaterial);
+        ShaderAttributes = shaderAttribute;
+        ShaderAttributes.SetIndex(Index);
 
         FindObjectOfType<AttributesMenu>().CreateProperties(GetAttributes());
     }

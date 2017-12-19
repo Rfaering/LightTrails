@@ -17,7 +17,7 @@ public class SetRecorderTimer : MonoBehaviour
 
     private void Update()
     {
-        var particleMenuItemsCount = FindObjectsOfType<ParticleEffectMenuItem>().Count();
+        /*var particleMenuItemsCount = FindObjectsOfType<ParticleEffectMenuItem>().Count();
         if (particleMenuItemsCount > 0 || _record.ActivelyRecording)
         {
             _recorderProgressBar.gameObject.SetActive(true);
@@ -25,7 +25,7 @@ public class SetRecorderTimer : MonoBehaviour
         else
         {
             _recorderProgressBar.gameObject.SetActive(false);
-        }
+        }*/
     }
 
     public void Show()

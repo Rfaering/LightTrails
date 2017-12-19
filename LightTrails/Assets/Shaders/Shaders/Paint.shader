@@ -5,20 +5,20 @@
 		Tags{ "RenderType" = "Transparent" }
 		Tags { "Queue" = "Transparent" }
 		Blend SrcAlpha OneMinusSrcAlpha
-	Lighting Off
-	Fog{ Mode Off }
-	ZWrite Off
-	LOD 200
+		Lighting Off
+		Fog{ Mode Off }
+		ZWrite Off
+		LOD 200
 
 	Pass{
 	CGPROGRAM
 	//#pragma target 3.0
-#pragma vertex vert
-#pragma fragment frag
-#include "UnityCG.cginc"
+	#pragma vertex vert
+	#pragma fragment frag
+	#include "UnityCG.cginc"
 
 
-		sampler2D _MainTex;
+	sampler2D _MainTex;
 
 	struct appdata_t {
 		float4 vertex  : POSITION;

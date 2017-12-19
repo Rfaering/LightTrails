@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveMenuItem : ParticleEffectMenuItem
+public class WindMenuItem : ParticleEffectMenuItem
 {
     public enum Color { Orange = 0, Green = 1, Blue = 2, Red = 3 }
     public enum Figures { Blobs = 0, Bubbles = 1, Leafs = 2, Hearts = 3 }

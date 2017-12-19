@@ -3,6 +3,9 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _InputTime("Time", Range(0, 1000000000)) = 0
+		_Movement("Movement", Range(0, 5)) = 1.0
+		_Shade("Shade", Range(0, 1.0)) = 1.0
     }
     SubShader
     {
@@ -11,7 +14,6 @@
 
         ZWrite Off
         Blend SrcAlpha OneMinusSrcAlpha
-
 
         Pass
         {
@@ -38,7 +40,10 @@
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-            
+            float _InputTime;
+			float _Movement;
+			float _Shade;
+
             v2f vert (appdata v)
             {
                 v2f o;
@@ -60,7 +65,7 @@
                 v = v.xzxz*v.yyww;
                 v *= v;
                 
-                v *= _Time.y*0.000004 + 1.5;
+                v *= _InputTime* ( _Movement * 0.000004 ) + 1.5;
                 float4 vx = 0.25*sin(frac(v*0.00047)*6.2831853);
                 float4 vy = 0.25*sin(frac(v*0.00074)*6.2831853);
 
@@ -74,7 +79,9 @@
                 float3 col = lerp(float3(0.0,0.4,0.9), float3(0.0,0.95,0.9), min(v.x,v.y));
                 float4 fragColor = float4(col, 1.0);
 
-                return fragColor + tex2D(_MainTex, i.uv);
+                float2 uv = i.uv;
+
+                return ( fragColor * _Shade) + ( tex2D(_MainTex, uv) * ( 1 - _Shade ));
             }
             ENDCG
         }

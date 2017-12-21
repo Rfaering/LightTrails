@@ -44,15 +44,7 @@ namespace Assets.Models
             get { return _width; }
             set
             {
-                float ratio = _height / (float)_width;
-
                 _width = value;
-
-                if (IsLinked)
-                {
-                    _height = (int)(ratio * _width);
-                }
-
                 SizeHasChanged();
             }
         }
@@ -63,15 +55,7 @@ namespace Assets.Models
             get { return _height; }
             set
             {
-                float ratio = _width / (float)_height;
-
                 _height = value;
-
-                if (IsLinked)
-                {
-                    _width = (int)(ratio * _height);
-                }
-
                 SizeHasChanged();
             }
         }
@@ -93,7 +77,9 @@ namespace Assets.Models
         {
             if (SizeChanged != null)
             {
-                SizeChanged(new Vector2(_width, _height));
+                var result = SizeChanged(new Vector2(_width, _height));
+                _width = result.x;
+                _height = result.y;
             }
         }
 
@@ -101,7 +87,9 @@ namespace Assets.Models
         {
             if (OffSetChanged != null)
             {
-                OffSetChanged(new Vector2(X, Y));
+                var result = OffSetChanged(new Vector2(X, Y));
+                _x = result.x;
+                _y = result.y;
             }
         }
 
@@ -115,18 +103,15 @@ namespace Assets.Models
             set { _height = value; }
         }
 
-
-        public bool IsLinked = false;
-
-        public Action<Vector2> SizeChanged;
-        public Action<Vector2> OffSetChanged;
+        public Func<Vector2, Vector2> SizeChanged;
+        public Func<Vector2, Vector2> OffSetChanged;
 
         public override AttributeValue GetAttributeValue()
         {
             return new AttributeValue()
             {
                 Key = Name,
-                Value = new float[] { X, Y, _width, _height, IsLinked ? 1 : 0 }
+                Value = new float[] { X, Y, _width, _height }
             };
         }
 
@@ -139,7 +124,6 @@ namespace Assets.Models
                 Y = array[1];
                 _width = array[2];
                 _height = array[3];
-                IsLinked = array[4] > 0;
 
                 AllHasChanged();
             }

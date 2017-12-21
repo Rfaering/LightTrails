@@ -89,6 +89,9 @@ MonoBehaviour:
   Y: 0
   Width: 500
   Height: 300
+  Size: {x: 500, y: 300}
+  WidthRestrictions: {x: 0, y: 0}
+  HeightRestrictions: {x: 0, y: 0}
   CanChangePosition: 1
 --- !u!198 &198001060031063976
 ParticleSystem:

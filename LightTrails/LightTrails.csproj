@@ -137,6 +137,7 @@
     <Compile Include="Assets\ParticleSystems\Items\WaveMenuItem.cs" />
     <Compile Include="Assets\ParticleSystems\Items\WispMenuItem.cs" />
     <Compile Include="Assets\ParticleSystems\Manipulations\ColorManipulation.cs" />
+    <Compile Include="Assets\ParticleSystems\Manipulations\EmitterResizeableParticleEffect.cs" />
     <Compile Include="Assets\ParticleSystems\Manipulations\RenderManipulation.cs" />
     <Compile Include="Assets\ParticleSystems\Manipulations\SizeManipulation.cs" />
     <Compile Include="Assets\ParticleSystems\Manipulations\SpawnManipulation.cs" />
@@ -178,7 +179,6 @@
     <Compile Include="Assets\Shaders\Misc\ShaderEffect.cs" />
     <Compile Include="Assets\UI\Attribute\AttributesMenu.cs" />
     <Compile Include="Assets\UI\Attribute\DraggableParticleSystem.cs" />
-    <Compile Include="Assets\UI\Attribute\General\LinkButton.cs" />
     <Compile Include="Assets\UI\Attribute\General\ShrinkButton.cs" />
     <Compile Include="Assets\UI\Attribute\General\SizeExpandOnClick.cs" />
     <Compile Include="Assets\UI\Attribute\General\Tab.cs" />

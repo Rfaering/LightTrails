@@ -91,6 +91,9 @@ MonoBehaviour:
   Y: 0
   Width: 600
   Height: 600
+  Size: {x: 600, y: 600}
+  WidthRestrictions: {x: 0, y: 0}
+  HeightRestrictions: {x: 0, y: 0}
   CanChangePosition: 1
 --- !u!114 &114404104698971762
 MonoBehaviour:

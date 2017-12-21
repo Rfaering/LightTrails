@@ -49,8 +49,8 @@ public class RecorderMenuItem : MenuItem
                Y = areaPicker.Y,
                ForceWidth = areaPicker.Width,
                ForceHeight = areaPicker.Height,
-               SizeChanged = values => { areaPicker.SetSize(values.x, values.y); },
-               OffSetChanged= values => { areaPicker.SetOffSet(values.x, values.y); }
+               SizeChanged = values => areaPicker.SetSize(values),
+               OffSetChanged= values => areaPicker.SetOffSet(values)           
            },
            new OptionsAttribute<FfmpegWrapper.OutputFormat>()
            {

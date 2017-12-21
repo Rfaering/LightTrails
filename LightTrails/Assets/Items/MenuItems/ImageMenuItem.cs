@@ -25,8 +25,8 @@ public class ImageMenuItem : MenuItem
                 ForceHeight = ImageProperties.Height,
                 X = ImageProperties.X,
                 Y = ImageProperties.Y,
-                SizeChanged = vec => {},
-                OffSetChanged = vec => ImageProperties.SetPosition(vec)
+                SizeChanged = vec => vec,
+                OffSetChanged = vec => { ImageProperties.SetPosition(vec); return vec; }
             },
             new ActionAttribute()
             {

@@ -58,13 +58,13 @@ public class ParticleEffectMenuItem : EffectMenuItem
             result.Add(new SizeAttribute()
             {
                 Name = "Area",
-                Resizeable = false,
+                Resizeable = true,
                 X = particleEffect.X,
                 Y = particleEffect.Y,
-                ForceWidth = particleEffect.Width,
-                ForceHeight = particleEffect.Height,
-                OffSetChanged = values => particleEffect.SetPosition(values.x, values.y),
-                SizeChanged = values => { },
+                Width = particleEffect.Size.x,
+                Height = particleEffect.Size.y,
+                OffSetChanged = values => particleEffect.SetPosition(values),
+                SizeChanged = values => particleEffect.SetSize(values),
             });
         }
 
@@ -74,7 +74,7 @@ public class ParticleEffectMenuItem : EffectMenuItem
     public override Rect GetRectOfAssociatedItem()
     {
         var particleEffect = assosicatedEffect.GetComponent<ParticleEffect>();
-        var result = new Rect(0, 0, particleEffect.Width, particleEffect.Height);
+        var result = new Rect(0, 0, particleEffect.Size.x, particleEffect.Size.y);
         result.center = new Vector2(particleEffect.X, particleEffect.Y);
         return result;
     }

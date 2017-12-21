@@ -8,8 +8,10 @@ public class ParticleEffect : RunningEffect
     public float X;
     public float Y;
 
-    public float Width = 400;
-    public float Height = 400;
+    public Vector2 Size;
+
+    public Vector2 WidthRestrictions;
+    public Vector2 HeightRestrictions;
 
     public bool CanChangePosition = false;
 
@@ -24,11 +26,35 @@ public class ParticleEffect : RunningEffect
 
         Length = newLength;
         ElapsedTime = 0;
+
+        if (WidthRestrictions == Vector2.zero)
+        {
+            WidthRestrictions = new Vector2(Size.x, Size.x);
+        }
+        if (HeightRestrictions == Vector2.zero)
+        {
+            HeightRestrictions = new Vector2(Size.y, Size.y);
+        }
     }
 
-    public void SetPosition(float x, float y)
+    public virtual Vector2 SetSize(Vector2 size)
     {
-        transform.position = new Vector3(x / 100.0f, y / 100.0f, transform.position.z);
+        if (size.x <= WidthRestrictions.x && size.x >= WidthRestrictions.y)
+        {
+            Size.x = size.x;
+        }
+        else if (size.y <= HeightRestrictions.x && size.y >= HeightRestrictions.y)
+        {
+            Size.y = size.y;
+        }
+
+        return Size;
+    }
+
+    public Vector2 SetPosition(Vector2 position)
+    {
+        transform.position = new Vector3(position.x / 100.0f, position.y / 100.0f, transform.position.z);
+        return position;
     }
 
     private void Update()

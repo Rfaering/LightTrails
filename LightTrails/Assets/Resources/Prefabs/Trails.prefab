@@ -295,6 +295,7 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   trailColorIndex: -1
+  FadeInAndOut: 1
 --- !u!114 &114827870843982384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,6 +308,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLooping: 0
+  X: 0
+  Y: 0
+  Width: 400
+  Height: 400
+  Size: {x: 400, y: 400}
+  WidthRestrictions: {x: 0, y: 0}
+  HeightRestrictions: {x: 0, y: 0}
+  CanChangePosition: 0
 --- !u!114 &114903281716296700
 MonoBehaviour:
   m_ObjectHideFlags: 1

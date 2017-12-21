@@ -188,6 +188,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLooping: 1
+  X: 0
+  Y: 0
+  Width: 400
+  Height: 400
+  Size: {x: 400, y: 400}
+  WidthRestrictions: {x: 0, y: 0}
+  HeightRestrictions: {x: 0, y: 0}
+  CanChangePosition: 0
 --- !u!198 &198308592848362612
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -7,18 +7,22 @@ public class RecorderAreaPicker : MonoBehaviour
     public int Width = 800;
     public int Height = 600;
 
-    public void SetOffSet(float x, float y)
+    public Vector2 SetOffSet(Vector2 offSet)
     {
-        X = (int)x;
-        Y = (int)y;
+        X = (int)offSet.x;
+        Y = (int)offSet.y;
 
-        FindObjectOfType<FlexableFrame>().SetOffSet(x, y);
+        FindObjectOfType<FlexableFrame>().SetOffSet(offSet.x, offSet.y);
+
+        return offSet;
     }
 
-    public void SetSize(float width, float height)
+    public Vector2 SetSize(Vector2 size)
     {
-        Width = (int)width;
-        Height = (int)height;        
+        Width = (int)size.x;
+        Height = (int)size.y;
+
+        return size;
     }
 
     internal Rect GetRect()

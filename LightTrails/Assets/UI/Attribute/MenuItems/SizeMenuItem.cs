@@ -139,12 +139,7 @@ public class SizeMenuItem : AttributeMenuItem
     {
         FindObjectOfType<FlexableFrame>().SetOffSet(SizeAttribute.X, SizeAttribute.Y);
     }
-
-    internal bool IsLinked()
-    {
-        return SizeAttribute.IsLinked;
-    }
-
+    
     internal void UpdateText()
     {
         int width = (int)(SizeAttribute.Width);
@@ -167,11 +162,6 @@ public class SizeMenuItem : AttributeMenuItem
 
         xInput.text = x.ToString();
         yInput.text = y.ToString();
-    }
-
-    internal void LinkedChangedValue(bool isLinked)
-    {
-        SizeAttribute.IsLinked = isLinked;
     }
 
     public override void ReEvaluateEnabled()

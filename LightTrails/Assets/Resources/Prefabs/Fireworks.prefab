@@ -72,8 +72,8 @@ GameObject:
   - component: {fileID: 4248553669332334}
   - component: {fileID: 199071526720017004}
   - component: {fileID: 198426142579935086}
-  - component: {fileID: 114565798034221972}
   - component: {fileID: 114816982506473312}
+  - component: {fileID: 114392836780480448}
   m_Layer: 0
   m_Name: Fireworks
   m_TagString: Untagged
@@ -167,7 +167,7 @@ Transform:
   m_Father: {fileID: 4248553669332334}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114565798034221972
+--- !u!114 &114392836780480448
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -175,15 +175,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1629550856353862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7801df88b6a98cd4893ec52b829b02bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ef4dd1488ed3ba46a96be67f57c49c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsLooping: 0
   X: 0
   Y: 0
-  Width: 800
-  Height: 800
+  Size: {x: 800, y: 800}
+  WidthRestrictions: {x: 1600, y: 100}
+  HeightRestrictions: {x: 800, y: 800}
   CanChangePosition: 1
+  System: {fileID: 198034224412686266}
 --- !u!114 &114816982506473312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -833,7 +835,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     y:
-      minMaxState: 0
+      minMaxState: 1
       scalar: 1
       maxCurve:
         serializedVersion: 2
@@ -844,15 +846,9 @@ ParticleSystem:
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:
@@ -872,7 +868,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     z:
-      minMaxState: 0
+      minMaxState: 1
       scalar: 1
       maxCurve:
         serializedVersion: 2
@@ -883,15 +879,9 @@ ParticleSystem:
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:
@@ -14630,8 +14620,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 832109409
-  m_SortingLayer: 1
+  m_SortingLayerID: -490384837
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 2

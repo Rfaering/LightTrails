@@ -66,7 +66,7 @@
                 float size = 2.0 - _Size;
                 fixed4 outColour = fixed4(_Intensity, _Intensity, _Intensity, 1);                        
                 outColour *= sqrt(1-0.5*( size * length( uv + offset)));
-
+                outColour.w = 1.0;
                 return outColour * tex2D(_MainTex, i.uv);
             }
             ENDCG

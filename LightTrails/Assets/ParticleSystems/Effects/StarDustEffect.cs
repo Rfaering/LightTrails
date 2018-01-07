@@ -14,7 +14,7 @@ public class StarDustEffect : MonoBehaviour
         {
             case Output.Side:
                 shape.shapeType = ParticleSystemShapeType.Box;
-                var box = shape.box;
+                var box = shape.scale;
                 box.x = 1;
                 box.y = 5;
                 box.z = 0.5f;

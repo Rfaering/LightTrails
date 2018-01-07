@@ -8,7 +8,7 @@ public class EmitterResizeableParticleEffect : ParticleEffect
     public override Vector2 SetSize(Vector2 size)
     {
         var shape = System.shape;
-        shape.box = new Vector3(size.x / 100.0f, 0.5f, 5.0f);
+        shape.scale = new Vector3(size.x / 100.0f, 0.5f, 5.0f);
 
         return base.SetSize(size);
     }
